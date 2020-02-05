@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Utilities\BinaryFile.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Json.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Math.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\String.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\DxRenderer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Event.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Keyboard.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Mouse.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Window.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Systems\Time.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities\Logging.cpp" />
+    <ClCompile Include="Render\RenderTargetBuffer.cpp" />
+    <ClCompile Include="Render\Shader.cpp" />
+    <ClCompile Include="Render\States.cpp" />
+    <ClCompile Include="Render\ShaderManager.cpp" />
+    <ClCompile Include="Utilities\Buffer.cpp" />
+    <ClCompile Include="Render\BufferManager.cpp" />
+    <ClCompile Include="Systems\D2DRenderer.cpp" />
+    <ClCompile Include="Utilities\ImGuiHelper.cpp" />
+    <ClCompile Include="Render\Texture.cpp" />
+    <ClCompile Include="Utilities\Path.cpp" />
+    <ClCompile Include="View\CameraManager.cpp" />
+    <ClCompile Include="Utilities\FloatRect.cpp" />
+    <ClCompile Include="Utilities\Matrix2D.cpp" />
+    <ClCompile Include="Systems\Object\GameObject.cpp" />
+    <ClCompile Include="Systems\SoundManager.cpp" />
+    <ClCompile Include="Systems\Object\ObjectManager.cpp" />
+    <ClCompile Include="Utilities\Line.cpp" />
+    <ClCompile Include="Scenes\SceneBase.cpp" />
+    <ClCompile Include="Scenes\SceneManager.cpp" />
+    <ClCompile Include="Scenes\TestScene.cpp" />
+    <ClCompile Include="Systems\Message\DataContext.cpp" />
+    <ClCompile Include="Systems\Message\MessageComponent.cpp" />
+    <ClCompile Include="Systems\Message\MessageManager.cpp" />
+    <ClCompile Include="Render\ImageManager.cpp" />
+    <ClCompile Include="Systems\Object\Tile.cpp" />
+    <ClCompile Include="Systems\Object\TileMap.cpp" />
+    <ClCompile Include="Scenes\AStarScene.cpp" />
+    <ClCompile Include="Systems\Object\Player.cpp" />
+    <ClCompile Include="Systems\Object\Unit.cpp" />
+    <ClCompile Include="Systems\Object\Tank.cpp" />
+    <ClCompile Include="Systems\PathFinder\PathFinder.cpp" />
+    <ClCompile Include="Scenes\TurnControl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DefineHeader.h" />
+    <ClInclude Include="ModuleHeader.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Utilities\BinaryFile.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Json.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Math.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\String.h">
+      <Filter>Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\DxRenderer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Event.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Keyboard.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Mouse.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Window.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Systems\Time.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\ICloneable.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces\IEvent.h">
+      <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Scenes\SceneNode.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities\Logging.h" />
+    <ClInclude Include="Render\RenderTargetBuffer.h" />
+    <ClInclude Include="Render\ShaderBuffer.h" />
+    <ClInclude Include="Render\VertexLayout.h" />
+    <ClInclude Include="Render\States.h" />
+    <ClInclude Include="Render\Shader.h" />
+    <ClInclude Include="Render\ShaderManager.h" />
+    <ClInclude Include="Render\WorldBuffer.h" />
+    <ClInclude Include="Render\BufferManager.h" />
+    <ClInclude Include="Utilities\Buffer.h" />
+    <ClInclude Include="Systems\D2DRenderer.h" />
+    <ClInclude Include="Utilities\ImGuiHelper.h" />
+    <ClInclude Include="Render\Texture.h" />
+    <ClInclude Include="Utilities\Path.h" />
+    <ClInclude Include="View\CameraManager.h" />
+    <ClInclude Include="MacroFunction.h" />
+    <ClInclude Include="Utilities\FloatRect.h" />
+    <ClInclude Include="Utilities\Matrix2D.h" />
+    <ClInclude Include="Systems\Object\GameObject.h" />
+    <ClInclude Include="EnumHelper.h" />
+    <ClInclude Include="Utilities\Matrix2x2.h" />
+    <ClInclude Include="Systems\SoundManager.h" />
+    <ClInclude Include="Systems\Object\ObjectManager.h" />
+    <ClInclude Include="Utilities\Line.h" />
+    <ClInclude Include="Scenes\SceneBase.h" />
+    <ClInclude Include="Scenes\SceneManager.h" />
+    <ClInclude Include="Scenes\TestScene.h" />
+    <ClInclude Include="Systems\Message\DataContext.h" />
+    <ClInclude Include="Systems\Message\MessageComponent.h" />
+    <ClInclude Include="Systems\Message\MessageManager.h" />
+    <ClInclude Include="Render\ImageManager.h" />
+    <ClInclude Include="Systems\Object\Tile.h" />
+    <ClInclude Include="Systems\Object\TileMap.h" />
+    <ClInclude Include="Scenes\AStarScene.h" />
+    <ClInclude Include="Systems\Object\Player.h" />
+    <ClInclude Include="Systems\Object\Unit.h" />
+    <ClInclude Include="Systems\Object\Tank.h" />
+    <ClInclude Include="Systems\PathFinder\PathFinder.h" />
+    <ClInclude Include="Scenes\TurnControl.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{b4edf1f7-c2e0-4c8c-a00c-d28200208426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{2bed1dab-6a55-4023-9130-943be4143c93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interfaces">
+      <UniqueIdentifier>{3b38d165-30ee-4e54-be83-35d87a4096ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\Color.hlsl" />
+  </ItemGroup>
+</Project>
