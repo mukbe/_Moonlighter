@@ -6,7 +6,7 @@ public:
 	virtual~SceneMapTool();
 	
 	virtual void Init();
+	virtual void ImguiRender();
 
-private:
 };
 

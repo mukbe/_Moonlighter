@@ -73,6 +73,8 @@ public:
 	const AniFrame& GetCurrentFrameInfo() { return currentFrame; }
 	const string& GetImageKey() { return imageKey; }
 
+
+
 private:
 	unordered_map<string, CallBackFunc> callBackFuncTable;
 	vector<AniFrame> frames;

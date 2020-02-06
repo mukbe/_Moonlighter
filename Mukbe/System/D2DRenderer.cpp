@@ -349,14 +349,14 @@ void D2DRenderer::DrawEllipse(FloatRect rc, Matrix2D* transform, D2D1::ColorF::E
 
 
 
-	int width = rc.right - rc.left;
-	int height = rc.bottom - rc.top;
+	float width = rc.right - rc.left;
+	float height = rc.bottom - rc.top;
 
 	D2D1_ELLIPSE ellipse;
-	ellipse.point.x = rc.left + width * 0.5;
-	ellipse.point.y = rc.top + height * 0.5;
-	ellipse.radiusX = width * 0.5;
-	ellipse.radiusY = height * 0.5;
+	ellipse.point.x = rc.left + width * 0.5f;
+	ellipse.point.y = rc.top + height * 0.5f;
+	ellipse.radiusX = width * 0.5f;
+	ellipse.radiusY = height * 0.5f;
 	IASet(transform);
 
 	d2dRenderTarget->DrawEllipse(&ellipse, brush, strokeWidth);
@@ -366,14 +366,14 @@ void D2DRenderer::DrawEllipse(FloatRect rc, Matrix2D* transform, D2D1::ColorF::E
 
 void D2DRenderer::DrawEllipse(FloatRect rc, Matrix2D* transform, DefaultBrush::Enum defaultBrush, float strokeWidth)
 {
-	int width = rc.right - rc.left;
-	int height = rc.bottom - rc.top;
+	float width = rc.right - rc.left;
+	float height = rc.bottom - rc.top;
 
 	D2D1_ELLIPSE ellipse;
-	ellipse.point.x = rc.left + width * 0.5;
-	ellipse.point.y = rc.top + height * 0.5;
-	ellipse.radiusX = width * 0.5;
-	ellipse.radiusY = height * 0.5;
+	ellipse.point.x = rc.left + width * 0.5f;
+	ellipse.point.y = rc.top + height * 0.5f;
+	ellipse.radiusX = width * 0.5f;
+	ellipse.radiusY = height * 0.5f;
 	IASet(transform);
 
 	d2dRenderTarget->DrawEllipse(&ellipse, dwDefaultBrush[defaultBrush], strokeWidth);
@@ -404,14 +404,14 @@ void D2DRenderer::FillEllipse(FloatRect rc, Matrix2D* transform, D2D1::ColorF::E
 	d2dRenderTarget->CreateSolidColorBrush(D2D1::ColorF(color, alpha), &brush);
 
 
-	int width = rc.right - rc.left;
-	int height = rc.bottom - rc.top;
+	float width = rc.right - rc.left;
+	float height = rc.bottom - rc.top;
 
 	D2D1_ELLIPSE ellipse;
-	ellipse.point.x = rc.left + width * 0.5;
-	ellipse.point.y = rc.top + height * 0.5;
-	ellipse.radiusX = width * 0.5;
-	ellipse.radiusY = height * 0.5;
+	ellipse.point.x = rc.left + width * 0.5f;
+	ellipse.point.y = rc.top + height * 0.5f;
+	ellipse.radiusX = width * 0.5f;
+	ellipse.radiusY = height * 0.5f;
 	IASet(transform);
 
 	d2dRenderTarget->FillEllipse(&ellipse, brush);
@@ -421,14 +421,14 @@ void D2DRenderer::FillEllipse(FloatRect rc, Matrix2D* transform, D2D1::ColorF::E
 
 void D2DRenderer::FillEllipse(FloatRect rc, Matrix2D* transform, DefaultBrush::Enum defaultBrush)
 {
-	int width = rc.right - rc.left;
-	int height = rc.bottom - rc.top;
+	float width = rc.right - rc.left;
+	float height = rc.bottom - rc.top;
 
 	D2D1_ELLIPSE ellipse;
-	ellipse.point.x = rc.left + width * 0.5;
-	ellipse.point.y = rc.top + height * 0.5;
-	ellipse.radiusX = width * 0.5;
-	ellipse.radiusY = height * 0.5;
+	ellipse.point.x = rc.left + width * 0.5f;
+	ellipse.point.y = rc.top + height * 0.5f;
+	ellipse.radiusX = width * 0.5f;
+	ellipse.radiusY = height * 0.5f;
 
 	IASet(transform);
 	d2dRenderTarget->FillEllipse(&ellipse, dwDefaultBrush[defaultBrush]);

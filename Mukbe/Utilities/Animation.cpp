@@ -39,7 +39,7 @@ void AnimationClip::Uptate()
 		{
 			updateTime -= invFps;
 			currentIndex++;
-			if (currentIndex >= frames.size())
+			if (currentIndex >= (int)frames.size())
 			{
 				currentIndex = 0;
 

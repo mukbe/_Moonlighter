@@ -1,6 +1,7 @@
 #pragma once
+#include "Unit.h"
 
-class Player : public GameObject
+class Player : public Unit
 {
 public:
 	Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
@@ -17,10 +18,9 @@ public:
 	//imgui debugUI render
 	virtual void ImguiRender();
 
+
+	void CreateAnimation();
+
 private:
-	Animator* animator;
-	shared_ptr<Texture> tex;
-	UINT frameX;
-	UINT frameY;
 };
 

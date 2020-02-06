@@ -45,7 +45,7 @@ public:
 		
 	}
 
-
+	D3DXVECTOR2 GetPos(D3DXVECTOR2 local);
 
 
 	Matrix2D operator*(const Matrix2D& other);

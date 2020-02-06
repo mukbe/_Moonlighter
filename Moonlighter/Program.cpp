@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Program.h"
 #include "./Scene/SceneMapTool.h"
+#include "./Scene/AnimatorTool.h"
 
 Program::Program()
 {
@@ -8,35 +9,28 @@ Program::Program()
 	//jsonRoot = new Json::Value();
 	//JsonHelper::ReadData(L"LevelEditor.json", jsonRoot);
 
-	////메모리 누수를 찾기위한 플래그(깃발) 선언
-	//_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
 
 
-	////찾으면 알려준다
-	//_crtBreakAlloc;
-
-	////덤프메모리 누수도 감지해준다
-	//_CrtDumpMemoryLeaks();
-
+	Shaders->CreateShader("Color", L"Color.hlsl");
 
 	bGrid = true;
-
 	gridColor = ColorWhite;
 
 	
-	_SceneManager->AddScene("Test", new SceneMapTool);
-	_SceneManager->ChangeScene("Test");
-	//IMGUI FONT SETUP
-	//텍스트에 한 글자라고 한글이 들어간 경우 Imgui::Text(u8"테스트 TEST"); 
-	//텍스트 앞에 u8을 써주어야함 유니코드 사용
+	_SceneManager->AddScene("Map", new SceneMapTool);
+	//_SceneManager->AddScene("Ani", new AnimatorTool);
+
+	_SceneManager->ChangeScene("Map");
+
 	{
+		//IMGUI FONT SETUP
+		//텍스트에 한 글자라고 한글이 들어간 경우 Imgui::Text(u8"테스트 TEST"); 
+		//텍스트 앞에 u8을 써주어야함 유니코드 사용
+
 		ImGuiIO& io = ImGui::GetIO();
 		io.Fonts->AddFontFromFileTTF("..//_Resources//TTF//Maplestory Light.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
 	}
-	Shaders->CreateShader("Color", L"Color.hlsl");
-	Log_PrintF("asdasdas %d",123);
-	//LOG->Print(__FUNCTION__, "asdasdasdasd %d", 11);
 }
 
 Program::~Program()
@@ -81,7 +75,7 @@ void Program::Render()
 
 	wstring str;
 	str += L"pos.x : " + to_wstring(CAMERA->GetMousePos().x).substr(0, 6);
-	str += L"pos.y : " + to_wstring(CAMERA->GetMousePos().y).substr(0, 6);
+	str += L" pos.y : " + to_wstring(CAMERA->GetMousePos().y).substr(0, 6);
 	p2DRenderer->SetCamera(false);
 	p2DRenderer->DrawText2D(D3DXVECTOR2((Mouse::Get()->GetPosition().x - 200.f), (Mouse::Get()->GetPosition().y - 20.f)), str, 20, gridColor);
 
@@ -94,6 +88,10 @@ void Program::PostRender()
 
 void Program::ImguiRender()
 {
+
+
+	_SceneManager->GetNowScene()->ImguiRender();
+
 	static bool bLockFPS = true;
 	static int fps = (int)Time::Get()->GetLockFPS();
 	ImGui::Begin("Info");
@@ -130,7 +128,6 @@ void Program::ImguiRender()
 	ImGui::End();
 
 
-	_SceneManager->GetNowScene()->ImguiRender();
 
 }
 

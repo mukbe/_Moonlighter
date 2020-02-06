@@ -4,11 +4,13 @@
 
 class Animator : public ICloneable
 {
+	friend class AnimatorTool;
 private:
 	using MapIter = unordered_map<string, AnimationClip*>::iterator;
 	unordered_map<string, AnimationClip*> animations;
 
 	AnimationClip* currentAnim;
+	string name;
 public:
 	virtual void Clone(void** clone);
 

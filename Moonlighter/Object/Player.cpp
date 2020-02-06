@@ -3,10 +3,9 @@
 
 
 Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
-	:GameObject(name, pos, size)
+	:Unit(name, pos, size)
 {
 
-	animator = new Animator;
 
 
 }
@@ -19,10 +18,66 @@ Player::~Player()
 
 void Player::Init()
 {
-	_ImageManager->AddFrameTexture("Player", ResourcePath + L"Player/will_dungeon.png", 10, 13);
-	tex = _ImageManager->FindTexture("Player");
-	frameX =  0;
-	frameY = 11;
+
+	CreateAnimation();
+
+	animator->ChangeAnimation("Walk_Down");
+
+	_RenderPool->Request(this, RenderManager::Layer::Object);
+	_RenderPool->Request(this, RenderManager::Layer::Imgui);
+}
+
+void Player::Release()
+{
+	_RenderPool->Remove(this, RenderManager::Layer::Imgui);
+	_RenderPool->Remove(this, RenderManager::Layer::Object);
+
+	SafeDelete(animator);
+	
+}
+
+void Player::Update(float tick)
+{
+	lifeTiem += tick;
+
+
+	if (KeyCode->Press(VK_LEFT))
+		animator->ChangeAnimation("Walk_Left");
+	else if(KeyCode->Press(VK_RIGHT))
+		animator->ChangeAnimation("Walk_Right");
+	else if (KeyCode->Press(VK_UP))
+		animator->ChangeAnimation("Walk_Up");
+	else if (KeyCode->Press(VK_DOWN))
+		animator->ChangeAnimation("Walk_Down");
+
+	if (KeyCode->Up(VK_LEFT))
+		animator->ChangeAnimation("Idle_Left");
+	else if (KeyCode->Up(VK_RIGHT))
+		animator->ChangeAnimation("Idle_Right");
+	else if (KeyCode->Up(VK_UP))
+		animator->ChangeAnimation("Idle_Up");
+	else if (KeyCode->Up(VK_DOWN))
+		animator->ChangeAnimation("Idle_Down");
+
+	animator->Update();
+}
+
+
+void Player::Render()
+{
+	animator->Render(rc, &transform, alpha);
+}
+
+void Player::ImguiRender()
+{
+	ImGui::Begin(u8"시발");
+	ImGui::Text("%d", animator->GetCurrentAnim()->GetCurrentFrameInfo().FrameX);
+	ImGui::End();
+}
+
+void Player::CreateAnimation()
+{
+	animator = new Animator;
 
 	AnimationClip* clip = new AnimationClip;
 	clip->PushBackFrame(0, 3, 7, 3);
@@ -106,63 +161,5 @@ void Player::Init()
 	clip->RegisterAniFrameCallBack(0, "Idle_Left");
 	animator->AddAnimation("Idle_Left", clip);
 
-
-
-
-	animator->ChangeAnimation("Walk_Down");
-
-	_RenderPool->Request(this, RenderManager::Layer::Object);
-	_RenderPool->Request(this, RenderManager::Layer::Imgui);
-}
-
-void Player::Release()
-{
-	_RenderPool->Remove(this, RenderManager::Layer::Imgui);
-	_RenderPool->Remove(this, RenderManager::Layer::Object);
-
-	SafeDelete(animator);
-	
-}
-
-
-
-void Player::Update(float tick)
-{
-	lifeTiem += tick;
-
-
-	if (KeyCode->Press(VK_LEFT))
-		animator->ChangeAnimation("Walk_Left");
-	else if(KeyCode->Press(VK_RIGHT))
-		animator->ChangeAnimation("Walk_Right");
-	else if (KeyCode->Press(VK_UP))
-		animator->ChangeAnimation("Walk_Up");
-	else if (KeyCode->Press(VK_DOWN))
-		animator->ChangeAnimation("Walk_Down");
-
-	if (KeyCode->Up(VK_LEFT))
-		animator->ChangeAnimation("Idle_Left");
-	else if (KeyCode->Up(VK_RIGHT))
-		animator->ChangeAnimation("Idle_Right");
-	else if (KeyCode->Up(VK_UP))
-		animator->ChangeAnimation("Idle_Up");
-	else if (KeyCode->Up(VK_DOWN))
-		animator->ChangeAnimation("Idle_Down");
-
-	animator->Update();
-}
-
-
-void Player::Render()
-{
-	animator->Render(rc, &transform, alpha);
-	//tex->FrameRender(rc, &transform, frameX, frameY, alpha);
-}
-
-void Player::ImguiRender()
-{
-	ImGui::Begin(u8"시발");
-	ImGui::Text("%d", animator->GetCurrentAnim()->GetCurrentFrameInfo().FrameX);
-	ImGui::End();
 }
 

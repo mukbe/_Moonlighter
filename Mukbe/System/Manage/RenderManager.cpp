@@ -141,7 +141,7 @@ void RenderManager::ImguiRender()
 	//	if (obj->IsActive())
 	//		obj->ImguiRender();
 	//}
-	for (int i = 0; i < arr.size(); ++i)
+	for (int i = 0; i < (int)arr.size(); ++i)
 	{
 		GameObject* obj = arr[i];
 		if (obj->IsActive())

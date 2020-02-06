@@ -44,7 +44,8 @@
 
 
 ./.vs/
-./DirectTool/Debug/
+./Moonlighter/Debug/
 ./_Resources/
 /_Libraries/Mukbe.lib
 Debug/
+.vs/
