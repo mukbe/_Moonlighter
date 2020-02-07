@@ -7,7 +7,7 @@ public:
 	virtual void Init();
 	virtual void ImguiRender();
 
-	virtual void Update();
+	virtual void Update(float tick);
 
 	void CreateMenuBar();
 	void ShowAnimation();

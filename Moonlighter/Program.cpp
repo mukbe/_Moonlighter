@@ -19,9 +19,9 @@ Program::Program()
 
 	
 	_SceneManager->AddScene("Map", new SceneMapTool);
-	//_SceneManager->AddScene("Ani", new AnimatorTool);
+	_SceneManager->AddScene("Ani", new AnimatorTool);
 
-	_SceneManager->ChangeScene("Map");
+	_SceneManager->ChangeScene("Ani");
 
 	{
 		//IMGUI FONT SETUP
@@ -139,11 +139,11 @@ void Program::ResizeScreen()
 
 void Program::MakeGrid()
 {
-	vector<pair<D3DXVECTOR2, D3DXVECTOR2>> grid;
+	//vector<pair<D3DXVECTOR2, D3DXVECTOR2>> grid;
 	vector<float> arrayX, arrayY;
 
 	FloatRect rc = CAMERA->GetRenderRect();
-	D3DXVECTOR2 tilesize = { 72.f,72.f };
+	D3DXVECTOR2 tilesize = { 72.f, 72.f };
 	int starty = (int)(rc.top / tilesize.y);
 	int endy = (int)(rc.bottom / tilesize.y);
 

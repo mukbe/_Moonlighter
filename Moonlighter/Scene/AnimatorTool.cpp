@@ -7,15 +7,24 @@ AnimatorTool::AnimatorTool()
 {
 	selectedAnim = -1;
 	selectedClip = -1;
+	currentClip = nullptr;
 }
 
 
 AnimatorTool::~AnimatorTool()
 {
+	for (Animator* ani : animator)
+		SafeDelete(ani);
 }
 
 void AnimatorTool::Init()
 {
+	animator.push_back(new Animator);
+	animator[0]->name = "Temp asfsad";
+	animator[0]->AddAnimation("Test clip1", new AnimationClip);
+	animator[0]->AddAnimation("Test clip2", new AnimationClip);
+
+
 }
 
 void AnimatorTool::ImguiRender()
@@ -25,6 +34,8 @@ void AnimatorTool::ImguiRender()
 	static bool aniOpen = true;
 	ImGuiWindowFlags win_flag = 0;
 	win_flag |= ImGuiWindowFlags_MenuBar;
+	ImGui::SetNextWindowPos(ImVec2(0.f, 0.f));
+	ImGui::SetNextWindowSize(ImVec2(WinSizeX * 0.25f, WinSizeY));
 	ImGui::Begin("Animator", &aniOpen, win_flag);
 
 	CreateMenuBar();
@@ -43,7 +54,9 @@ void AnimatorTool::ImguiRender()
 	ImGui::EndGroup();
 
 
-	if (ImGui::BeginPopup("Add Anim"))
+	ImGuiWindowFlags pop_anim_flag = 0;
+	pop_anim_flag |= ImGuiWindowFlags_NoMove;
+	if (ImGui::BeginPopup("Add Anim", pop_anim_flag))
 	{
 		static char buf[128];
 		ImGuiInputTextFlags flag = 0;
@@ -57,12 +70,15 @@ void AnimatorTool::ImguiRender()
 		}
 		ImGui::EndPopup();
 	}
+
+	ImGuiWindowFlags pop_clip_flag = 0;
+	pop_clip_flag |= ImGuiWindowFlags_NoMove;
 	if (ImGui::BeginPopup("Add Clip"))
 	{
 		static char buf[128];
 		ImGuiInputTextFlags flag = 0;
 		flag |= ImGuiInputTextFlags_EnterReturnsTrue;
-		if (ImGui::InputText("Animator Name", buf, ARRAYSIZE(buf), flag))
+		if (ImGui::InputText("Clip Name", buf, ARRAYSIZE(buf), flag))
 		{
 			if (selectedAnim != -1)
 			{
@@ -112,7 +128,7 @@ void AnimatorTool::ImguiRender()
 	}
 
 
-
+	ImGui::Separator();
 	ImGui::Text("selectedAnim %d", selectedAnim);
 
 
@@ -122,9 +138,9 @@ void AnimatorTool::ImguiRender()
 	ShowAnimation();
 }
 
-void AnimatorTool::Update()
+void AnimatorTool::Update(float tick)
 {
-	SceneBase::Update(TickTime);
+	SceneBase::Update(tick);
 
 	if (currentClip != nullptr)
 	{
@@ -146,17 +162,6 @@ void AnimatorTool::CreateMenuBar()
 
 		if (ImGui::BeginMenu("Examples"))
 		{
-			//ImGui::MenuItem("Main menu bar", NULL, &show_app_main_menu_bar);
-			//ImGui::MenuItem("Console", NULL, &show_app_console);
-			//ImGui::MenuItem("Log", NULL, &show_app_log);
-			//ImGui::MenuItem("Simple layout", NULL, &show_app_layout);
-			//ImGui::MenuItem("Property editor", NULL, &show_app_property_editor);
-			//ImGui::MenuItem("Long text display", NULL, &show_app_long_text);
-			//ImGui::MenuItem("Auto-resizing window", NULL, &show_app_auto_resize);
-			//ImGui::MenuItem("Constrained-resizing window", NULL, &show_app_constrained_resize);
-			//ImGui::MenuItem("Simple overlay", NULL, &show_app_simple_overlay);
-			//ImGui::MenuItem("Manipulating window titles", NULL, &show_app_window_titles);
-			//ImGui::MenuItem("Custom rendering", NULL, &show_app_custom_rendering);
 			//ImGui::MenuItem("Documents", NULL, &show_app_documents);
 			ImGui::EndMenu();
 		}
@@ -182,6 +187,7 @@ void AnimatorTool::ShowAnimation()
 			break;
 		}
 	}
-
+	currentClip = clip;
+	clip->ImguiRender();
 
 }
