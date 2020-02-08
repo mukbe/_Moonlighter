@@ -162,7 +162,7 @@ void Program::MakeGrid()
 	p2DRenderer->SetCamera(true);
 
 	//가로
-	for (int i = 0; i < arrayY.size(); i++)
+	for (int i = 0; i < (int)arrayY.size(); i++)
 	{
 		if (arrayY[i] == 0)
 		{
@@ -173,7 +173,7 @@ void Program::MakeGrid()
 		p2DRenderer->DrawLine(D3DXVECTOR2(arrayX[0] , arrayY[i] ), D3DXVECTOR2(arrayX[arrayX.size() - 1] , arrayY[i] ), nullptr, gridColor);
 	}
 	//세로
-	for (int i = 0; i < arrayX.size(); i++)
+	for (int i = 0; i < (int)arrayX.size(); i++)
 	{
 		if (arrayX[i] == 0)
 		{

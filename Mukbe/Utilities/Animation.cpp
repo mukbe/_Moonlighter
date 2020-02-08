@@ -3,6 +3,68 @@
 
 
 
+void AnimationClip::Save(AnimationClip * clip, BinaryWriter * w)
+{
+	w->Float(clip->fps);
+	w->Bool(clip->isLoop);
+	w->String(clip->imageKey);
+	w->Int(clip->maxFrame[0]);
+	w->Int(clip->maxFrame[1]);
+
+	//프레임저장
+	w->Int((int)clip->frames.size());
+	for (int i = 0; i < (int)clip->frames.size(); i++)
+	{
+		AniFrame temp = clip->frames[i];
+		w->Int(temp.FrameX);
+		w->Int(temp.FrameY);
+		w->Int((int)temp.callBacks.size());
+		for (int j = 0; j < (int)temp.callBacks.size(); j++)
+		{
+			w->String(temp.callBacks[j]);
+		}
+
+	}
+
+}
+
+void AnimationClip::Load(AnimationClip ** ppClip, BinaryReader * r)
+{
+	AnimationClip* clip = new AnimationClip();
+	clip->fps = r->Float();
+	clip->isLoop = r->Bool();
+	clip->imageKey = r->String();
+	clip->maxFrame[0] = r->Int();
+	clip->maxFrame[1] = r->Int();
+
+	int frameCount = r->Int();
+
+	for (int i = 0; i < frameCount; i++)
+	{
+		AniFrame temp;
+		temp.FrameX = r->Int();
+		temp.FrameY = r->Int();
+		int callBacksCount = r->Int();
+		for (int j = 0; j < callBacksCount; j++)
+		{
+			temp.AddCallBack(r->String());
+		}
+		clip->PushBackAniFrame(temp);
+	}
+
+
+
+#ifdef DEBUGMODE
+	Log_ErrorAssert(_ImageManager->FindTexture(clip->imageKey) == false);
+#else
+	clip->texture = _ImageManager->FindTexture(clip->imageKey);
+#endif // DEBUGMODE
+
+	clip->invFps = 1.f / clip->fps;
+
+	*ppClip = clip;
+}
+
 void AnimationClip::Clone(void** clone)
 {
 	*clone = new AnimationClip;
@@ -229,6 +291,7 @@ void AnimationClip::DeleteCallBackTable(string name)
 
 void AnimationClip::ImguiRender()
 {
+#ifdef USEIMGUI
 	ImGuiWindowFlags window_flag;
 	window_flag |= ImGuiWindowFlags_NoMove;
 	window_flag |= ImGuiWindowFlags_NoTitleBar;
@@ -261,11 +324,9 @@ void AnimationClip::ImguiRender()
 		ImGui::Text("File Path %s", texture->GetFilePath().c_str());
 		ImGui::Text("Image Key %s", imageKey.c_str());
 
-		static D3DXVECTOR2 pickedFrame = { 0.f, 0.f };
 
 		ImVec2 size = ImGui::GetWindowSize();
 		ImGuiIO& io = ImGui::GetIO();
-		static vector<pair<int, int>> drag_save_frame = vector<pair<int, int>>();
 
 		if (drag_save_frame.empty())
 			pickedFrame = { 0.f, 0.f };
@@ -296,8 +357,6 @@ void AnimationClip::ImguiRender()
 			}
 		}
 
-		static ImVec2 clicked_start = { 0, 0 };
-		static ImVec2 clicked_end = { 0, 0 };
 		if (ImGui::IsMouseClicked(0) && ImGui::IsItemClicked())
 		{
 			clicked_start.x = io.MousePos.x - pos.x;
@@ -325,12 +384,12 @@ void AnimationClip::ImguiRender()
 			clicked_end.x = io.MousePos.x - pos.x;
 			clicked_end.y = io.MousePos.y - pos.y;
 
-			pickedFrame.x = (int)(clicked_start.x / ImGui::GetItemRectSize().x * maxFrame[0]);
-			pickedFrame.y = (int)(clicked_start.y / ImGui::GetItemRectSize().y * maxFrame[1]);
+			pickedFrame.x = (int)(clicked_start.x / ImGui::GetItemRectSize().x * (float)maxFrame[0]);
+			pickedFrame.y = (int)(clicked_start.y / ImGui::GetItemRectSize().y * (float)maxFrame[1]);
 
 			D3DXVECTOR2 pickend;
-			pickend.x = (int)(clicked_end.x / ImGui::GetItemRectSize().x * maxFrame[0]);
-			pickend.y = (int)(clicked_end.y / ImGui::GetItemRectSize().y * maxFrame[1]);
+			pickend.x = (int)(clicked_end.x / ImGui::GetItemRectSize().x * (float)maxFrame[0]);
+			pickend.y = (int)(clicked_end.y / ImGui::GetItemRectSize().y * (float)maxFrame[1]);
 
 			function<void(float*, float*)> Swap_Position = [&](float* start, float* end)
 			{
@@ -370,8 +429,6 @@ void AnimationClip::ImguiRender()
 		ImVec2 child_size = ImGui::GetWindowSize();
 		child_size.x *= 0.25f;
 		child_size.y *= 0.25f;
-		static int current_item = -1;
-		static int current_item_callback = -1;
 
 		ImGui::BeginChild("Ani Frame Child", child_size);
 
@@ -471,7 +528,6 @@ void AnimationClip::ImguiRender()
 		ImGui::BeginChild("Frame View Child", child_size);
 		ImGui::Checkbox("IsPlay", &isPlay);
 		ImGui::Checkbox("IsLoop", &isLoop);
-		static float aniFrame_size = 100.f;
 		ImGui::SliderFloat("Frame_size", &aniFrame_size, 50.f, 300.f, "%.1f");
 
 		if (ImGui::InputFloat("Frame Fps", &fps, 1.f, 5.f, 0, input_flag))
@@ -490,4 +546,7 @@ void AnimationClip::ImguiRender()
 
 
 	ImGui::End();
+
+#endif // USEIMGUI
+
 }

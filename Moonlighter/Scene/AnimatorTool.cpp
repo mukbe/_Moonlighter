@@ -2,7 +2,6 @@
 #include "AnimatorTool.h"
 
 
-
 AnimatorTool::AnimatorTool()
 {
 	selectedAnim = -1;
@@ -90,51 +89,81 @@ void AnimatorTool::ImguiRender()
 		ImGui::EndPopup();
 	}
 
-
+	vector<int> deleteList;
 	for (int i = 0;i < (int)animator.size(); i++)
 	{
 		Animator* anim = animator[i];
 
 		//bool is_selected = (selection_mask & (1 << i)) != 0;
-		ImGuiTreeNodeFlags tree_flag = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick;
+		ImGuiTreeNodeFlags tree_flag = ImGuiTreeNodeFlags_OpenOnArrow | ImGuiTreeNodeFlags_OpenOnDoubleClick | ImGuiTreeNodeFlags_DefaultOpen;
 		if (selectedAnim == i)
 		{
 			tree_flag |= ImGuiTreeNodeFlags_Selected;
 		}
 
-		if (ImGui::TreeNodeEx((void*)i, tree_flag, anim->name.c_str()))
+		if( ImGui::TreeNodeEx((void*)i, tree_flag, anim->name.c_str()))
 		{
-			if (ImGui::IsItemClicked())
-				selectedAnim = i;
-			{
-				unordered_map<string, AnimationClip*>::iterator Iter = anim->animations.begin();
-				int count = 0;
-				for (; Iter != anim->animations.end(); ++Iter, count++)
-				{
-					AnimationClip* clip = Iter->second;
-					bool clip_selected = (selectedAnim == i) && (selectedClip == count);
-					ImGui::Selectable(Iter->first.c_str(),&clip_selected);
-					if (ImGui::IsItemClicked())
-					{
-						selectedAnim = i;
-						selectedClip = count;
-					}
-				}
 
+			if (ImGui::IsItemClicked())
+			{
+				selectedAnim = i;
+			}
+			if (ImGui::IsItemClicked(1))
+			{
+				selectedAnim = i;
+				ImGui::OpenPopup("Animator Menu");
+			}
+			if (ImGui::BeginPopup("Animator Menu"))
+			{
+				if (ImGui::MenuItem("Save as"))
+				{
+					Path::SaveFileDialog(L"", Path::AnimationFilter, ResourcePath + L"Animator/", [&](wstring name) {
+						AnimatorTool::SaveAnimatorBinary(animator[selectedAnim], name);
+					});
+				}
+				if (ImGui::MenuItem("Save"))
+				{
+					AnimatorTool::SaveAnimatorBinary(animator[selectedAnim], ResourcePath + L"Animator/" + String::StringToWString(animator[selectedAnim]->name));
+				}
+				if (ImGui::MenuItem("Delete"))
+				{
+					deleteList.push_back(selectedAnim);
+				}
+				ImGui::EndPopup();
 			}
 
-		ImGui::TreePop();
+
+			
+			unordered_map<string, AnimationClip*>::iterator Iter = anim->animations.begin();
+			int count = 0;
+			for (; Iter != anim->animations.end(); ++Iter, count++)
+			{
+				AnimationClip* clip = Iter->second;
+				bool clip_selected = (selectedAnim == i) && (selectedClip == count);
+				ImGui::Selectable(Iter->first.c_str(), &clip_selected);
+				if (ImGui::IsItemClicked())
+				{
+					selectedAnim = i;
+					selectedClip = count;
+				}
+			}
+
+			
+			ImGui::TreePop();
+
 		}
 	}
 
-
 	ImGui::Separator();
 	ImGui::Text("selectedAnim %d", selectedAnim);
-
+	if (deleteList.empty() == false)
+	{
+		SafeDelete(animator[deleteList[0]]);
+		animator.erase(animator.begin() + deleteList[0]);
+		selectedAnim = -1;
+	}
 
 	ImGui::End();
-
-
 	ShowAnimation();
 }
 
@@ -154,8 +183,17 @@ void AnimatorTool::CreateMenuBar()
 	{
 		if (ImGui::BeginMenu("Menu"))
 		{
-
-
+			if (ImGui::MenuItem("Save", "Ctrl+S")) 
+			{
+				//전체저장
+			}
+			if (ImGui::MenuItem("Load", "Ctrl+L"))
+			{
+				WCHAR path[64] = L"../_Resources/Animator";
+				Path::FileSearch(path, [&](wstring file) {
+					LoadAnimatorBinary(file);
+				});
+			}
 			ImGui::EndMenu();
 		}
 
@@ -190,4 +228,26 @@ void AnimatorTool::ShowAnimation()
 	currentClip = clip;
 	clip->ImguiRender();
 
+}
+
+void AnimatorTool::SaveAnimatorBinary(Animator* anim, wstring name)
+{
+	BinaryWriter* w = new BinaryWriter();
+	w->Open(name + L".anim");
+	{
+		Animator::Save(anim, w);
+	}
+	w->Close();
+}
+
+void AnimatorTool::LoadAnimatorBinary(wstring name)
+{
+	BinaryReader* r = new BinaryReader();
+	r->Open(name);
+	{
+		Animator* anim = nullptr;
+		Animator::Load(&anim, r);
+		animator.push_back(anim);
+	}
+	r->Close();
 }

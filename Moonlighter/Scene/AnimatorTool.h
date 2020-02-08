@@ -11,6 +11,9 @@ public:
 
 	void CreateMenuBar();
 	void ShowAnimation();
+
+	void SaveAnimatorBinary(Animator* anim, wstring name);
+	void LoadAnimatorBinary(wstring name);
 private:
 	vector<Animator*> animator;
 	int selectedAnim;
