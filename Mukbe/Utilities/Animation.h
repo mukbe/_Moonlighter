@@ -1,6 +1,7 @@
 #pragma once
 // 2020.02.05 Mokube 
 // Animation 
+#define USEIMGUI
 
 
 #include "./Interfaces/ICloneable.h"
@@ -32,6 +33,9 @@ class AnimationClip : public ICloneable
 private:
 	using CallBackFunc = function<void(void)>;
 
+public:
+	static void Save(AnimationClip* clip, BinaryWriter* w);
+	static void Load(AnimationClip** ppClip, BinaryReader* r);
 public:
 	virtual void Clone(void** clone);
 
@@ -69,9 +73,11 @@ public:
 
 	//Get
 	const bool IsPlay() { return isPlay; }
-	const bool IsKoop() { return isLoop; }
+	const bool IsLoop() { return isLoop; }
 	const AniFrame& GetCurrentFrameInfo() { return currentFrame; }
 	const string& GetImageKey() { return imageKey; }
+
+	void ImguiRender();
 
 private:
 	unordered_map<string, CallBackFunc> callBackFuncTable;
@@ -88,5 +94,18 @@ private:
 
 	string imageKey;
 	shared_ptr<Texture> texture;
+	int maxFrame[2];
+
+#ifdef USEIMGUI
+private:
+	D3DXVECTOR2 pickedFrame = { 0.f, 0.f };
+	vector<pair<int, int>> drag_save_frame = vector<pair<int, int>>();
+	ImVec2 clicked_start = { 0, 0 };
+	ImVec2 clicked_end = { 0, 0 };
+	int current_item = -1;
+	int current_item_callback = -1;
+	float aniFrame_size = 100.f;
+#endif // USEIMGUI
+
 };
 

@@ -41,7 +41,7 @@ ObjectManager::~ObjectManager()
 void ObjectManager::Update(float tick)
 {
 
-	for (int i= 0; i < objects.size(); i++)
+	for (int i= 0; i < (int)objects.size(); i++)
 	{
 		objects[i]->Update(tick);
 	}

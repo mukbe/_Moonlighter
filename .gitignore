@@ -44,9 +44,11 @@
 
 
 ./.vs/
-./DirectTool/Debug/
+./Moonlighter/Debug/
 ./_Resources/
 /_Libraries/Mukbe.lib
 Debug/
 .vs/Moonlighter/v15/Solution.VC.db-shm
 .vs/Moonlighter/v15/Solution.VC.db-wal
+.vs/
+

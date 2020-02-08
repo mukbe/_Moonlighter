@@ -49,7 +49,7 @@ void EffectManager::Update(float tick)
 void EffectManager::Render()
 {
 	p2DRenderer->SetCamera(true);
-	for (int i = 0; i < playList.size(); i++)
+	for (int i = 0; i < (int)playList.size(); i++)
 	{
 		playList[i].Image->FrameRender(playList[i].Rect, &playList[i].Transform , playList[i].Frame);
 	}

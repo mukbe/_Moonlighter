@@ -32,6 +32,7 @@
 #include "./Utilities/Line.h"
 #include "./Utilities/Math.h"
 #include "./Utilities/Json.h"
+#include "./Utilities/BinaryFile.h"
 #include "./Utilities/String.h"
 #include "./Utilities/Path.h"
 #include "./Utilities/Buffer.h"

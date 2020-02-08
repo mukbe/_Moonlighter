@@ -71,14 +71,14 @@ string Path::GetExtension(string path)
 {
 	size_t index = path.find_last_of('.');
 
-	return path.substr(index + 1, path.length());;
+	return path.substr(index + 1, path.length());
 }
 
 wstring Path::GetExtension(wstring path)
 {
 	size_t index = path.find_last_of('.');
 
-	return path.substr(index + 1, path.length());;
+	return path.substr(index + 1, path.length());
 }
 
 string Path::GetFileName(string path)
@@ -191,7 +191,7 @@ void Path::SaveFileDialog(wstring file, const WCHAR* filter, wstring folder, fun
 		{
 			wstring loadName = name;
 			String::Replace(&loadName, L"\\", L"/");
-
+			
 			func(loadName);
 		}
 	}

@@ -4878,3 +4878,1399 @@ Code: shared_ptr<Testure> use count != 1
  2020.2.5	18:08:09	Program::Program : asdasdas 123
 			 End
 ===================================================
+===================================================
+ 2020.2.6	13:47:33	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:47:33	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:49:28	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:49:28	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:54:56	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:54:57	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:55:29	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:55:29	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:55:52	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:55:53	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:57:07	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:57:08	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:59:35	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:59:35	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	13:59:58	 'Moonlighter' Start Succeeded
+ 2020.2.6	13:59:59	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	14:08:26	 'Moonlighter' Start Succeeded
+ 2020.2.6	14:08:27	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	14:16:38	 'Moonlighter' Start Succeeded
+ 2020.2.6	14:16:38	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	14:22:05	 'Moonlighter' Start Succeeded
+ 2020.2.6	14:22:05	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	14:25:15	 'Moonlighter' Start Succeeded
+14:25:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\system\manage\scenemanager.cpp
+Line: 76
+Code: no scene
+===================================================
+ 2020.2.6	14:25:33	 'Moonlighter' Start Succeeded
+ 2020.2.6	14:25:34	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	14:26:06	 'Moonlighter' Start Succeeded
+ 2020.2.6	14:26:07	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	14:57:23	 'Moonlighter' Start Succeeded
+ 2020.2.6	14:57:24	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:30:06	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:30:06	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:30:16	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:30:16	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:32:41	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:32:41	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:36:10	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:36:11	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:54:45	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:54:46	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:55:21	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:55:21	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:55:38	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:55:39	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:56:46	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:56:46	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:57:06	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:57:06	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:58:06	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:58:06	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	15:58:24	 'Moonlighter' Start Succeeded
+ 2020.2.6	15:58:24	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:01:20	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:01:20	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:07:59	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:08:00	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:08:50	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:08:51	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:09:33	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:09:34	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:10:55	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:10:56	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:11:00	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:11:00	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:11:21	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:11:22	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:11:33	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:11:33	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:13:13	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:13:13	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:13:19	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:13:19	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:14:23	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:14:23	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:15:13	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:15:14	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:16:23	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:16:23	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:18:11	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:18:11	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:19:10	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:19:10	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:21:26	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:21:27	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:21:56	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:21:56	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:23:32	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:23:32	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:25:20	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:25:20	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:29:03	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:29:03	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:29:40	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:29:40	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:36:05	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:36:05	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:36:13	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:36:13	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:42:40	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:42:41	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:43:16	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:43:17	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:43:44	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:43:44	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:51:22	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:51:23	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:52:42	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:52:42	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:53:29	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:53:29	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:55:54	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:55:54	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:57:06	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:57:06	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	16:58:31	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:58:31	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	16:59:46	 'Moonlighter' Start Succeeded
+ 2020.2.6	16:59:47	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:00:44	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:00:44	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:01:35	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:01:36	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:06:38	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:06:38	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:11:41	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:11:41	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:12:16	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:12:16	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:14:01	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:14:01	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:14:18	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:14:18	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:14:40	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:14:41	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:14:56	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:14:57	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:15:46	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:15:46	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:16:06	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:16:06	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:17:08	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:17:08	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:17:26	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:17:27	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:17:45	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:17:45	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:19:03	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:19:04	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:19:36	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:19:37	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:20:12	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:20:12	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:20:25	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:20:25	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:21:08	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:21:08	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:23:00	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:23:01	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:25:17	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:25:17	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:25:34	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:25:34	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:26:21	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:26:21	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:27:01	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:27:02	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	17:31:16	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:31:16	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:32:23	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:32:23	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	17:34:09	 'Moonlighter' Start Succeeded
+ 2020.2.6	17:34:09	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	18:14:18	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:14:18	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:14:46	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:14:46	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:15:53	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:15:53	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:16:21	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:16:22	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:16:45	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:16:46	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:17:15	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:17:15	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:17:39	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:17:40	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:18:58	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:18:58	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:19:29	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:19:30	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:19:52	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:19:52	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	18:20:29	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:20:29	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:20:56	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:20:57	Program::Program : asdasdas 123
+			 End
+===================================================
+===================================================
+ 2020.2.6	18:29:16	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:29:16	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:29:47	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:29:48	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	18:30:46	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:30:46	Program::Program : asdasdas 123
+18:31:19	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.6	18:51:36	 'Moonlighter' Start Succeeded
+ 2020.2.6	18:51:36	Program::Program : asdasdas 123
+===================================================
+ 2020.2.6	19:15:24	 'Moonlighter' Start Succeeded
+ 2020.2.6	19:15:25	Program::Program : asdasdas 123
+ 2020.2.6	19:15:36	Idle_Left
+ 2020.2.6	19:15:37	Idle_Left
+ 2020.2.6	19:15:38	Idle_Left
+ 2020.2.6	19:15:39	Idle_Left
+ 2020.2.6	19:16:02	Idle_Left
+ 2020.2.6	19:16:05	Idle_Left
+ 2020.2.6	19:16:06	Idle_Left
+ 2020.2.6	19:16:08	Idle_Left
+ 2020.2.6	19:16:09	Idle_Left
+			 End
+===================================================
+===================================================
+ 2020.2.6	19:31:15	 'Moonlighter' Start Succeeded
+ 2020.2.6	19:31:15	Program::Program : asdasdas 123
+ 2020.2.6	19:32:04	Idle_Left
+ 2020.2.6	19:32:04	Idle_Left
+ 2020.2.6	19:32:05	Idle_Left
+ 2020.2.6	19:32:05	Idle_Left
+===================================================
+ 2020.2.6	19:32:10	 'Moonlighter' Start Succeeded
+ 2020.2.6	19:32:11	Program::Program : asdasdas 123
+ 2020.2.6	19:32:53	Idle_Left
+ 2020.2.6	19:32:54	Idle_Left
+ 2020.2.6	19:32:55	Idle_Left
+			 End
+===================================================
+===================================================
+ 2020.2.6	19:37:59	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:09:32	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:09:53	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:10:36	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:11:22	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:11:33	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:13:05	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:13:31	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:14:05	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:14:32	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:14:39	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:15:16	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:15:45	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:16:04	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:17:29	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:17:48	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:46:42	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:47:01	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:47:26	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:48:01	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:48:22	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:49:04	 'Moonlighter' Start Succeeded
+09:49:24	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:50:06	 'Moonlighter' Start Succeeded
+09:50:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:50:36	 'Moonlighter' Start Succeeded
+09:50:43	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:51:09	 'Moonlighter' Start Succeeded
+09:51:25	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:51:50	 'Moonlighter' Start Succeeded
+09:57:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:57:46	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	09:58:10	 'Moonlighter' Start Succeeded
+09:58:20	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:59:48	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	09:59:56	 'Moonlighter' Start Succeeded
+10:00:04	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:02:08	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:02:47	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:02:56	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:06:08	 'Moonlighter' Start Succeeded
+10:06:42	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:08:08	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:09:49	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:12:45	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:18:24	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:19:25	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:19:37	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:19:47	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:20:52	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:21:02	 'Moonlighter' Start Succeeded
+10:22:03	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:22:18	 'Moonlighter' Start Succeeded
+10:23:07	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:24:15	 'Moonlighter' Start Succeeded
+10:24:31	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:24:39	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:31:30	 'Moonlighter' Start Succeeded
+10:31:39	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:31:48	 'Moonlighter' Start Succeeded
+10:31:56	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:32:10	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:36:07	 'Moonlighter' Start Succeeded
+10:36:19	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:37:25	 'Moonlighter' Start Succeeded
+10:37:32	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:37:41	 'Moonlighter' Start Succeeded
+10:37:49	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:45:41	 'Moonlighter' Start Succeeded
+10:45:58	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:46:25	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:47:22	 'Moonlighter' Start Succeeded
+10:48:21	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:49:05	 'Moonlighter' Start Succeeded
+10:49:24	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:49:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:49:43	 'Moonlighter' Start Succeeded
+10:49:59	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:50:24	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:51:11	 'Moonlighter' Start Succeeded
+10:51:20	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:51:53	 'Moonlighter' Start Succeeded
+10:52:04	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:53:15	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	10:56:25	 'Moonlighter' Start Succeeded
+10:56:35	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:57:25	 'Moonlighter' Start Succeeded
+10:57:31	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:57:43	 'Moonlighter' Start Succeeded
+10:57:52	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:58:17	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	10:58:27	 'Moonlighter' Start Succeeded
+10:59:13	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:00:07	 'Moonlighter' Start Succeeded
+11:00:13	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:00:54	 'Moonlighter' Start Succeeded
+11:01:03	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:01:17	 'Moonlighter' Start Succeeded
+11:01:24	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:01:40	 'Moonlighter' Start Succeeded
+11:01:48	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:02:07	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:02:49	 'Moonlighter' Start Succeeded
+11:03:04	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:03:37	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:03:48	 'Moonlighter' Start Succeeded
+11:03:56	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:04:08	 'Moonlighter' Start Succeeded
+11:04:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:12:21	 'Moonlighter' Start Succeeded
+11:12:27	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:12:40	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:12:59	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:15:27	 'Moonlighter' Start Succeeded
+11:15:56	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:16:19	 'Moonlighter' Start Succeeded
+11:16:34	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:23:32	 'Moonlighter' Start Succeeded
+11:23:46	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:26:21	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:26:30	 'Moonlighter' Start Succeeded
+11:26:49	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:28:02	 'Moonlighter' Start Succeeded
+11:28:26	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:28:58	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:32:04	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:36:01	 'Moonlighter' Start Succeeded
+11:37:36	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	11:38:01	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:39:56	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:40:47	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:43:00	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	11:43:40	 'Moonlighter' Start Succeeded
+14:01:17	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+14:01:34	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+14:01:55	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:02:25	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	14:19:30	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:24:16	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	14:40:12	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	14:44:18	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	14:44:48	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	14:45:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:49:16	 'Moonlighter' Start Succeeded
+14:49:33	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:50:36	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	14:54:07	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:55:37	 'Moonlighter' Start Succeeded
+14:55:54	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:56:03	 'Moonlighter' Start Succeeded
+14:56:26	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	14:57:42	 'Moonlighter' Start Succeeded
+14:58:07	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:00:58	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:04:51	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:08:57	 'Moonlighter' Start Succeeded
+15:09:31	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:15:25	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:15:33	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:15:55	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:16:11	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:17:05	 'Moonlighter' Start Succeeded
+15:17:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:17:28	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:18:07	 'Moonlighter' Start Succeeded
+15:18:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:20:20	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:21:10	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:21:29	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:23:54	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:24:05	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:25:17	 'Moonlighter' Start Succeeded
+15:25:53	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:28:28	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:29:28	 'Moonlighter' Start Succeeded
+15:30:26	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:46:21	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:47:19	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:47:57	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	15:48:06	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	15:50:17	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:10:46	 'Moonlighter' Start Succeeded
+16:44:14	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	16:52:06	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	16:52:17	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:53:17	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:54:18	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:54:49	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:55:33	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:55:54	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:56:25	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:57:35	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	16:59:16	 'Moonlighter' Start Succeeded
+17:00:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:05:28	 'Moonlighter' Start Succeeded
+17:06:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:11:27	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:12:08	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:14:39	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:15:09	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:15:35	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:17:22	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:18:14	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:18:48	 'Moonlighter' Start Succeeded
+17:19:15	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:20:07	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:20:51	 'Moonlighter' Start Succeeded
+17:21:06	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:29:35	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	17:31:41	 'Moonlighter' Start Succeeded
+17:32:08	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:33:18	 'Moonlighter' Start Succeeded
+17:33:41	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:34:50	 'Moonlighter' Start Succeeded
+17:35:22	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:36:05	 'Moonlighter' Start Succeeded
+17:36:20	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	17:39:19	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	18:12:44	 'Moonlighter' Start Succeeded
+18:13:36	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:14:40	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:19:24	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	18:24:29	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	18:28:48	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	18:30:25	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:33:33	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:34:44	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:36:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:47:21	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	18:50:56	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:51:57	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	18:55:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	19:20:33	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	19:27:48	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	19:28:31	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.7	19:29:30	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.7	19:36:27	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	13:08:19	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	14:59:28	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:06:56	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:10:02	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:13:14	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:22:44	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:22:59	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:23:30	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:24:21	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:25:11	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:25:24	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:26:17	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:26:40	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:26:53	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:27:27	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:30:01	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:30:16	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:30:42	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:31:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:31:52	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:32:22	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:33:14	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:33:40	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:33:51	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:34:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:35:09	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:36:28	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:44:37	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:45:29	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:49:29	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:49:37	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:50:09	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:50:27	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	15:51:04	 'Moonlighter' Start Succeeded
+15:51:23	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+			 End
+===================================================
+===================================================
+ 2020.2.8	15:59:53	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:00:28	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:02:30	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:02:48	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:03:03	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:03:23	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:04:21	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:04:50	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	16:05:18	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:06:27	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:06:40	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.8	16:08:12	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	16:09:07	 'Moonlighter' Start Succeeded
+16:10:03	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+===================================================
+ 2020.2.8	16:12:09	 'Moonlighter' Start Succeeded
+16:12:42	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+===================================================
+ 2020.2.8	16:15:34	 'Moonlighter' Start Succeeded
+16:15:58	Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+===================================================
+ 2020.2.8	16:44:14	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.8	17:01:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================

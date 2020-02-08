@@ -73,10 +73,10 @@ FloatRect::FloatRect(float l, float t, float r, float b)
 RECT FloatRect::GetRect()
 {
 	RECT rc;
-	rc.left = left;
-	rc.top = top;
-	rc.right = right;
-	rc.bottom = bottom;
+	rc.left = (long)left;
+	rc.top = (long)top;
+	rc.right = (long)right;
+	rc.bottom = (long)bottom;
 	return std::move(rc);
 }
 

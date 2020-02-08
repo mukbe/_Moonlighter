@@ -98,7 +98,13 @@ void Matrix2D::SetPos(POINT p)
 	UpdateMatrix();
 }
 
+D3DXVECTOR2 Matrix2D::GetPos(D3DXVECTOR2 local)
+{
+	D2D1_POINT_2F temp = { local.x,local.y };
+	temp = result.TransformPoint(temp);
 
+	return D3DXVECTOR2(temp.x, temp.y);
+}
 
 
 //테스트 안해봄
