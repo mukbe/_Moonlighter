@@ -8,6 +8,7 @@ void AnimationClip::Save(AnimationClip * clip, BinaryWriter * w)
 	w->Float(clip->fps);
 	w->Bool(clip->isLoop);
 	w->String(clip->imageKey);
+	w->String(String::WStringToString(clip->texture->GetFilePath()));
 	w->Int(clip->maxFrame[0]);
 	w->Int(clip->maxFrame[1]);
 
@@ -31,9 +32,12 @@ void AnimationClip::Save(AnimationClip * clip, BinaryWriter * w)
 void AnimationClip::Load(AnimationClip ** ppClip, BinaryReader * r)
 {
 	AnimationClip* clip = new AnimationClip();
+	wstring imagePath;
+
 	clip->fps = r->Float();
 	clip->isLoop = r->Bool();
 	clip->imageKey = r->String();
+	imagePath = String::StringToWString(r->String());
 	clip->maxFrame[0] = r->Int();
 	clip->maxFrame[1] = r->Int();
 
@@ -53,12 +57,9 @@ void AnimationClip::Load(AnimationClip ** ppClip, BinaryReader * r)
 	}
 
 
-
-#ifdef DEBUGMODE
-	Log_ErrorAssert(_ImageManager->FindTexture(clip->imageKey) == false);
-#else
 	clip->texture = _ImageManager->FindTexture(clip->imageKey);
-#endif // DEBUGMODE
+	if (clip->texture == false)
+		_ImageManager->AddFrameTexture(clip->imageKey, imagePath, clip->maxFrame[0], clip->maxFrame[1]);
 
 	clip->invFps = 1.f / clip->fps;
 
@@ -321,8 +322,8 @@ void AnimationClip::ImguiRender()
 
 	if (texture)
 	{
-		ImGui::Text("File Path %s", texture->GetFilePath().c_str());
-		ImGui::Text("Image Key %s", imageKey.c_str());
+		ImGui::Text("File Path : %ws", texture->GetFilePath().c_str());
+		ImGui::Text("Image Key : %s", imageKey.c_str());
 
 
 		ImVec2 size = ImGui::GetWindowSize();
@@ -463,6 +464,7 @@ void AnimationClip::ImguiRender()
 		} ImGui::SameLine();
 		if (ImGui::Button("Clear Frame", ImVec2(120, 20)))
 		{
+			current_item = -1;
 			frames.clear();
 		}
 		for (int i = 0; i < (int)frames.size(); i++)

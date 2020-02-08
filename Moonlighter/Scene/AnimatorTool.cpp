@@ -23,7 +23,6 @@ void AnimatorTool::Init()
 	animator[0]->AddAnimation("Test clip1", new AnimationClip);
 	animator[0]->AddAnimation("Test clip2", new AnimationClip);
 
-
 }
 
 void AnimatorTool::ImguiRender()
@@ -129,12 +128,28 @@ void AnimatorTool::ImguiRender()
 				{
 					deleteList.push_back(selectedAnim);
 				}
+				
+				static char buf[128];
+				ImGuiInputTextFlags flag = 0;
+				flag |= ImGuiInputTextFlags_EnterReturnsTrue;
+				if (ImGui::InputText("Animator Name", buf, ARRAYSIZE(buf), flag))
+				{
+					if (selectedAnim != -1)
+					{
+						animator[selectedAnim]->name = buf;
+						ZeroMemory(buf, 128);
+					}
+					ImGui::CloseCurrentPopup();
+				}
+
+				
+
 				ImGui::EndPopup();
 			}
 
 
 			
-			unordered_map<string, AnimationClip*>::iterator Iter = anim->animations.begin();
+			vector<pair<string, AnimationClip*>>::iterator Iter = anim->animations.begin();
 			int count = 0;
 			for (; Iter != anim->animations.end(); ++Iter, count++)
 			{
@@ -154,6 +169,8 @@ void AnimatorTool::ImguiRender()
 		}
 	}
 
+
+
 	ImGui::Separator();
 	ImGui::Text("selectedAnim %d", selectedAnim);
 	if (deleteList.empty() == false)
@@ -161,6 +178,8 @@ void AnimatorTool::ImguiRender()
 		SafeDelete(animator[deleteList[0]]);
 		animator.erase(animator.begin() + deleteList[0]);
 		selectedAnim = -1;
+		selectedClip = -1;
+		currentClip = nullptr;
 	}
 
 	ImGui::End();
@@ -185,7 +204,11 @@ void AnimatorTool::CreateMenuBar()
 		{
 			if (ImGui::MenuItem("Save", "Ctrl+S")) 
 			{
-				//전체저장
+				for (Animator* anim : animator)
+				{
+					AnimatorTool::SaveAnimatorBinary(anim, ResourcePath + L"Animator/" + String::StringToWString(anim->name));
+
+				}
 			}
 			if (ImGui::MenuItem("Load", "Ctrl+L"))
 			{
@@ -216,7 +239,7 @@ void AnimatorTool::ShowAnimation()
 	
 	Animator* anim = animator[selectedAnim];
 	AnimationClip* clip = nullptr;
-	unordered_map<string, AnimationClip*>::iterator Iter = anim->animations.begin();
+	vector<pair<string, AnimationClip*>>::iterator Iter = anim->animations.begin();
 	for (int count = 0; Iter != anim->animations.end(); ++Iter, count++)
 	{
 		if (selectedClip == count)
@@ -233,7 +256,12 @@ void AnimatorTool::ShowAnimation()
 void AnimatorTool::SaveAnimatorBinary(Animator* anim, wstring name)
 {
 	BinaryWriter* w = new BinaryWriter();
-	w->Open(name + L".anim");
+
+	wstring path = name;
+	if (String::Contain(name, L".anim") == false)
+		path += L".anim";
+
+	w->Open(path);
 	{
 		Animator::Save(anim, w);
 	}

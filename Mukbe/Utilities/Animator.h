@@ -12,8 +12,8 @@ public:
 
 
 private:
-	using MapIter = unordered_map<string, AnimationClip*>::iterator;
-	unordered_map<string, AnimationClip*> animations;
+	using VecIter = vector<pair<string, AnimationClip*>>::iterator;
+	vector<pair<string, AnimationClip*>> animations;
 
 	AnimationClip* currentAnim;
 	string name;

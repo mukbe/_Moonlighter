@@ -209,7 +209,7 @@ HRESULT Texture::SetTexture(wstring file)
 		//비트맵이미지
 		Log_ErrorAssert(bitmap = p2DRenderer->CreateD2DBitmapFromFile(file));
 
-
+		
 
 	}
 	else

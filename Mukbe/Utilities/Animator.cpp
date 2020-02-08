@@ -5,7 +5,7 @@ void Animator::Save(Animator * anim, BinaryWriter * w)
 {
 	w->String(anim->name);
 	w->Int((int)anim->animations.size());
-	MapIter Iter = anim->animations.begin();
+	VecIter Iter = anim->animations.begin();
 	for (; Iter != anim->animations.end(); ++Iter)
 	{
 		w->String(Iter->first);
@@ -35,7 +35,7 @@ void Animator::Clone(void ** clone)
 	*clone = new Animator;
 	Animator* other = reinterpret_cast<Animator*>(*clone);
 
-	MapIter Iter = animations.begin();
+	VecIter Iter = animations.begin();
 	while (Iter != animations.end())
 	{
 		AnimationClip* anim;
@@ -54,7 +54,7 @@ Animator::Animator()
 
 Animator::~Animator()
 {
-	MapIter Iter = animations.begin();
+	VecIter Iter = animations.begin();
 	for (;Iter != animations.end();)
 	{
 		if (Iter->second != nullptr)
@@ -86,21 +86,25 @@ void Animator::Render(FloatRect rc, Matrix2D * world, float alpha)
 
 inline void Animator::AddAnimation(const string& key, AnimationClip * anim) 
 {
-	animations.insert(make_pair(key, anim));
+	animations.push_back(make_pair(key, anim));
 }
 
 void Animator::DeleteAnimation(const string & key)
 {
-	MapIter Iter = animations.find(key);
-	if (Iter != animations.end())
+	VecIter Iter = animations.begin();
+	for (; Iter != animations.end(); ++Iter)
 	{
-		animations.erase(Iter);
+		if (Iter->first == key)
+		{
+			animations.erase(Iter);
+			break;
+		}
 	}
 }
 
 void Animator::ChangeAnimation(const string & key)
 {
-	currentAnim = animations[key];
+	currentAnim = FindAnimation(key);
 	currentAnim->Play();
 	//Log_WarnAssert(currentAnim == nullptr);
 }
@@ -122,6 +126,12 @@ void Animator::Pause()
 
 AnimationClip * Animator::FindAnimation(const string & key)
 {
-	return animations[key];
+	VecIter Iter = animations.begin();
+	for (; Iter != animations.end(); ++Iter)
+	{
+		if (Iter->first == key)
+			return Iter->second;
+	}
+	return nullptr;
 }
 
