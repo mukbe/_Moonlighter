@@ -471,6 +471,12 @@ void AnimationClip::ImguiRender()
 			current_item = -1;
 			frames.clear();
 		}
+
+		if (isPlay)
+		{
+			current_item = currentIndex;
+		}
+
 		for (int i = 0; i < (int)frames.size(); i++)
 		{
 			string str = to_string(i) + ". Frame < " + to_string(frames[i].FrameX) + " , " + to_string(frames[i].FrameY) + " >";
@@ -480,6 +486,8 @@ void AnimationClip::ImguiRender()
 			{
 				current_item = i;
 				current_item_callback = -1;
+				currentIndex = i;
+				currentFrame = frames[i];
 			}
 
 		}
@@ -541,10 +549,16 @@ void AnimationClip::ImguiRender()
 			invFps = 1.f / fps;
 		}
 		
+		//ImGui::Image(texture->GetSRV()
+		//	, ImVec2(aniFrame_size, aniFrame_size)
+		//	, ImVec2((float)currentFrame.FrameX / maxFrame[0], (float)currentFrame.FrameY / maxFrame[1])
+		//	, ImVec2(((float)currentFrame.FrameX + 1.f) / maxFrame[0], ((float)currentFrame.FrameY + 1.f) / maxFrame[1]));
 		ImGui::Image(texture->GetSRV()
 			, ImVec2(aniFrame_size, aniFrame_size)
 			, ImVec2((float)currentFrame.FrameX / maxFrame[0], (float)currentFrame.FrameY / maxFrame[1])
 			, ImVec2(((float)currentFrame.FrameX + 1.f) / maxFrame[0], ((float)currentFrame.FrameY + 1.f) / maxFrame[1]));
+
+
 
 		ImGui::Text("%d", currentFrame.FrameX);
 		ImGui::EndChild();
