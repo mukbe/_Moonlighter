@@ -39,7 +39,7 @@ public:
 	//위치까지 받아옴
 	FloatRect GetCollider();
 
-
+	virtual int GetLayer() { return RenderLayer::Layer_None; }
 protected:
 	string name;
 	Matrix2D transform;
@@ -50,7 +50,7 @@ protected:
 	float alpha;
 	float lifeTiem;
 
-private:
+protected:
 	string shaderKey;
 	WorldBuffer* worldBuffer;
 

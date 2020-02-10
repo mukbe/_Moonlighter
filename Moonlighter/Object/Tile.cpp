@@ -14,21 +14,23 @@ Tile::~Tile()
 
 void Tile::Init()
 {
+	Super::Init();
 	SetTileMapTexture();
-	_RenderPool->Request(this, RenderManager::Layer::Terrain);
 }
 
 void Tile::Release()
 {
-	_RenderPool->Remove(this, RenderManager::Layer::Terrain);
+	Super::Release();
 }
 
 void Tile::Update(float tick)
 {
+	Super::Update(tick);
 }
 
 void Tile::Render()
 {
+	Super::Render();
 }
 
 void Tile::SetTileMapTexture(string key)

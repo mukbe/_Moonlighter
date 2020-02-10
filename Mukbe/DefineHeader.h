@@ -86,6 +86,12 @@ void ClassName::Delete()					\
 }			
 
 
+#define ClassInherited(Base)\
+private : using Super = Base;
+
+#define RequestRender(LayerMask)\
+public: int GetLayer()override { return LayerMask;}
+
 #define ColorRed D3DXCOLOR(1.f,0.f,0.f,1.f)
 #define ColorGreen D3DXCOLOR(0.f,1.f,0.f,1.f)
 #define ColorBlue D3DXCOLOR(0.f,0.f,1.f,1.f)

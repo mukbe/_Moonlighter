@@ -2,6 +2,8 @@
 
 class Tile : public GameObject
 {
+	ClassInherited(GameObject)
+	RequestRender(Layer_Terrain)
 public:
 	Tile(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
 	virtual~Tile();

@@ -161,6 +161,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\LightingSystem.h" />
+    <ClInclude Include="Object\Light.h" />
     <ClInclude Include="Scene\AnimatorTool.h" />
     <ClInclude Include="Object\imgui_internal.h" />
     <ClInclude Include="Object\Player.h" />
@@ -173,6 +175,8 @@
     <ClInclude Include="Object\Unit.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\LightingSystem.cpp" />
+    <ClCompile Include="Object\Light.cpp" />
     <ClCompile Include="Scene\AnimatorTool.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Object\Player.cpp" />
