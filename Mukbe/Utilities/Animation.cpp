@@ -59,7 +59,10 @@ void AnimationClip::Load(AnimationClip ** ppClip, BinaryReader * r)
 
 	clip->texture = _ImageManager->FindTexture(clip->imageKey);
 	if (clip->texture == false)
+	{
 		_ImageManager->AddFrameTexture(clip->imageKey, imagePath, clip->maxFrame[0], clip->maxFrame[1]);
+		clip->texture = _ImageManager->FindTexture(clip->imageKey);
+	}
 
 	clip->invFps = 1.f / clip->fps;
 
@@ -87,6 +90,7 @@ AnimationClip::AnimationClip()
 	: isPlay(true), isLoop(false), fps(60.f), updateTime(0.f), currentIndex(0)
 {
 	invFps = 1.f / fps;
+	maxFrame[0] = maxFrame[1] = 1;
 }
 
 AnimationClip::~AnimationClip()

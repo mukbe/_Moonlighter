@@ -43,5 +43,5 @@ public:
 //실패하면 안쪽 내용 복사해서 출력
 #define Log_ErrorAssert(x) if(!(x)) { LOG->Error(__FILE__, __LINE__, "" #x); }
 
-#define Log_Print(x,...) LOG->Print(x,##__VA_ARGS__)
-#define Log_PrintF(x,...) LOG->Print(__FUNCTION__, x, ##__VA_ARGS__)
+#define Log_Print(x, ...) LOG->Print(x, ##__VA_ARGS__)
+#define Log_PrintF(x, ...) LOG->Print(__FUNCTION__, x, ##__VA_ARGS__)

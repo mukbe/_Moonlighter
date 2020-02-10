@@ -69,9 +69,7 @@ void AnimatorTool::ImguiRender()
 		ImGui::EndPopup();
 	}
 
-	ImGuiWindowFlags pop_clip_flag = 0;
-	pop_clip_flag |= ImGuiWindowFlags_NoMove;
-	if (ImGui::BeginPopup("Add Clip"))
+	if (ImGui::BeginPopup("Add Clip", pop_anim_flag))
 	{
 		static char buf[128];
 		ImGuiInputTextFlags flag = 0;
@@ -106,13 +104,17 @@ void AnimatorTool::ImguiRender()
 			if (ImGui::IsItemClicked())
 			{
 				selectedAnim = i;
+				selectedClip = -1;
+				currentClip = nullptr;
 			}
 			if (ImGui::IsItemClicked(1))
 			{
 				selectedAnim = i;
+				selectedClip = -1;
+				currentClip = nullptr;
 				ImGui::OpenPopup("Animator Menu");
 			}
-			if (ImGui::BeginPopup("Animator Menu"))
+			if (ImGui::BeginPopup("Animator Menu", pop_anim_flag))
 			{
 				if (ImGui::MenuItem("Save as"))
 				{
@@ -156,12 +158,44 @@ void AnimatorTool::ImguiRender()
 				AnimationClip* clip = Iter->second;
 				bool clip_selected = (selectedAnim == i) && (selectedClip == count);
 				ImGui::Selectable(Iter->first.c_str(), &clip_selected);
-				if (ImGui::IsItemClicked())
+				if (ImGui::IsItemClicked(0))
 				{
 					selectedAnim = i;
 					selectedClip = count;
 				}
+				if (ImGui::IsItemClicked(1))
+				{
+					selectedAnim = i;
+					selectedClip = count;
+					ImGui::OpenPopup("AnimatorClip Menu");
+				}
 			}
+
+			if (ImGui::BeginPopup("AnimatorClip Menu", pop_anim_flag))
+			{
+
+				if (ImGui::MenuItem("Delete"))
+				{
+					SafeDelete(animator[selectedAnim]->animations.at(selectedClip).second);
+					animator[selectedAnim]->animations.erase(animator[selectedAnim]->animations.begin() + selectedClip);
+					selectedClip = -1;
+					currentClip = nullptr;
+					ImGui::CloseCurrentPopup();
+				}
+
+
+				static char buf[128];
+				ImGuiInputTextFlags flag = 0;
+				flag |= ImGuiInputTextFlags_EnterReturnsTrue;
+				if (ImGui::InputText("AnimatorClip Name", buf, ARRAYSIZE(buf), flag))
+				{
+					animator[selectedAnim]->animations[selectedClip].first = buf;
+					ZeroMemory(buf, 128);
+					ImGui::CloseCurrentPopup();
+				}
+				ImGui::EndPopup();
+			}
+
 
 			
 			ImGui::TreePop();
@@ -207,7 +241,6 @@ void AnimatorTool::CreateMenuBar()
 				for (Animator* anim : animator)
 				{
 					AnimatorTool::SaveAnimatorBinary(anim, ResourcePath + L"Animator/" + String::StringToWString(anim->name));
-
 				}
 			}
 			if (ImGui::MenuItem("Load", "Ctrl+L"))
