@@ -214,6 +214,8 @@ void CameraManager::CameraDataBind()
 	buffer->Setting(view.GetResult());
 	buffer->SetPSBuffer(0);
 	buffer->SetVSBuffer(0);
+	buffer->SetCSBuffer(0);
+
 }
 
 void CameraManager::ShakeUpdateMatrix()

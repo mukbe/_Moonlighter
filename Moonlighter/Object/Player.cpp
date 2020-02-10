@@ -18,19 +18,17 @@ Player::~Player()
 
 void Player::Init()
 {
-
+	Super::Init();
 	CreateAnimation();
 
 	animator->ChangeAnimation("Walk_Down");
 
-	_RenderPool->Request(this, RenderManager::Layer::Object);
-	_RenderPool->Request(this, RenderManager::Layer::Imgui);
+
 }
 
 void Player::Release()
 {
-	_RenderPool->Remove(this, RenderManager::Layer::Imgui);
-	_RenderPool->Remove(this, RenderManager::Layer::Object);
+	Super::Release();
 
 	SafeDelete(animator);
 	
@@ -38,7 +36,7 @@ void Player::Release()
 
 void Player::Update(float tick)
 {
-	lifeTiem += tick;
+	Super::Update(tick);
 
 
 	if (KeyCode->Press(VK_LEFT))
@@ -65,6 +63,7 @@ void Player::Update(float tick)
 
 void Player::Render()
 {
+	Super::Render();
 	animator->Render(rc, &transform, alpha);
 }
 

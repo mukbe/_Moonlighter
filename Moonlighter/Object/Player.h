@@ -3,6 +3,8 @@
 
 class Player : public Unit
 {
+	ClassInherited(Unit)
+	RequestRender(Layer_Object | Layer_Imgui)
 public:
 	Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
 	virtual ~Player();

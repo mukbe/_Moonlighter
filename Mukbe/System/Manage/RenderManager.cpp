@@ -1,29 +1,72 @@
 #include "Mukbe.h"
 #include "RenderManager.h"
 
-void RenderManager::Request(GameObject * const obj, const Layer & layer)
+//void RenderManager::Request(GameObject * const obj, const RenderLayer & layer)
+//{
+//	if (obj == nullptr) return;
+//
+//	renderList[layer].push_back(obj);
+//}
+
+void RenderManager::Request(GameObject * const obj, const Layer & mask)
 {
-	if (obj == nullptr) return;
+	Layer val = mask;
 
-	renderList[layer].push_back(obj);
-}
-
-void RenderManager::Remove(GameObject * const obj, const Layer & layer)
-{
-	if (obj == nullptr) return;
-
-	vector<GameObject*>& arr = renderList[layer];
-	VecIter Iter = arr.begin();
-	for (; Iter != arr.end();)
+	for (int i = 1; i <= 8; i++)
 	{
-		if (*Iter == obj)
-		{
-			Iter = arr.erase(Iter);
-			break;
-		}
-		
-		else ++Iter;
+		int check = 1 << i;
+
+		if(val & check)
+			renderList[(RenderLayer)check].push_back(obj);
 	}
+}
+//
+//void RenderManager::Remove(GameObject * const obj, const RenderLayer & layer)
+//{
+//	if (obj == nullptr) return;
+//
+//	vector<GameObject*>& arr = renderList[layer];
+//	VecIter Iter = arr.begin();
+//	for (; Iter != arr.end();)
+//	{
+//		if (*Iter == obj)
+//		{
+//			Iter = arr.erase(Iter);
+//			break;
+//		}
+//		
+//		else ++Iter;
+//	}
+//}
+
+void RenderManager::Remove(GameObject * const obj, const Layer & mask)
+{
+	if (obj == nullptr) return;
+
+	Layer val = mask;
+
+	for (int i = 1; i <= 8; i++)
+	{
+		int check = 1 << i;
+
+		if (val & check)
+		{
+			vector<GameObject*>& arr = renderList[(RenderLayer)check];
+			VecIter Iter = arr.begin();
+			for (; Iter != arr.end();)
+			{
+				if (*Iter == obj)
+				{
+					Iter = arr.erase(Iter);
+					break;
+				}
+
+				else ++Iter;
+			}
+
+		}
+	}
+
 }
 
 void RenderManager::Remove(GameObject * const obj)
@@ -72,7 +115,7 @@ void RenderManager::Render()
 void RenderManager::ObjectRender()
 {
 	p2DRenderer->SetCamera(true);
-	vector<GameObject*> arr = renderList[Layer::BackGround];
+	vector<GameObject*> arr = renderList[RenderLayer::Layer_BackGround];
 	VecIter Iter = arr.begin();
 	for (; Iter != arr.end(); ++Iter)
 	{
@@ -87,7 +130,7 @@ void RenderManager::ObjectRender()
 	multimap<float, GameObject*> sorted;
 	multimap<float, GameObject*>::iterator sortedIter;
 
-	arr = renderList[Layer::Object];
+	arr = renderList[RenderLayer::Layer_Object];
 	for (GameObject* obj : arr)
 	{
 		if (obj->IsActive())
@@ -111,6 +154,15 @@ void RenderManager::ObjectRender()
 //라이팅패스
 void RenderManager::LightRender()
 {
+	vector<GameObject*>& arr = renderList[RenderLayer::Layer_Light];
+	VecIter Iter = arr.begin();
+	for (; Iter != arr.end(); ++Iter)
+	{
+		GameObject* obj = *Iter;
+		if (obj->IsActive())
+			obj->Render();
+	}
+
 
 }
 
@@ -119,7 +171,7 @@ void RenderManager::UIRender()
 {
 	p2DRenderer->SetCamera(false);
 
-	vector<GameObject*>& arr = renderList[Layer::UI];
+	vector<GameObject*>& arr = renderList[RenderLayer::Layer_UI];
 	VecIter Iter = arr.begin();
 	for (; Iter != arr.end(); ++Iter)
 	{
@@ -133,7 +185,7 @@ void RenderManager::UIRender()
 //특정 객체에 디버깅을 위한
 void RenderManager::ImguiRender()
 {
-	vector<GameObject*>& arr = renderList[Layer::Imgui];
+	vector<GameObject*>& arr = renderList[RenderLayer::Layer_Imgui];
 	VecIter Iter = arr.begin();
 	//for (; Iter != arr.end(); ++Iter)
 	//{

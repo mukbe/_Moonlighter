@@ -154,6 +154,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Render\ComputeShader\ComputeResource.h" />
+    <ClInclude Include="Render\ComputeShader\ComputeShader.h" />
     <ClInclude Include="Utilities\Animator.h" />
     <ClInclude Include="Utilities\Animation.h" />
     <ClInclude Include="DefineHeader.h" />
@@ -203,6 +205,8 @@
     <ClInclude Include="View\CameraManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Render\ComputeShader\ComputeResource.cpp" />
+    <ClCompile Include="Render\ComputeShader\ComputeShader.cpp" />
     <ClCompile Include="Utilities\Animator.cpp" />
     <ClCompile Include="Utilities\Animation.cpp" />
     <ClCompile Include="Render\BufferManager.cpp" />

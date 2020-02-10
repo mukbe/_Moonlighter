@@ -15,7 +15,8 @@
 #include "./Utilities/Matrix2D.h"
 #include "./Utilities/Matrix2x2.h"
 
-
+#include "./Render/ComputeShader/ComputeResource.h"
+#include "./Render/ComputeShader/ComputeShader.h"
 #include "./Render/BufferManager.h"
 #include "./Render/VertexLayout.h"
 #include "./Render/States.h"

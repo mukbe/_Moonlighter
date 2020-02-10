@@ -1,26 +1,27 @@
 #pragma once
 
+
+
 //레이어 정렬, 패스에 잘 넣어주기
 class RenderManager
 {
 	friend class SceneBase;
+	using Layer = int;
 public:
-	enum class Layer : short
-	{
-		BackGround = 0 , Terrain, GameText, Object, Light, UI, UIText, Imgui,
-	};
 
-	void Request(class GameObject*const obj, const Layer& layer);
-	void Remove(class GameObject*const obj, const Layer& layer);
+	//void Request(class GameObject*const obj, const RenderLayer& layer);
+	//void Remove(class GameObject*const obj, const RenderLayer& layer);
+	void Request(class GameObject*const obj, const Layer& mask);
+	void Remove(class GameObject*const obj, const Layer& mask);
 	void Remove(class GameObject*const obj);
 		
 
 	
 
 private:
-	using MapIter = unordered_map<Layer, vector<class GameObject*>>::iterator;
+	using MapIter = unordered_map<RenderLayer, vector<class GameObject*>>::iterator;
 	using VecIter = vector<class GameObject*>::iterator;
-	unordered_map<Layer, vector<class GameObject*>> renderList;
+	unordered_map<RenderLayer, vector<class GameObject*>> renderList;
 
 	RenderManager();
 	~RenderManager();

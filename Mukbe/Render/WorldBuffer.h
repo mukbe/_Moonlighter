@@ -88,3 +88,30 @@ public:
 	ShaderBuffer_Mecro(MaterialBuffer)
 };
 
+class LightBuffer : public ShaderBuffer
+{
+private:
+	struct Struct
+	{
+		D3DXCOLOR color;
+		
+		float Range;
+		D3DXVECTOR3 Padding;
+
+	}data;
+
+public:
+	LightBuffer()
+		:ShaderBuffer(&data, sizeof Struct)
+	{}
+
+	void SetColor(D3DXCOLOR color)
+	{
+		data.color = color;
+	}
+	void SetRagne(float range)
+	{
+		data.Range = range;
+	}
+	ShaderBuffer_Mecro(LightBuffer)
+};

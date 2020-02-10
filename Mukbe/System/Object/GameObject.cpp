@@ -19,16 +19,17 @@ GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 
 GameObject::~GameObject()
 {
-
+	
 }
 
 void GameObject::Init()
 {
-	
+	_RenderPool->Request(this, GetLayer());
 }
 
 void GameObject::Release()
 {
+	_RenderPool->Remove(this, GetLayer());
 }
 
 

@@ -156,6 +156,12 @@
     <ClInclude Include="Utilities\Animator.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Render\ComputeShader\ComputeResource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Render\ComputeShader\ComputeShader.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\BufferManager.cpp">
@@ -267,6 +273,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Utilities\Animator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\ComputeShader\ComputeResource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Render\ComputeShader\ComputeShader.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

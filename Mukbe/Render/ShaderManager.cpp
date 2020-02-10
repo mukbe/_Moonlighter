@@ -68,31 +68,30 @@ void ShaderManager::ReleaseShader()
 	DeviceContext->GSSetShader((ID3D11GeometryShader*)nullshader, nullptr, 0);
 }
 
-//ComputeShader * ShaderManager::CreateComputeShader(string key, wstring fileName, string entryPoint)
-//{
-//
-//	ComputeShader* shader;
-//	shader = FindComputeShader(key);
-//
-//	if (shader == nullptr)
-//	{
-//		shader = new ComputeShader(ShaderPath + fileName, entryPoint);
-//		computeShaders.insert(make_pair(key, shader));
-//	}
-//
-//	return shader;
-//}
-//
-//ComputeShader * ShaderManager::FindComputeShader(string key)
-//{
-//	ComputeShadersIter Iter = computeShaders.begin();
-//
-//	for (Iter; Iter != computeShaders.end(); ++Iter)
-//	{
-//		if (key == Iter->first)
-//			return Iter->second;
-//	}
-//
-//	return nullptr;
-//}
+shared_ptr<ComputeShader> ShaderManager::CreateComputeShader(string key, wstring fileName, string entryPoint)
+{
+
+	shared_ptr<ComputeShader> shader = FindComputeShader(key);
+
+	if (shader == nullptr)
+	{
+		shader = make_shared<ComputeShader>(ShaderPath + fileName, entryPoint);
+		computeShaders.insert(make_pair(key, shader));
+	}
+
+	return shader;
+}
+
+shared_ptr<ComputeShader> ShaderManager::FindComputeShader(string key)
+{
+	ComputeShadersIter Iter = computeShaders.begin();
+
+	for (Iter; Iter != computeShaders.end(); ++Iter)
+	{
+		if (key == Iter->first)
+			return Iter->second;
+	}
+
+	return nullptr;
+}
 

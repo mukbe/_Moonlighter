@@ -42,10 +42,11 @@ public:
 	void ModeTargetPlayer();
 	void ModeFreeCamera();
 
+	//cbuffer bind
+	void CameraDataBind();
 private:
 	void UpdateMatrix();
 	void ClipMouse();
-	void CameraDataBind();
 	void ShakeUpdateMatrix();
 
 	Matrix2D view;
