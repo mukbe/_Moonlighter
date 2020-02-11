@@ -8,6 +8,7 @@ class Animator : public ICloneable
 public:
 	static void Save(Animator* anim, BinaryWriter* w);
 	static void Load(Animator** ppAnim, BinaryReader* r);
+	static void Load(Animator** ppAnim, wstring file);
 
 
 

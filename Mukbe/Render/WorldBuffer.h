@@ -96,13 +96,14 @@ private:
 		D3DXCOLOR color;
 		
 		float Range;
-		D3DXVECTOR3 Padding;
+		UINT Index;
+		D3DXVECTOR2 Padding;
 
 	}data;
 
 public:
 	LightBuffer()
-		:ShaderBuffer(&data, sizeof Struct)
+		: ShaderBuffer(&data, sizeof(data))
 	{}
 
 	void SetColor(D3DXCOLOR color)
@@ -114,4 +115,45 @@ public:
 		data.Range = range;
 	}
 	ShaderBuffer_Mecro(LightBuffer)
+};
+struct LightDesc
+{
+	int isActive;
+	float Range;
+	D3DXVECTOR2 Position;
+
+	D3DXCOLOR Color;
+	D3DXVECTOR4 Transform;
+};
+
+class LightSystemBuffer : public ShaderBuffer
+{
+private:
+	struct Struct
+	{
+		float Tick;
+		D3DXVECTOR3 Padding;
+
+		LightDesc LightTable[LIGHT_MAX];
+	}data;
+
+public:
+	LightSystemBuffer()
+		: ShaderBuffer(&data, sizeof(data))
+	{
+		data.Tick = TickTime;
+		ZeroMemory(data.LightTable, sizeof(LightDesc) * LIGHT_MAX);
+	}
+
+	void SetLight(int id_light, LightDesc desc)
+	{
+		memcpy(&data.LightTable[id_light], &desc, sizeof(LightDesc));
+	}
+	void OffLight(int id_light)
+	{
+		data.LightTable[id_light].isActive = false;
+		
+	}
+	ShaderBuffer_Mecro(LightSystemBuffer)
+
 };

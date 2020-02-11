@@ -30,6 +30,29 @@ void Animator::Load(Animator ** ppAnim, BinaryReader * r)
 	*ppAnim = anim;
 }
 
+void Animator::Load(Animator ** ppAnim, wstring file)
+{
+	Animator* anim = new Animator();
+
+	BinaryReader* r = new BinaryReader();
+	r->Open(file);
+	{
+		anim->name = r->String();
+		int animationCount = r->Int();
+		for (int i = 0; i < animationCount; i++)
+		{
+			string clipKey = r->String();
+			AnimationClip* clip = nullptr;
+			AnimationClip::Load(&clip, r);
+			anim->AddAnimation(clipKey, clip);
+		}
+	}
+	r->Close();
+
+	*ppAnim = anim;
+
+}
+
 void Animator::Clone(void ** clone)
 {
 	*clone = new Animator;

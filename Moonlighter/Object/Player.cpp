@@ -20,8 +20,8 @@ void Player::Init()
 {
 	Super::Init();
 	CreateAnimation();
-
-	animator->ChangeAnimation("Walk_Down");
+	Animator::Load(&animator, ResourcePath + L"Animator/Player.anim");
+	animator->ChangeAnimation("Move_Down");
 
 
 }
@@ -40,13 +40,13 @@ void Player::Update(float tick)
 
 
 	if (KeyCode->Press(VK_LEFT))
-		animator->ChangeAnimation("Walk_Left");
+		animator->ChangeAnimation("Move_Left");
 	else if(KeyCode->Press(VK_RIGHT))
-		animator->ChangeAnimation("Walk_Right");
+		animator->ChangeAnimation("Move_Right");
 	else if (KeyCode->Press(VK_UP))
-		animator->ChangeAnimation("Walk_Up");
+		animator->ChangeAnimation("Move_Up");
 	else if (KeyCode->Press(VK_DOWN))
-		animator->ChangeAnimation("Walk_Down");
+		animator->ChangeAnimation("Move_Down");
 
 	if (KeyCode->Up(VK_LEFT))
 		animator->ChangeAnimation("Idle_Left");

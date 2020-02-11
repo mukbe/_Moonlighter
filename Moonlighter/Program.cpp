@@ -21,7 +21,7 @@ Program::Program()
 	_SceneManager->AddScene("Map", new SceneMapTool);
 	_SceneManager->AddScene("Ani", new AnimatorTool);
 
-	_SceneManager->ChangeScene("Ani");
+	_SceneManager->ChangeScene("Map");
 
 	{
 		//IMGUI FONT SETUP

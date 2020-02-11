@@ -303,12 +303,7 @@ void AnimatorTool::SaveAnimatorBinary(Animator* anim, wstring name)
 
 void AnimatorTool::LoadAnimatorBinary(wstring name)
 {
-	BinaryReader* r = new BinaryReader();
-	r->Open(name);
-	{
-		Animator* anim = nullptr;
-		Animator::Load(&anim, r);
-		animator.push_back(anim);
-	}
-	r->Close();
+	Animator* anim = nullptr;
+	Animator::Load(&anim, name);
+	animator.push_back(anim);
 }

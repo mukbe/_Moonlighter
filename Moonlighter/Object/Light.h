@@ -5,7 +5,7 @@ class LightingSystem;
 class Light : public GameObject
 {
 	ClassInherited(GameObject)
-	RequestRender(Layer_Object )
+	//RequestRender(Layer_Object)
 public:
 	Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
 	virtual~Light();
@@ -27,8 +27,9 @@ private:
 	D3DXCOLOR color;
 
 	LightingSystem* lightingSystem;
-	LightBuffer* lightData;
-	shared_ptr<ComputeShader> lightShader;
+
+	int id_Light;
+	LightSystemBuffer* lightSystemBuffer;
 
 };
 

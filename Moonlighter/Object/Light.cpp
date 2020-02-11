@@ -5,11 +5,15 @@
 Light::Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Super(name, pos, size)
 {
-	lightData = Buffers->FindShaderBuffer<LightBuffer>();
-	lightShader = Shaders->FindComputeShader("Lighting");
+	id_Light = -1;
+	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
+
+	//lightData = Buffers->FindShaderBuffer<LightBuffer>();
 	lightingSystem = _ObjectPool->FindObject<LightingSystem>("LightingSystem");
 	color = ColorWhite;
-	color.a = 0.2f;
+	color.a = 0.15f;
+	range = 100.f;
+
 }
 
 Light::~Light()
@@ -19,14 +23,15 @@ Light::~Light()
 void Light::Init()
 {
 	Super::Init();
-	range = 30.f;
 
+	id_Light = lightingSystem->RegisterLight(transform.GetPos(), color, range);
 
 }
 
 void Light::Release()
 {
 	Super::Release();
+	//lightingSystem->DeleteLight(id_Light);
 }
 
 void Light::Update(float tick)
@@ -51,26 +56,32 @@ void Light::Update(float tick)
 	//	transform.SetPos(transform.GetPos() + D3DXVECTOR2(100,0) * tick);
 	//}
 	//range -= tick * 50.f;
-	lightData->SetColor(color);
-	lightData->SetRagne(range);
-
-
+	//lightData->SetColor(color);
+	//lightData->SetRagne(range);
+	LightDesc desc;
+	desc.Color = color;
+	desc.isActive = true;
+	desc.Position = transform.GetPos();
+	Matrix3x2F t = transform.GetResult();
+	memcpy_s(&desc.Transform, sizeof(float) * 4, &t, sizeof(float) * 4);
+	desc.Range = range;
+	lightSystemBuffer->SetLight(id_Light, desc);
 }
 
 void Light::Render()
 {
-	CAMERA->CameraDataBind();
-	worldBuffer->Setting(transform.GetResult());
-	worldBuffer->SetCSBuffer(1);
+	//CAMERA->CameraDataBind();
+	//worldBuffer->Setting(transform.GetResult());
+	//worldBuffer->SetCSBuffer(1);
 
-	lightData->SetCSBuffer(2);
-	lightingSystem->BindTexture();
+	//lightData->SetCSBuffer(2);
+	//lightingSystem->BindTexture();
 
-	lightShader->BindShader();
+	//lightShader->BindShader();
 
-	lightShader->Dispatch(80, 30, 1);
+	//lightShader->Dispatch(80, 30, 1);
 
-	lightingSystem->ReleaseTexture();
+	//lightingSystem->ReleaseTexture();
 
 }
 
