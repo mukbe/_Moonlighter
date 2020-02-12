@@ -82,7 +82,12 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
 
 		if (distance < range)
 		{
-			color += light.Color;
+            float factor = (distance) / range;
+           // color += lerp(light.Color, 0 , factor);
+            color += light.Color * (1 - pow(factor, 3));
+
+			//color += light.Color;
+            
 		}
 	}
 	

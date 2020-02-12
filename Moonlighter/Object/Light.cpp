@@ -11,7 +11,7 @@ Light::Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	//lightData = Buffers->FindShaderBuffer<LightBuffer>();
 	lightingSystem = _ObjectPool->FindObject<LightingSystem>("LightingSystem");
 	color = D3DXCOLOR(Math::RandF(), Math::RandF(), Math::RandF(), 0);
-	color.a = 0.2f;
+	color.a = 0.3f;
 	range = 100.f;
 	velocity.x = 150.f * Math::RandF() *2.f - 1.f;
 	velocity.y = 150.f * Math::RandF() *2.f - 1.f;
