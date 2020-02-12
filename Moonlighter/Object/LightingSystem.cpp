@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "LightingSystem.h"
-
+#include "Light.h"
 
 
 LightingSystem::LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
@@ -10,8 +10,6 @@ LightingSystem::LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	shader = Shaders->FindShader("MergeLighting");
 	lightShader = Shaders->FindComputeShader("Lighting");
 	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
-	for (int i = 0;i < LIGHT_MAX;i++)
-		freeList.push_back(i);
 }
 
 
@@ -23,9 +21,12 @@ LightingSystem::~LightingSystem()
 void LightingSystem::Init()
 {
 	Super::Init();
-	vector <D3DXCOLOR> temp;
-	temp.assign(1600, D3DXCOLOR());
-	color.assign(900, temp);
+	for (int i = 0;i < LIGHT_MAX; i++)
+	{
+		Light* light = _ObjectPool->CreateObject<Light>("Light", D3DXVECTOR2(), D3DXVECTOR2());
+		light->id_Light = i;
+		freeList.push_back(light);
+	}
 }
 
 void LightingSystem::Release()
@@ -79,39 +80,41 @@ void LightingSystem::RenderLightMap()
 	lightShader->Dispatch(80, 30, 1);
 	winSizeTexture->ReleaseResource(0);
 
-	//winSizeTexture->GetDatas(color);
 
 }
 
-int LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale, float radian)
+void LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale, float radian)
 {
-	if (freeList.empty()) return -1;
-	LightDesc desc;
-	desc.isActive = true;
-	desc.Color = color;
-	desc.Position = pos;
-	desc.Range = range;
-	Matrix2D mat = Matrix2D(pos, scale, radian); 
-	Matrix3x2F t = mat.GetResult();
-	memcpy_s(&desc.Transform, sizeof(float) * 4, &t, sizeof(float) * 4);
+	if (freeList.empty()) return;
+	Light* light = freeList.front();
 
-	lightSystemBuffer->SetLight(freeList.front(), desc);
+	light->bActive = true;
+	light->color = color;
+	light->range = range;
+	light->transform = Matrix2D(pos);
+
+	light->size = D3DXVECTOR2(range, range);
+	light->rc = FloatRect(pos, range, Pivot::BOTTOM);
+
 	activeList.push_back(freeList.front());
 	freeList.pop_front();
-	return activeList.back();
+
 }
 
 void LightingSystem::DeleteLight(int id_light)
 {
 	for (int i = 0;i < (int)activeList.size(); i++)
 	{
-		if (activeList[i] == id_light)
+		if (activeList[i]->id_Light == id_light)
 		{
+			freeList.push_back(activeList[i]);
+			activeList[i]->bActive = false;
 			activeList.erase(activeList.begin() + i);
+
 			break;
 		}
 	}
-	freeList.push_back(id_light);
-	lightSystemBuffer->OffLight(id_light);
+
+	//lightSystemBuffer->OffLight(id_light);
 }
 

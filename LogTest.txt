@@ -7418,3 +7418,51 @@ Code: Already Init this key
  2020.2.12	12:12:32	 'Moonlighter' Start Succeeded
 			 End
 ===================================================
+===================================================
+ 2020.2.12	12:25:36	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:26:23	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.12	12:37:57	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.12	12:40:09	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:42:59	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:43:32	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:43:49	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:45:28	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:46:04	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	12:46:52	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	14:07:53	 'Moonlighter' Start Succeeded
+14:07:54	Fatal Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter_mokube\mukbe\system\manage\objectmanager.h
+Line: 57
+Code: can't find object
+14:07:59	Fatal Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter_mokube\mukbe\system\manage\objectmanager.h
+Line: 57
+Code: can't find object
+14:08:00	Fatal Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter_mokube\mukbe\system\manage\objectmanager.h
+Line: 57
+Code: can't find object
+14:08:00	Fatal Assertion Failure!
+File: c:\users\kga-6\desktop\_moonlighter_mokube\mukbe\system\manage\objectmanager.h
+Line: 57
+Code: can't find object
+===================================================
+ 2020.2.12	14:08:55	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.12	14:09:51	 'Moonlighter' Start Succeeded
+			 End
+===================================================

@@ -21,7 +21,7 @@ cbuffer Buffer_Camera : register(b0)
 //    float Range;
 //    float3 Padding_Light;
 //}
-static const int LIGHT_MAX = 64;
+static const int LIGHT_MAX = 32;
 
 struct LightDesc
 {
@@ -83,10 +83,7 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
 		if (distance < range)
 		{
             float factor = (distance) / range;
-           // color += lerp(light.Color, 0 , factor);
             color += light.Color * (1 - pow(factor, 3));
-
-			//color += light.Color;
             
 		}
 	}

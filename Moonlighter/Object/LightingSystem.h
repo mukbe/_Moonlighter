@@ -1,7 +1,7 @@
 #pragma once
 
 
-
+class Light;
 class LightingSystem : public GameObject
 {
 	ClassInherited(GameObject)
@@ -27,17 +27,16 @@ public:
 
 
 	void RenderLightMap();
-	int RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale = D3DXVECTOR2(1, 1), float radian = 0.f);
+	void RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale = D3DXVECTOR2(1, 1), float radian = 0.f);
 	void DeleteLight(int id_light);
 private:
 	shared_ptr<Shader> shader;
 	CResource2D* winSizeTexture;
 	shared_ptr<ComputeShader> lightShader;
 
-	deque<int> freeList;
-	deque<int> activeList;
+	deque<Light*> freeList;
+	deque<Light*> activeList;
 
-	vector<vector<D3DXCOLOR>> color;
 
 private:
 	LightSystemBuffer* lightSystemBuffer;

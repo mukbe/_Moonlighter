@@ -5,7 +5,7 @@ class LightingSystem;
 class Light : public GameObject
 {
 	ClassInherited(GameObject)
-	//RequestRender(Layer_Object)
+	friend class LightingSystem;
 public:
 	Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
 	virtual~Light();
