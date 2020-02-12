@@ -151,7 +151,7 @@ void Path::OpenFileDialog(wstring file, const WCHAR* filter, wstring folder, fun
 	ofn.lpstrFile = name;
 	//ofn.lpstrFileTitle = L"ºÒ·¯¿À±â";
 	ofn.nMaxFile = 255;
-	ofn.lpstrInitialDir = tempFolder.c_str();
+	ofn.lpstrInitialDir = folder.c_str();
 	ofn.Flags = OFN_NOCHANGEDIR;
 
 	if (GetOpenFileName(&ofn) == TRUE)

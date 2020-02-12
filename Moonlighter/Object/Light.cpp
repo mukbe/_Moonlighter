@@ -10,10 +10,11 @@ Light::Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 
 	//lightData = Buffers->FindShaderBuffer<LightBuffer>();
 	lightingSystem = _ObjectPool->FindObject<LightingSystem>("LightingSystem");
-	color = ColorWhite;
-	color.a = 0.15f;
+	color = D3DXCOLOR(Math::RandF(), Math::RandF(), Math::RandF(), 0);
+	color.a = 0.2f;
 	range = 100.f;
-
+	velocity.x = 150.f * Math::RandF() *2.f - 1.f;
+	velocity.y = 150.f * Math::RandF() *2.f - 1.f;
 }
 
 Light::~Light()
@@ -55,9 +56,37 @@ void Light::Update(float tick)
 	//{
 	//	transform.SetPos(transform.GetPos() + D3DXVECTOR2(100,0) * tick);
 	//}
-	//range -= tick * 50.f;
-	//lightData->SetColor(color);
-	//lightData->SetRagne(range);
+
+	D3DXVECTOR2 pos = transform.GetPos();
+
+	if (pos.x < range )
+	{
+		velocity.x *= -1.f;
+		pos.x = range;
+	}
+	if (pos.x > WinSizeX-range)
+	{
+		velocity.x *= -1.f;
+		pos.x = WinSizeX-range;
+
+	}
+	if (pos.y < range )
+	{
+		velocity.y *= -1.f;
+		pos.y = range;
+
+	}
+	if (pos.y > WinSizeY-range)
+	{
+		velocity.y *= -1.f;
+		pos.y = WinSizeY-range;
+
+	}
+
+	transform.SetPos(pos + velocity * tick);
+
+
+
 	LightDesc desc;
 	desc.Color = color;
 	desc.isActive = true;

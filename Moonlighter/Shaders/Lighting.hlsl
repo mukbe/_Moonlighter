@@ -21,7 +21,7 @@ cbuffer Buffer_Camera : register(b0)
 //    float Range;
 //    float3 Padding_Light;
 //}
-static const int LIGHT_MAX = 32;
+static const int LIGHT_MAX = 64;
 
 struct LightDesc
 {
@@ -58,7 +58,9 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
 	for (int i = 0; i < LIGHT_MAX; i++)
 	{
 		LightDesc light = LightTable[i];
-		
+        if (light.isActive == false)
+            continue;
+        
 		float3 position = float3(0, 0, 1);
     
 		position.xy = mul(position, float3x2(light.Transform, light.Position));

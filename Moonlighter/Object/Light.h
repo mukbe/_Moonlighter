@@ -30,6 +30,7 @@ private:
 
 	int id_Light;
 	LightSystemBuffer* lightSystemBuffer;
+	D3DXVECTOR2 velocity;
 
 };
 

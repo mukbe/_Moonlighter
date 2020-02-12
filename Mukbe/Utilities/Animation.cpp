@@ -56,11 +56,13 @@ void AnimationClip::Load(AnimationClip ** ppClip, BinaryReader * r)
 		clip->PushBackAniFrame(temp);
 	}
 
+	
 
 	clip->texture = _ImageManager->FindTexture(clip->imageKey);
 	if (clip->texture == false)
 	{
-		_ImageManager->AddFrameTexture(clip->imageKey, imagePath, clip->maxFrame[0], clip->maxFrame[1]);
+		wstring path = L"../_" + imagePath.substr(imagePath.find(L"Resource"), imagePath.size());
+		_ImageManager->AddFrameTexture(clip->imageKey, path, clip->maxFrame[0], clip->maxFrame[1]);
 		clip->texture = _ImageManager->FindTexture(clip->imageKey);
 	}
 
