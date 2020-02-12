@@ -25,12 +25,11 @@ public:
 private:
 	float range;
 	D3DXCOLOR color;
+	int id_Light;
+	D3DXVECTOR2 velocity;
 
 	LightingSystem* lightingSystem;
 
-	int id_Light;
 	LightSystemBuffer* lightSystemBuffer;
-	D3DXVECTOR2 velocity;
-
 };
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "./Render/ShaderBuffer.h"
+#include "../Moonlighter/Shaders/ShaderHeader.h"
 
 class CameraBuffer : public ShaderBuffer
 {
@@ -88,34 +89,7 @@ public:
 	ShaderBuffer_Mecro(MaterialBuffer)
 };
 
-class LightBuffer : public ShaderBuffer
-{
-private:
-	struct Struct
-	{
-		D3DXCOLOR color;
-		
-		float Range;
-		UINT Index;
-		D3DXVECTOR2 Padding;
 
-	}data;
-
-public:
-	LightBuffer()
-		: ShaderBuffer(&data, sizeof(data))
-	{}
-
-	void SetColor(D3DXCOLOR color)
-	{
-		data.color = color;
-	}
-	void SetRagne(float range)
-	{
-		data.Range = range;
-	}
-	ShaderBuffer_Mecro(LightBuffer)
-};
 struct LightDesc
 {
 	int isActive;

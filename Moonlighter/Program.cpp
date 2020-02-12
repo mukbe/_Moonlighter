@@ -73,11 +73,6 @@ void Program::Render()
 
 	EFFECTS->Render();
 
-	wstring str;
-	str += L"pos.x : " + to_wstring(CAMERA->GetMousePos().x).substr(0, 6);
-	str += L" pos.y : " + to_wstring(CAMERA->GetMousePos().y).substr(0, 6);
-	p2DRenderer->SetCamera(false);
-	p2DRenderer->DrawText2D(D3DXVECTOR2((Mouse::Get()->GetPosition().x - 200.f), (Mouse::Get()->GetPosition().y - 20.f)), str, 20, gridColor);
 
 }
 
@@ -196,5 +191,11 @@ void Program::GameUIRender()
 
 	//따라서 랜더링을 나눌 매니져급 객체가 필요
 	_SceneManager->GetNowScene()->UIRender();
+
+	wstring str;
+	str += L"pos.x : " + to_wstring(CAMERA->GetMousePos().x).substr(0, 6);
+	str += L" pos.y : " + to_wstring(CAMERA->GetMousePos().y).substr(0, 6);
+	p2DRenderer->SetCamera(false);
+	p2DRenderer->DrawText2D(D3DXVECTOR2((Mouse::Get()->GetPosition().x - 200.f), (Mouse::Get()->GetPosition().y - 20.f)), str, 20, gridColor);
 
 }

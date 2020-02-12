@@ -7,12 +7,6 @@ Light::Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 {
 	id_Light = -1;
 	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
-
-	//lightData = Buffers->FindShaderBuffer<LightBuffer>();
-	//lightingSystem = _ObjectPool->FindObject<LightingSystem>("LightingSystem");
-	//color = D3DXCOLOR(Math::RandF(), Math::RandF(), Math::RandF(), 0);
-	//color.a = 0.3f;
-	//range = 100.f;
 	velocity.x = 150.f * Math::RandF() *2.f - 1.f;
 	velocity.y = 150.f * Math::RandF() *2.f - 1.f;
 }
@@ -30,30 +24,11 @@ void Light::Init()
 void Light::Release()
 {
 	Super::Release();
-	//lightingSystem->DeleteLight(id_Light);
 }
 
 void Light::Update(float tick)
 {
 	Super::Update(tick);
-	//if (KeyCode->Press('W'))
-	//{
-	//	transform.SetPos(transform.GetPos() + D3DXVECTOR2(0, -100) * tick);
-	//}
-	//else if (KeyCode->Press('S'))
-	//{
-	//	transform.SetPos(transform.GetPos() + D3DXVECTOR2(0, 100) * tick);
-
-	//}
-	//if (KeyCode->Press('A'))
-	//{
-	//	transform.SetPos(transform.GetPos() + D3DXVECTOR2(-100,0) * tick);
-
-	//}
-	//else if (KeyCode->Press('D'))
-	//{
-	//	transform.SetPos(transform.GetPos() + D3DXVECTOR2(100,0) * tick);
-	//}
 
 	D3DXVECTOR2 pos = transform.GetPos();
 

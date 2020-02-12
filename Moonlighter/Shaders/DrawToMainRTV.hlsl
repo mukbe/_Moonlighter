@@ -34,17 +34,11 @@ PixelInput VS(uint VertexID : SV_VertexID)
     return output;
 }
 
-Texture2D lightmap : register(t0);
-Texture2D gBuffer : register(t1);
+Texture2D gBuffer : register(t0);
 SamplerState samp;
 
 float4 PS(PixelInput input) : SV_TARGET
 {
-    //TODO LightSystem에서 전역광 버퍼가 필요함
-    float4 color = lightmap.Sample(samp, input.uv);
-    float4 back = gBuffer.Sample(samp, input.uv) * 0.3f;
-    back.b *= 3.f;
-    
-    back += color;
-    return back;
+    float4 color = gBuffer.Sample(samp, input.uv);
+    return color;
 }

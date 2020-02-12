@@ -1,3 +1,5 @@
+#include "ShaderHeader.h"
+
 cbuffer Buffer_Camera : register(b0)
 {
     float4 View;
@@ -5,23 +7,6 @@ cbuffer Buffer_Camera : register(b0)
     float2 CameraPos;
     float2 Padding_Camera;
 }
-
-//cbuffer Buffer_World : register(b1)
-//{
-//    float4 World;
-
-//    float2 Pos;
-//    float2 Padding_World;
-//}
-
-//cbuffer Buffer_Light : register(b2)
-//{
-//    float4 Light_Color;
-    
-//    float Range;
-//    float3 Padding_Light;
-//}
-static const int LIGHT_MAX = 32;
 
 struct LightDesc
 {
@@ -32,6 +17,7 @@ struct LightDesc
 	float4 Color;
 	float4 Transform;
 };
+
 cbuffer Buffer_Light : register(b2)
 {
 	float Tick;
@@ -39,7 +25,6 @@ cbuffer Buffer_Light : register(b2)
 
 	LightDesc LightTable[LIGHT_MAX];
 }
-
 
 
 RWTexture2D<float4> RWLgihtMap : register(u0);
@@ -51,9 +36,8 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
 	uint2 index = clamp(DTid.xy, uint2(0, 0), temp.xy);
 
 	RWLgihtMap[index] = float4(0, 0, 0, 0);
-
 	float4 color = float4(0, 0, 0, 0);
-	
+    
 	[loop]
 	for (int i = 0; i < LIGHT_MAX; i++)
 	{
@@ -79,17 +63,21 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
 		float2 delta = abs(position.xy - DTid.xy);
 		float distance = length(delta);
     
-
+        //알파값이 빛의 세기
 		if (distance < range)
 		{
             float factor = (distance) / range;
-            color += light.Color * (1 - pow(factor, 3));
+            float4 temp = light.Color * (1 - pow(factor, 3));
             
-		}
+            if (factor < 0.6f)
+                temp.rgb *= 1.1f;
+
+            color.rgb += temp.rgb * temp.a;
+            
+        }
 	}
 	
-	//color = float4(1, 1, 1, 1);
-	RWLgihtMap[index] = color;
+        RWLgihtMap[index] = float4(color.rgb, 1.f);
 
 
 }

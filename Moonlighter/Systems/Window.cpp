@@ -65,14 +65,15 @@ WPARAM Window::Run()
 				p2DRenderer->EndDraw();
 
 				//이펙트처리는 d3d
-				pRenderer->BeginDraw();
+				pRenderer->BeginDrawWithoutClear();
 				{
-					program->PostRender();
 
 					//==============================바뀌면 안됨=====================================================
-										//랜더타겟의 바인딩을 풀어줄때 d3d에 그려진 정보들이 버퍼에 그려진다
-										//따라서 다시 바인딩을 해주면 공용버퍼에 지금까지 그려진 픽셀정보가 나옴
-					pRenderer->DrawToD2DSharedBuffer();
+					//랜더타겟의 바인딩을 풀어줄때 d3d에 그려진 정보들이 버퍼에 그려진다
+					//따라서 다시 바인딩을 해주면 공용버퍼에 지금까지 그려진 픽셀정보가 나옴
+
+					program->PostRender();
+
 					//=============================================================================================
 
 					p2DRenderer->BeginDrawWithoutClear();

@@ -2,6 +2,7 @@
 
 
 class Light;
+class RenderTargetBuffer;
 class LightingSystem : public GameObject
 {
 	ClassInherited(GameObject)
@@ -30,13 +31,15 @@ public:
 	void RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale = D3DXVECTOR2(1, 1), float radian = 0.f);
 	void DeleteLight(int id_light);
 private:
-	shared_ptr<Shader> shader;
-	CResource2D* winSizeTexture;
+	unique_ptr<RenderTargetBuffer> lightMap;
+	unique_ptr<CResource2D> winSizeTexture;
+
+	shared_ptr<Shader> mergeShader;
 	shared_ptr<ComputeShader> lightShader;
+	shared_ptr<Shader> drawShader;
 
 	deque<Light*> freeList;
 	deque<Light*> activeList;
-
 
 private:
 	LightSystemBuffer* lightSystemBuffer;

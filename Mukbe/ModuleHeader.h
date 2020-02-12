@@ -25,6 +25,7 @@
 #include "./Render/ShaderManager.h"
 #include "./Render/Texture.h"
 #include "./Render/ImageManager.h"
+#include "./Render/RenderTargetBuffer.h"
 
 #include "./System/Manage/EffectManager.h"
 

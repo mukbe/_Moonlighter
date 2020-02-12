@@ -1,7 +1,6 @@
 #include "Mukbe.h"
 #include "DxRenderer.h"
 
-
 /*
 	<초기화의 순서>
 	D3D11CreateDevice 함수를 이용하여 ID3D11Device 인터페이스와
@@ -138,9 +137,10 @@ HRESULT DxRenderer::CreateSwapChain(void)
 	//	DXGI_FORMAT_R8G8B8A8_UNORM 형식(8비트 적, 녹, 청, 알파) 를 사용하는 이유는
 	//	일반적인 모니터의 색상당 비트 수가 24비트 이하이므로 정밀도를 높게 잡아봤자
 	//	낭비일 뿐. 32 비트 이상이면 바꿔줄 필요 있음
+	
 	sd.BufferDesc.ScanlineOrdering = DXGI_MODE_SCANLINE_ORDER_UNSPECIFIED;	//	디스플레이 스캔라인 모드
 	sd.BufferDesc.Scaling = DXGI_MODE_SCALING_UNSPECIFIED;	//	디스플레이 비례 모드
-	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;		//	버퍼 용도
+	sd.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT | DXGI_USAGE_SHADER_INPUT;		//	버퍼 용도
 	sd.BufferCount = 1;							//	버퍼 개수 (1 : 이중 버퍼링)
 	sd.OutputWindow = d3dDesc.Handle;			//	렌더링 결과 표시 창
 	sd.Windowed = !d3dDesc.bFullScreen;			//	창모드 true, 전체화면 false
@@ -201,6 +201,7 @@ HRESULT DxRenderer::CreateSwapChain(void)
 	//	Direct3D 와 분리한 이유는 다른 그래픽 API(ex D2D)에도 교환 사슬 등등을 사용하기
 	//	때문. 덕분에 여러 그래픽 API 들을 공통의 DXGI API 를 사용해서 작업 처리가 가능!
 	
+
 	OnResize();
 	CreateDepthStencilState();
 	CreateBlendState();
@@ -297,10 +298,20 @@ void DxRenderer::OnResize()
 		DXGI_FORMAT_R8G8B8A8_UNORM, 0));
 
 	ID3D11Texture2D* buffer;
-
+	
 	HResult(pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), reinterpret_cast<void**>(&buffer)));
 	HResult(pD3dDevice->CreateRenderTargetView(buffer, 0, &pRenderTargetView));
 
+	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
+	ZeroMemory(&srvDesc, sizeof(srvDesc));
+	D3D11_TEXTURE2D_DESC bufferDesc;
+	buffer->GetDesc(&bufferDesc);
+	
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
+	srvDesc.Format = bufferDesc.Format;
+	srvDesc.Texture2D.MipLevels = bufferDesc.MipLevels;
+
+	pD3dDevice->CreateShaderResourceView(buffer, &srvDesc, &pBackBufferSRV);
 	SafeRelease(buffer);
 
 	//	뎁스스탠실 버퍼와 뷰 생성
@@ -344,6 +355,7 @@ void DxRenderer::OnResize()
 	//	렌더타겟 뷰와 뎁스스텐실 뷰를 파이프라인에 바인딩
 	pD3dContext->OMSetRenderTargets(1, &pRenderTargetView, pDepthStencilView);
 
+
 	//	뷰포트 설정
 	//	어디서부터 어디까지 그릴건지 지정해준다
 	//	2인용 모드를 위해 화면을 분할할 수도 있다!
@@ -379,17 +391,17 @@ void DxRenderer::Release()
 }
 
 
-void DxRenderer::BeginDraw()
+void DxRenderer::BeginDrawWithoutClear()
 {
-	pD3dContext->OMSetRenderTargets(1, &pRenderTargetView, pDepthStencilView);
+	pD3dContext->OMSetRenderTargets(1, &pRenderTargetView, nullptr);
 	pD3dContext->RSSetViewports(1, &ScreenViewPort);
 	pD3dContext->RSSetState(NULL);
 
 	//pD3dContext->ClearRenderTargetView(pRenderTargetView,
 	//	D3DXCOLOR(1,1,1, 1.0f));
 
-	pD3dContext->ClearDepthStencilView(pDepthStencilView,
-		D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+	//pD3dContext->ClearDepthStencilView(pDepthStencilView,
+	//	D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
 	ChangeZBuffer(false);
 }
@@ -425,10 +437,9 @@ void DxRenderer::TurnOnAlphaBlend()
 	DeviceContext->OMSetBlendState(alphaState, blendFactor, 0xffffffff);
 }
 
-void DxRenderer::DrawToD2DSharedBuffer()
+void DxRenderer::BeginDraw()
 {
-	ID3D11RenderTargetView* nullview[1] = { nullptr };
-	pD3dContext->OMSetRenderTargets(0, nullview, nullptr);
 	pD3dContext->OMSetRenderTargets(1, &pRenderTargetView, pDepthStencilView);
+	pD3dContext->ClearRenderTargetView(pRenderTargetView, D3DXCOLOR(0, 0, 0, 0));
 
 }

@@ -39,6 +39,7 @@ private:
 	ID3D11Texture2D* pDepthStencilBuffer;
 	ID3D11RenderTargetView* pRenderTargetView;
 	ID3D11DepthStencilView* pDepthStencilView;
+	ID3D11ShaderResourceView* pBackBufferSRV;
 	D3D11_VIEWPORT ScreenViewPort;
 
 	IDXGISwapChain* pSwapChain;
@@ -58,15 +59,15 @@ public:
 	void CreateBlendState();
 	void OnResize(void);
 	void Release(void);
-
+	ID3D11ShaderResourceView* GetBackBufferSRV() { return pBackBufferSRV; }
 public:
-	void BeginDraw();
+	void BeginDrawWithoutClear();
 	void EndDraw();
 	void ChangeZBuffer(bool isBuffer);
 	void TurnOffAlphaBlend();
 	void TurnOnAlphaBlend();
 
-	void DrawToD2DSharedBuffer();
+	void BeginDraw();
 
 public:
 	ID3D11Device* GetDevice() { return pD3dDevice; }

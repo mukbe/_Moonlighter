@@ -98,7 +98,7 @@ public: int GetLayer()override { return LayerMask;}
 #define ColorWhite D3DXCOLOR(1.f,1.f,1.f,1.f)
 #define ColorGray(f) D3DXCOLOR(f,f,f,1.0f)
 
-const static int LIGHT_MAX = 32;
+
 
 
 template<typename Base, typename Derived>

@@ -4,7 +4,7 @@
 
 
 RenderTargetBuffer::RenderTargetBuffer(int width, int height, DXGI_FORMAT format)
-	: renderTargetTexture(nullptr), rtv(nullptr), srv(nullptr),
+	: renderTargetTexture(nullptr), rtv(nullptr), srv(nullptr), dsv(nullptr),
 	width(width), height(height), format(format), arraySize(1), bCubeMap(false)
 {
 }
@@ -36,8 +36,11 @@ void RenderTargetBuffer::Create()
 
 void RenderTargetBuffer::BindRenderTarget()
 {
-	DeviceContext->OMSetRenderTargets(arraySize, &rtv, dsv);
-	DeviceContext->ClearRenderTargetView(rtv, ColorGray(0.2f));
+	DeviceContext->OMSetRenderTargets(arraySize, &rtv, nullptr);
+	DeviceContext->ClearRenderTargetView(rtv, ColorGray(0.0f));
+	//DeviceContext->ClearDepthStencilView(dsv,
+	//	D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+
 }
 
 //

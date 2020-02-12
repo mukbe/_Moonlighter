@@ -64,6 +64,7 @@ void Player::Update(float tick)
 void Player::Render()
 {
 	Super::Render();
+	_ImageManager->FindTexture("Back")->Render(FloatRect(D3DXVECTOR2(0, 0), D3DXVECTOR2(WinSizeX, WinSizeY), Pivot::LEFT_TOP), nullptr);
 	animator->Render(rc, &transform, alpha);
 }
 

@@ -2,20 +2,22 @@
 #include "LightingSystem.h"
 #include "Light.h"
 
-
 LightingSystem::LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Super(name, pos, size)
 {
-	winSizeTexture = new CResource2D(WinSizeX, WinSizeY);
-	shader = Shaders->FindShader("MergeLighting");
+	winSizeTexture = make_unique<CResource2D>(WinSizeX, WinSizeY);
+	mergeShader = Shaders->FindShader("MergeLighting");
 	lightShader = Shaders->FindComputeShader("Lighting");
 	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
+	drawShader = Shaders->FindShader("DrawToMainRTV");
+	lightMap = make_unique<RenderTargetBuffer>(WinSizeX, WinSizeY, DXGI_FORMAT_R8G8B8A8_UNORM);
+	lightMap->Create();
 }
 
 
 LightingSystem::~LightingSystem()
 {
-	SafeDelete(winSizeTexture);
+
 }
 
 void LightingSystem::Init()
@@ -41,19 +43,43 @@ void LightingSystem::Update(float tick)
 
 void LightingSystem::Render()
 {
+	//CS에서 Lighting
 	RenderLightMap();
 
-	shader->Render();
-	winSizeTexture->BindPSShaderResourceView(0);
 
 	DeviceContext->IASetInputLayout(nullptr);
 	DeviceContext->IASetVertexBuffers(0, 0, nullptr, nullptr, nullptr);
 	DeviceContext->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
 	DeviceContext->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	pRenderer->TurnOnAlphaBlend();
-	DeviceContext->Draw(4, 0);
-	pRenderer->TurnOffAlphaBlend();
+	//라이팅을 위한 RTV
+	lightMap->BindRenderTarget();
+	{
+		winSizeTexture->BindPSShaderResourceView(0);
+		ID3D11ShaderResourceView* gbuffer = pRenderer->GetBackBufferSRV();
+		DeviceContext->PSSetShaderResources(1, 1, &gbuffer);
+
+		mergeShader->Render();
+
+		pRenderer->TurnOnAlphaBlend();
+		DeviceContext->Draw(4, 0);
+		pRenderer->TurnOffAlphaBlend();
+	}
+	pRenderer->BeginDraw();
+
+
+	//단순히 메인RTV에 그려줌
+	{
+		ID3D11ShaderResourceView* view = lightMap->GetSRV();
+		DeviceContext->PSSetShaderResources(0, 1, &view);
+
+		drawShader->Render();
+
+		pRenderer->TurnOnAlphaBlend();
+		DeviceContext->Draw(4, 0);
+		pRenderer->TurnOffAlphaBlend();
+	}
+
 
 }
 
@@ -71,13 +97,15 @@ void LightingSystem::ReleaseTexture()
 
 void LightingSystem::RenderLightMap()
 {
-	CAMERA->CameraDataBind();
-	lightSystemBuffer->SetCSBuffer(2);
-	winSizeTexture->BindResource(0);
-
-
+	//Data bind
+	{
+		CAMERA->CameraDataBind();
+		lightSystemBuffer->SetCSBuffer(2);
+		winSizeTexture->BindResource(0);
+	}
 	lightShader->BindShader();
 	lightShader->Dispatch(80, 30, 1);
+
 	winSizeTexture->ReleaseResource(0);
 
 
@@ -109,12 +137,11 @@ void LightingSystem::DeleteLight(int id_light)
 		{
 			freeList.push_back(activeList[i]);
 			activeList[i]->bActive = false;
+			lightSystemBuffer->OffLight(id_light);
 			activeList.erase(activeList.begin() + i);
 
 			break;
 		}
 	}
-
-	//lightSystemBuffer->OffLight(id_light);
 }
 
