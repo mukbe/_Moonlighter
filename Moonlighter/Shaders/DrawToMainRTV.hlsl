@@ -40,5 +40,6 @@ SamplerState samp;
 float4 PS(PixelInput input) : SV_TARGET
 {
     float4 color = gBuffer.Sample(samp, input.uv);
+    
     return color;
 }

@@ -6,12 +6,9 @@ LightingSystem::LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Super(name, pos, size)
 {
 	winSizeTexture = make_unique<CResource2D>(WinSizeX, WinSizeY);
-	mergeShader = Shaders->FindShader("MergeLighting");
 	lightShader = Shaders->FindComputeShader("Lighting");
-	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
 	drawShader = Shaders->FindShader("DrawToMainRTV");
-	lightMap = make_unique<RenderTargetBuffer>(WinSizeX, WinSizeY, DXGI_FORMAT_R8G8B8A8_UNORM);
-	lightMap->Create();
+	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
 }
 
 
@@ -39,39 +36,25 @@ void LightingSystem::Release()
 void LightingSystem::Update(float tick)
 {
 	Super::Update(tick);
+
+	SunLightCalculate();
+
 }
 
 void LightingSystem::Render()
 {
-	//CS에서 Lighting
 	RenderLightMap();
-
 
 	DeviceContext->IASetInputLayout(nullptr);
 	DeviceContext->IASetVertexBuffers(0, 0, nullptr, nullptr, nullptr);
 	DeviceContext->IASetIndexBuffer(nullptr, DXGI_FORMAT_UNKNOWN, 0);
 	DeviceContext->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 
-	//라이팅을 위한 RTV
-	lightMap->BindRenderTarget();
-	{
-		winSizeTexture->BindPSShaderResourceView(0);
-		ID3D11ShaderResourceView* gbuffer = pRenderer->GetBackBufferSRV();
-		DeviceContext->PSSetShaderResources(1, 1, &gbuffer);
-
-		mergeShader->Render();
-
-		pRenderer->TurnOnAlphaBlend();
-		DeviceContext->Draw(4, 0);
-		pRenderer->TurnOffAlphaBlend();
-	}
+	//CS에서 버퍼를 합친게 있으므로 백버퍼를 초기화하고 메인RTV에 복사해준다
 	pRenderer->BeginDraw();
 
-
-	//단순히 메인RTV에 그려줌
 	{
-		ID3D11ShaderResourceView* view = lightMap->GetSRV();
-		DeviceContext->PSSetShaderResources(0, 1, &view);
+		winSizeTexture->BindPSShaderResourceView(0);
 
 		drawShader->Render();
 
@@ -97,18 +80,57 @@ void LightingSystem::ReleaseTexture()
 
 void LightingSystem::RenderLightMap()
 {
+	//스왑체인에 엮여있는 RTV를 해제해서 버퍼에 그려지게 한다
+	ID3D11RenderTargetView* nullView[1] = { nullptr };
+	DeviceContext->OMSetRenderTargets(1, nullView, nullptr);
+
 	//Data bind
 	{
 		CAMERA->CameraDataBind();
 		lightSystemBuffer->SetCSBuffer(2);
 		winSizeTexture->BindResource(0);
+		ID3D11ShaderResourceView* gbuffer = pRenderer->GetBackBufferSRV();
+		DeviceContext->CSSetShaderResources(0, 1, &gbuffer);
+		
 	}
+	//CS에서 기존에 그렸던 정보들과 Light를 합친다
 	lightShader->BindShader();
 	lightShader->Dispatch(80, 30, 1);
 
 	winSizeTexture->ReleaseResource(0);
 
 
+}
+
+void LightingSystem::SunLightCalculate()
+{
+	float intencity;
+	float hour = Time::Get()->GetHour();
+	int area = hour / 6.f;
+
+	hour /= 6.f;
+
+	if (hour < 1)
+	{
+		intencity = 0.3f;
+	}
+	else if (hour < 2)
+	{
+		hour -= area;
+		intencity = Math::Lerp(0.3f, 1.f, hour);
+	}
+	else if (hour < 3)
+	{
+		intencity = 1.f;
+
+	}
+	else if (hour < 4)
+	{
+		hour -= area;
+		intencity = Math::Lerp(1.f, 0.3f, hour);
+	}
+
+	lightSystemBuffer->SetSunLight(D3DXCOLOR(1, 1, 1, intencity));
 }
 
 void LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale, float radian)

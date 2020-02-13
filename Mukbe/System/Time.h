@@ -49,6 +49,7 @@ private:
 	float lockFPS;
 
 	float worldTime;
+	UINT day;
 	UINT hour;
 	UINT minute;
 

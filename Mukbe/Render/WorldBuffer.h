@@ -105,8 +105,7 @@ class LightSystemBuffer : public ShaderBuffer
 private:
 	struct Struct
 	{
-		float Tick;
-		D3DXVECTOR3 Padding;
+		D3DXCOLOR SunLight;
 
 		LightDesc LightTable[LIGHT_MAX];
 	}data;
@@ -115,7 +114,6 @@ public:
 	LightSystemBuffer()
 		: ShaderBuffer(&data, sizeof(data))
 	{
-		data.Tick = TickTime;
 		ZeroMemory(data.LightTable, sizeof(LightDesc) * LIGHT_MAX);
 	}
 
@@ -126,7 +124,10 @@ public:
 	void OffLight(int id_light)
 	{
 		data.LightTable[id_light].isActive = false;
-		
+	}
+	void SetSunLight(D3DXCOLOR color)
+	{
+		data.SunLight = color;
 	}
 	ShaderBuffer_Mecro(LightSystemBuffer)
 

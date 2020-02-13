@@ -20,25 +20,28 @@ struct LightDesc
 
 cbuffer Buffer_Light : register(b2)
 {
-	float Tick;
-	float2 Padding;
+    float4 SunLight;
 
 	LightDesc LightTable[LIGHT_MAX];
 }
 
 
 RWTexture2D<float4> RWLgihtMap : register(u0);
+Texture2D backBuffer : register(t0);
 
 [numthreads(20, 30, 1)]
 void CSMain( uint3 DTid : SV_DispatchThreadID )
 {
-	uint2 temp = uint2(1600, 900);
-	uint2 index = clamp(DTid.xy, uint2(0, 0), temp.xy);
+	uint2 pixel = uint2(1600, 900);
+    uint2 index = clamp(DTid.xy, uint2(0, 0), pixel.xy);
 
 	RWLgihtMap[index] = float4(0, 0, 0, 0);
 	float4 color = float4(0, 0, 0, 0);
-    
-	[loop]
+    float4 gbuffer = backBuffer.Load(DTid) * SunLight.a;
+   // gbuffer.b *= 3.0f;
+    //gbuffer와 전역Light를 계산해줘야함
+    //gbuffer.a = 0.f;
+    [loop]
 	for (int i = 0; i < LIGHT_MAX; i++)
 	{
 		LightDesc light = LightTable[i];
@@ -77,7 +80,5 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
         }
 	}
 	
-        RWLgihtMap[index] = float4(color.rgb, 1.f);
-
-
+    RWLgihtMap[index] = float4(color.rgb, 1.f) + gbuffer;
 }

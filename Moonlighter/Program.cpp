@@ -103,7 +103,7 @@ void Program::ImguiRender()
 		ImGui::Text("Tick : %f", Time::Delta());
 		ImGui::Text("PosX : %.2f, PosY : %.2f", CAMERA->GetPos().x, CAMERA->GetPos().y);
 		ImGui::Checkbox("Grid View", &bGrid);
-		
+		ImGui::Text("Time : %d : %d", Time::Get()->GetHour(), Time::Get()->GetMinute());
 	
 		if (ImGui::ColorEdit3("Clear Color", &p2DRenderer->clearColor.r))
 		{

@@ -10,7 +10,7 @@ float Time::InvLockFPS = 0.0f;
 Time::Time(void) :
 	ticksPerSecond(0), currentTime(0), lastTime(0), lastFPSUpdate(0), fpsUpdateInterval(0),
 	frameCount(0), runningTime(0), framePerSecond(0)
-	, worldTime(3000.0f), hour(0), minute(0)
+	, worldTime(3000.0f), hour(0), minute(0), day(0)
 	, secondsPerDay(600), dayTimeRatio(0)
 {
 	QueryPerformanceFrequency((LARGE_INTEGER *)&ticksPerSecond);
@@ -31,13 +31,14 @@ Time::~Time(void)
 
 void Time::UpdateWorldTime()
 {
-	worldTime += Delta() * 1000.0f;
+	worldTime += Delta() * 400.0f;
 
-	//지금이 6시~12시 중 몇 시인지?
-	float time24HClock = (float)Math::Lerp(6, 12, worldTime * dayTimeRatio / (Math::PI * 0.5f));
 
-	hour = (UINT)time24HClock;
-	minute = (UINT)((time24HClock - hour) * 60.0f);
+	float time24HClock = (float)Math::Lerp(0.f, 24.f, worldTime * dayTimeRatio / (Math::PI * 0.5f));
+
+	day = (UINT)time24HClock / 24;
+	hour = (UINT)time24HClock % 24;
+	minute = (UINT)((time24HClock - hour - day * 24) * 60.0f);
 }
 
 void Time::Update()
