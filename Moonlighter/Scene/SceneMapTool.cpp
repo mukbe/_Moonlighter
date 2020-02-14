@@ -3,7 +3,6 @@
 
 #include "./Object/Player.h"
 
-#include "./Object/Light.h"
 #include "./Object/LightingSystem.h"
 
 SceneMapTool::SceneMapTool()

@@ -66,18 +66,6 @@ void LightingSystem::Render()
 
 }
 
-void LightingSystem::BindTexture()
-{
-	winSizeTexture->BindResource(0);
-}
-
-void LightingSystem::ReleaseTexture()
-{
-	winSizeTexture->ReleaseResource(0);
-
-
-}
-
 void LightingSystem::RenderLightMap()
 {
 	//스왑체인에 엮여있는 RTV를 해제해서 버퍼에 그려지게 한다
@@ -105,37 +93,46 @@ void LightingSystem::RenderLightMap()
 void LightingSystem::SunLightCalculate()
 {
 	float intencity;
+	float ratio;
 	float hour = Time::Get()->GetHour();
-	int area = hour / 6.f;
+	float minute = Time::Get()->GetMinute();
+	int area = (int)(hour / 6.f) ;
+	float r = 1.f, b = 1.f;
 
-	hour /= 6.f;
+	hour -= area * 6;
+	ratio = (hour * 60.f + minute) / 360.f;
 
-	if (hour < 1)
+	if (area == 0)
 	{
 		intencity = 0.3f;
+		b =  2.5f;
+
 	}
-	else if (hour < 2)
+	else if (area == 1)
 	{
-		hour -= area;
-		intencity = Math::Lerp(0.3f, 1.f, hour);
+		intencity = Math::Lerp(0.3f, 1.f, ratio);
+		b = Math::LerpSmoothArrival(2.5f, 1.f, ratio, 3);
+
 	}
-	else if (hour < 3)
+	else if (area == 2)
 	{
 		intencity = 1.f;
-
+		r = Math::LerpSmoothStart(1.f, 1.5f, ratio, 3);
 	}
-	else if (hour < 4)
+	else if (area == 3)
 	{
-		hour -= area;
-		intencity = Math::Lerp(1.f, 0.3f, hour);
+		intencity = Math::Lerp(1.f, 0.3f, ratio);
+		r = Math::LerpSmoothArrival(1.5f, 1.f, ratio, 3);
+		b = Math::LerpSmoothStart(1.f, 2.5f, ratio, 3);
+
 	}
 
-	lightSystemBuffer->SetSunLight(D3DXCOLOR(1, 1, 1, intencity));
+	lightSystemBuffer->SetSunLight(D3DXCOLOR(1.f * r , 1.f, 1.f * b, intencity));
 }
 
-void LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale, float radian)
+int LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range, D3DXVECTOR2 scale, float radian)
 {
-	if (freeList.empty()) return;
+	if (freeList.empty()) return -1;
 	Light* light = freeList.front();
 
 	light->bActive = true;
@@ -148,7 +145,7 @@ void LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range
 
 	activeList.push_back(freeList.front());
 	freeList.pop_front();
-
+	return activeList.back()->id_Light;
 }
 
 void LightingSystem::DeleteLight(int id_light)
@@ -165,5 +162,25 @@ void LightingSystem::DeleteLight(int id_light)
 			break;
 		}
 	}
+}
+
+GameObject * LightingSystem::FindLightAsId(int id_light)
+{
+	ArrayIter Iter = activeList.begin();
+	for (;Iter != activeList.end(); ++Iter)
+	{
+		if ((*Iter)->id_Light == id_light)
+			return (*Iter);
+	}
+
+	Iter = freeList.begin();
+	for (;Iter != freeList.end(); ++Iter)
+	{
+		if ((*Iter)->id_Light == id_light)
+			return (*Iter);
+	}
+
+
+	return nullptr;
 }
 

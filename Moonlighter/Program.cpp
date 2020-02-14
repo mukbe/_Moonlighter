@@ -105,6 +105,7 @@ void Program::ImguiRender()
 		ImGui::Checkbox("Grid View", &bGrid);
 		ImGui::Text("Time : %d : %d", Time::Get()->GetHour(), Time::Get()->GetMinute());
 	
+		ImGui::Text("%.2f , %.2f", KeyCode->GetData().x, KeyCode->GetData().y);
 		if (ImGui::ColorEdit3("Clear Color", &p2DRenderer->clearColor.r))
 		{
 			gridColor.r = 1.f - p2DRenderer->clearColor.r;

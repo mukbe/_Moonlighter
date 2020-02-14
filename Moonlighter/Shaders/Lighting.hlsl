@@ -38,6 +38,9 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
 	RWLgihtMap[index] = float4(0, 0, 0, 0);
 	float4 color = float4(0, 0, 0, 0);
     float4 gbuffer = backBuffer.Load(DTid) * SunLight.a;
+    gbuffer.r *= SunLight.r;
+    gbuffer.b *= SunLight.b;
+
    // gbuffer.b *= 3.0f;
     //gbuffer와 전역Light를 계산해줘야함
     //gbuffer.a = 0.f;

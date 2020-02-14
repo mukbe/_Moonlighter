@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Player.h"
-
+#include "./Object/State/StateBase.h"
 
 Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Unit(name, pos, size)
 {
-
+	unitState.insert(make_pair("Idle", new StateIdle(this)));
+	unitState.insert(make_pair("Move", new StateMove(this)));
 
 
 }
@@ -19,10 +20,8 @@ Player::~Player()
 void Player::Init()
 {
 	Super::Init();
-	CreateAnimation();
-	Animator::Load(&animator, ResourcePath + L"Animator/Player.anim");
-	animator->ChangeAnimation("Move_Down");
 
+	ChangeState("Idle");
 
 }
 
@@ -30,7 +29,6 @@ void Player::Release()
 {
 	Super::Release();
 
-	SafeDelete(animator);
 	
 }
 
@@ -39,44 +37,26 @@ void Player::Update(float tick)
 	Super::Update(tick);
 
 
-	if (KeyCode->Press(VK_LEFT))
-		animator->ChangeAnimation("Move_Left");
-	else if(KeyCode->Press(VK_RIGHT))
-		animator->ChangeAnimation("Move_Right");
-	else if (KeyCode->Press(VK_UP))
-		animator->ChangeAnimation("Move_Up");
-	else if (KeyCode->Press(VK_DOWN))
-		animator->ChangeAnimation("Move_Down");
 
-	if (KeyCode->Up(VK_LEFT))
-		animator->ChangeAnimation("Idle_Left");
-	else if (KeyCode->Up(VK_RIGHT))
-		animator->ChangeAnimation("Idle_Right");
-	else if (KeyCode->Up(VK_UP))
-		animator->ChangeAnimation("Idle_Up");
-	else if (KeyCode->Up(VK_DOWN))
-		animator->ChangeAnimation("Idle_Down");
-
-	animator->Update();
 }
 
 
 void Player::Render()
 {
-	Super::Render();
 	_ImageManager->FindTexture("Back")->Render(FloatRect(D3DXVECTOR2(0, 0), D3DXVECTOR2(WinSizeX, WinSizeY), Pivot::LEFT_TOP), nullptr);
-	animator->Render(rc, &transform, alpha);
+
+	Super::Render();
 }
 
 void Player::ImguiRender()
 {
-	ImGui::Begin(u8"시발");
-	ImGui::Text("%d", animator->GetCurrentAnim()->GetCurrentFrameInfo().FrameX);
-	ImGui::End();
+	//ImGui::Begin(u8"시발");
+	//ImGui::Text("%d", animator->GetCurrentAnim()->GetCurrentFrameInfo().FrameX);
+	//ImGui::End();
 }
 
-void Player::CreateAnimation()
+void Player::LoadAnimator()
 {
-
+	Animator::Load(&animator, ResourcePath + L"Animator/Player.anim");
+	animator->ChangeAnimation("Idle_Down");
 }
-

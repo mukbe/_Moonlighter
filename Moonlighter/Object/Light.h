@@ -1,7 +1,6 @@
 #pragma once
 
 
-class LightingSystem;
 class Light : public GameObject
 {
 	ClassInherited(GameObject)
@@ -17,18 +16,11 @@ public:
 	//메인 루틴
 	virtual void Update(float tick);
 
-	virtual void Render();
-	//imgui debugUI render
-	virtual void ImguiRender();
-
-	void SetRange(float val);
 private:
 	float range;
 	D3DXCOLOR color;
 	int id_Light;
 	D3DXVECTOR2 velocity;
-
-	LightingSystem* lightingSystem;
 
 	LightSystemBuffer* lightSystemBuffer;
 };

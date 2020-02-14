@@ -51,7 +51,7 @@ private:
 	mapTextList		dwTextFormats;
 
 	bool bCamera;
-	
+	ID2D1Layer* pLayer;
 public:
 
 	void DrawText2D(D3DXVECTOR2 pos, wstring text, float size, DefaultBrush::Enum defaultBrush = DefaultBrush::black, DWRITE_TEXT_ALIGNMENT align = DWRITE_TEXT_ALIGNMENT_CENTER, wstring font = L"¸¼Àº°íµñ");

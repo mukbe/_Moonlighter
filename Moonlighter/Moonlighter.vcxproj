@@ -170,6 +170,7 @@
     <ClInclude Include="Program.h" />
     <ClInclude Include="Scene\SceneMapTool.h" />
     <ClInclude Include="Scenes\SceneNode.h" />
+    <ClInclude Include="Object\State\StateBase.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Systems\Window.h" />
     <ClInclude Include="Object\Tile.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Object\Player.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Scene\SceneMapTool.cpp" />
+    <ClCompile Include="Object\State\StateBase.cpp" />
     <ClCompile Include="Systems\Window.cpp" />
     <ClCompile Include="Object\Tile.cpp" />
     <ClCompile Include="Object\Unit.cpp" />

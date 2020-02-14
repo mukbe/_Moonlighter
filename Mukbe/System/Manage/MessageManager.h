@@ -1,5 +1,4 @@
 #pragma once
-#include <queue>
 //씬이 넘어갈때마다 메세지 내용을 초기화 시켜줘야 한다
 
 class MessageComponent;
@@ -7,16 +6,18 @@ class DataContext;
 struct TagMessage;
 class MessageManager
 {
+	friend class SceneBase;
 private:
 	typedef vector<pair<MessageComponent*, TagMessage>>::iterator MsgListIter;
 
-public:
+private:
 	MessageManager();
 	~MessageManager();
 	void Update(float tick);
 
 	void RemoveAllMessage();
 
+public:
 	//메세지 예약
 	void ReserveMessage(MessageComponent* gameObject, TagMessage msg);
 	//바로 메세지를 전달해보고 딜레이가 같으면 예약메세지로 등록됨
@@ -28,7 +29,7 @@ public:
 	void ReturnData(DataContext* const data);
 
 private:
-	queue<DataContext*> dataPool;
+	deque<DataContext*> dataPool;
 	vector<pair<MessageComponent*, TagMessage>> reserveList;
 
 

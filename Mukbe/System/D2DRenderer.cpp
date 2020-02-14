@@ -61,20 +61,30 @@ void D2DRenderer::Create2DBuffer()
 	bCamera = false;
 	clearColor = ColorF::Black;
 	clearColor.a = 1.f;
+	d2dRenderTarget->CreateLayer(nullptr, &pLayer);
+
 }
 
 void D2DRenderer::BeginDraw()
 {
+	
+
 	//d2d
 	d2dRenderTarget->BeginDraw();
 	D2D1_COLOR_F temp;
 	memcpy_s(&temp, sizeof(float) * 4, clearColor, sizeof(float) * 4);
 	d2dRenderTarget->Clear(temp);
 	d2dRenderTarget->SetTransform(D2D1::IdentityMatrix());
+
+	FloatRect rc = CAMERA->GetRenderRect();
+	d2dRenderTarget->PushLayer(D2D1::LayerParameters(D2D1::RectF(0,0,WinSizeX,WinSizeY)), pLayer);
+
 }
 
 void D2DRenderer::EndDraw()
 {
+	d2dRenderTarget->PopLayer();
+
 	d2dRenderTarget->EndDraw();
 }
 

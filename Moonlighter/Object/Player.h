@@ -21,7 +21,7 @@ public:
 	virtual void ImguiRender();
 
 
-	void CreateAnimation();
+	virtual void LoadAnimator();
 
 private:
 };

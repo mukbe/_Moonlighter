@@ -6,7 +6,7 @@ MessageManager::MessageManager()
 {
 	for (UINT i = 0; i < 20; ++i)
 	{
-		dataPool.push(new DataContext());
+		dataPool.push_back(new DataContext());
 	}
 
 }
@@ -19,7 +19,7 @@ MessageManager::~MessageManager()
 	while (dataPool.size() > 0)
 	{
 		SafeDelete(dataPool.front());
-		dataPool.pop();
+		dataPool.pop_front();
 	}
 }
 
@@ -58,7 +58,7 @@ void MessageManager::RemoveAllMessage()
 
 void MessageManager::ReserveMessage(MessageComponent * gameObject, TagMessage msg)
 {
-	reserveList.push_back(make_pair(gameObject, msg));
+	gameObject->SendCallbackMessage(msg);
 }
 
 void MessageManager::ReserveMessage(MessageComponent * gameObject, string name, float delay)
@@ -68,17 +68,12 @@ void MessageManager::ReserveMessage(MessageComponent * gameObject, string name, 
 
 void MessageManager::ReturnData(DataContext * const data)
 {
-	dataPool.emplace(data);
+	dataPool.emplace_back(data);
 }
 
 DataContext* MessageManager::CreateData()
 {
-
-	DataContext* data = nullptr;
-	data = new DataContext;
-	
-
-	return data;
+	return (new DataContext());
 }
 
 DataContext * MessageManager::GetData()
@@ -87,7 +82,7 @@ DataContext * MessageManager::GetData()
 	if (dataPool.size() != 0)
 	{
 		data = dataPool.front();
-		dataPool.pop();
+		dataPool.pop_front();
 	}
 	else
 	{

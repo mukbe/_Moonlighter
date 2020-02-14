@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Light.h"
-#include "LightingSystem.h"
 
 Light::Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Super(name, pos, size)
@@ -70,34 +69,3 @@ void Light::Update(float tick)
 	desc.Range = range;
 	lightSystemBuffer->SetLight(id_Light, desc);
 }
-
-void Light::Render()
-{
-	//CAMERA->CameraDataBind();
-	//worldBuffer->Setting(transform.GetResult());
-	//worldBuffer->SetCSBuffer(1);
-
-	//lightData->SetCSBuffer(2);
-	//lightingSystem->BindTexture();
-
-	//lightShader->BindShader();
-
-	//lightShader->Dispatch(80, 30, 1);
-
-	//lightingSystem->ReleaseTexture();
-
-}
-
-void Light::ImguiRender()
-{
-	static bool bOpen = true;
-	ImGui::Begin("Light", &bOpen);
-	ImGui::ColorEdit4("Color", color);
-	ImGui::End();
-}
-
-void Light::SetRange(float val)
-{
-	range = val;
-}
-
