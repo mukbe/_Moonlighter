@@ -17,6 +17,7 @@ public:
 	float right;
 	float bottom;
 
+
 	FloatRect();
 	FloatRect(D3DXVECTOR2 pos, float d , Pivot p);
 	FloatRect(D3DXVECTOR2 pos, float w, float h, Pivot p);
@@ -24,6 +25,9 @@ public:
 	FloatRect(float l, float t, float r, float b);
 	RECT GetRect();
 	D3DXVECTOR2 GetSize() { return D3DXVECTOR2(right - left, bottom - top); }
+	
+
+
 	void Update(D3DXVECTOR2 pos, D3DXVECTOR2 size, Pivot p);
 
 public:

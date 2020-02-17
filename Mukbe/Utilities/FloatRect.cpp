@@ -55,11 +55,13 @@ FloatRect::FloatRect(D3DXVECTOR2 pos, float d, Pivot p)
 FloatRect::FloatRect(D3DXVECTOR2 pos, float w, float h, Pivot p)
 {
 	*this = Calculate(pos, D3DXVECTOR2(w, h), p);
+
 }
 
 FloatRect::FloatRect(D3DXVECTOR2 pos, D3DXVECTOR2 size, Pivot p)
 {
 	*this = Calculate(pos, size, p);
+
 }
 
 FloatRect::FloatRect(float l, float t, float r, float b)
@@ -68,6 +70,8 @@ FloatRect::FloatRect(float l, float t, float r, float b)
 	top = t;
 	right = r;
 	bottom = b;
+
+
 }
 
 RECT FloatRect::GetRect()
@@ -79,7 +83,6 @@ RECT FloatRect::GetRect()
 	rc.bottom = (long)bottom;
 	return std::move(rc);
 }
-
 
 
 void FloatRect::Update(D3DXVECTOR2 pos, D3DXVECTOR2 size, Pivot p)

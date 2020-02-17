@@ -38,13 +38,18 @@ public:
 
 	//위치까지 받아옴
 	FloatRect GetCollider();
+	FloatRect GetRenderArea() { return renderRect; }
+	void SetRenderSize( D3DXVECTOR2 size, Pivot p, D3DXVECTOR2 pos = D3DXVECTOR2(0.f,0.f) );
 
 	virtual int GetLayer() { return RenderLayer::Layer_None; }
 protected:
 	string name;
 	Matrix2D transform;
 	FloatRect rc;
+	FloatRect renderRect;
 	D3DXVECTOR2 size;
+	Pivot pivot;
+
 
 	bool bActive;
 	float alpha;

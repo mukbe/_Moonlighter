@@ -39,13 +39,15 @@ Keyboard::Keyboard()
 	ZeroMemory(keyState, sizeof(keyState));
 	ZeroMemory(keyOldState, sizeof(keyOldState));
 	ZeroMemory(keyMap, sizeof(keyMap));
-	ZeroMemory(&absValue, sizeof(absValue));
+	ZeroMemory(&value, sizeof(value));
 
 
 	vertical[0] = VK_UP;
 	vertical[1] = VK_DOWN;
 	horizon[0] = VK_LEFT;
 	horizon[1] = VK_RIGHT;
+	delta = 0.05f;
+
 }
 
 Keyboard::~Keyboard()
@@ -67,36 +69,35 @@ void Keyboard::SetHorizon(DWORD leftKey, DWORD rightKey)
 
 void Keyboard::UpdateAxisData()
 {
-	delta = 0.05f;
 
 	float sign = 1.f;
 	float valueSign = 1.f;
 	if (keyMap[vertical[0]] == KEY_INPUT_STATUS_PRESS)
 	{
 		sign = -1.f;
-		absValue.y > 0 ? valueSign : valueSign = -1.f;
-		absValue.y = Math::Abs(absValue.y);
-		valueSign * sign < 0.f ? absValue.y -= delta : absValue.y += delta;
-		absValue.y *= valueSign;
-		absValue.y < -1.f ? absValue.y = -1.f : absValue.y;
+		value.y > 0 ? valueSign : valueSign = -1.f;
+		value.y = Math::Abs(value.y);
+		valueSign * sign < 0.f ? value.y -= delta : value.y += delta;
+		value.y *= valueSign;
+		value.y < -1.f ? value.y = -1.f : value.y;
 	}
 	else if (keyMap[vertical[1]] == KEY_INPUT_STATUS_PRESS)
 	{
 		sign = 1.f;
-		absValue.y > 0 ? valueSign : valueSign = -1.f;
-		absValue.y = Math::Abs(absValue.y);
-		valueSign * sign < 0.f ? absValue.y -= delta : absValue.y += delta;
-		absValue.y *= valueSign;
-		absValue.y > 1.f ? absValue.y = 1.f : absValue.y;
+		value.y > 0 ? valueSign : valueSign = -1.f;
+		value.y = Math::Abs(value.y);
+		valueSign * sign < 0.f ? value.y -= delta : value.y += delta;
+		value.y *= valueSign;
+		value.y > 1.f ? value.y = 1.f : value.y;
 	}
 	else if (keyMap[vertical[0]] == KEY_INPUT_STATUS_NONE &&
 		keyMap[vertical[1]] == KEY_INPUT_STATUS_NONE)
 	{
-		absValue.y > 0 ? valueSign : valueSign = -1.f;
-		absValue.y = Math::Abs(absValue.y);
-		absValue.y -= delta;
-		absValue.y < 0.f ? absValue.y = 0.f : absValue.y;
-		absValue.y *= valueSign;
+		value.y > 0 ? valueSign : valueSign = -1.f;
+		value.y = Math::Abs(value.y);
+		value.y -= delta;
+		value.y < 0.f ? value.y = 0.f : value.y;
+		value.y *= valueSign;
 	}
 
 	sign = 1.f;
@@ -105,29 +106,29 @@ void Keyboard::UpdateAxisData()
 	if (keyMap[horizon[0]] == KEY_INPUT_STATUS_PRESS)
 	{
 		sign = -1.f;
-		absValue.x > 0 ? valueSign : valueSign = -1.f;
-		absValue.x = Math::Abs(absValue.x);
-		valueSign * sign < 0.f ? absValue.x -= delta : absValue.x += delta;
-		absValue.x *= valueSign;
-		absValue.x < -1.f ? absValue.x = -1.f : absValue.x;
+		value.x > 0 ? valueSign : valueSign = -1.f;
+		value.x = Math::Abs(value.x);
+		valueSign * sign < 0.f ? value.x -= delta : value.x += delta;
+		value.x *= valueSign;
+		value.x < -1.f ? value.x = -1.f : value.x;
 	}
 	else if (keyMap[horizon[1]] == KEY_INPUT_STATUS_PRESS)
 	{
 		sign = 1.f;
-		absValue.x > 0 ? valueSign : valueSign = -1.f;
-		absValue.x = Math::Abs(absValue.x);
-		valueSign * sign < 0.f ? absValue.x -= delta : absValue.x += delta;
-		absValue.x *= valueSign;
-		absValue.x > 1.f ? absValue.x = 1.f : absValue.x;
+		value.x > 0 ? valueSign : valueSign = -1.f;
+		value.x = Math::Abs(value.x);
+		valueSign * sign < 0.f ? value.x -= delta : value.x += delta;
+		value.x *= valueSign;
+		value.x > 1.f ? value.x = 1.f : value.x;
 	}
 	else if (keyMap[horizon[0]] == KEY_INPUT_STATUS_NONE &&
 		keyMap[horizon[1]] == KEY_INPUT_STATUS_NONE)
 	{
-		absValue.x > 0 ? valueSign : valueSign = -1.f;
-		absValue.x = Math::Abs(absValue.x);
-		absValue.x -= delta;
-		absValue.x < 0.f ? absValue.x = 0.f : absValue.x;
-		absValue.x *= valueSign;
+		value.x > 0 ? valueSign : valueSign = -1.f;
+		value.x = Math::Abs(value.x);
+		value.x -= delta;
+		value.x < 0.f ? value.x = 0.f : value.x;
+		value.x *= valueSign;
 	}
 
 }

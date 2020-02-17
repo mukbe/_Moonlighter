@@ -81,6 +81,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)_Libraries\Release\</OutDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);../_Libraries/Directx/Include;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;../_Libraries;../_Libraries/Directx/Lib/x86;</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -119,14 +122,19 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>
+      </SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions);_UNICODE;UNICODE;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>./;../_Libraries/</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>Mukbe.h</PrecompiledHeaderFile>
+      <AdditionalOptions>/await /std:c++latest %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -156,6 +164,8 @@
   <ItemGroup>
     <ClInclude Include="Render\ComputeShader\ComputeResource.h" />
     <ClInclude Include="Render\ComputeShader\ComputeShader.h" />
+    <ClInclude Include="System\Object\MapTool.h" />
+    <ClInclude Include="System\Object\Tile.h" />
     <ClInclude Include="Utilities\Animator.h" />
     <ClInclude Include="Utilities\Animation.h" />
     <ClInclude Include="DefineHeader.h" />
@@ -207,6 +217,8 @@
   <ItemGroup>
     <ClCompile Include="Render\ComputeShader\ComputeResource.cpp" />
     <ClCompile Include="Render\ComputeShader\ComputeShader.cpp" />
+    <ClCompile Include="System\Object\MapTool.cpp" />
+    <ClCompile Include="System\Object\Tile.cpp" />
     <ClCompile Include="Utilities\Animator.cpp" />
     <ClCompile Include="Utilities\Animation.cpp" />
     <ClCompile Include="Render\BufferManager.cpp" />

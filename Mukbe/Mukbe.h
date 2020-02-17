@@ -68,7 +68,11 @@ using namespace std;
 
 //DirectXTex
 #include <DirectXTex.h>
-#pragma comment(lib, "directxtex.lib")
+#ifdef _DEBUG
+#pragma comment(lib, "DirectXTex.lib")
+#else
+#pragma comment(lib, "DirectXTex_Release.lib")
+#endif // _DEBUG
 
 //FMOD
 #include <fmod/fmod.hpp>
@@ -98,7 +102,8 @@ const wstring LibPath = L"../_Libraries/";
 #include "./Render/WorldBuffer.h"
 
 #include "./System/Object/GameObject.h"
-
+#include "./System/Object/Tile.h"
+#include "./System/Object/MapTool.h"
 
 
 

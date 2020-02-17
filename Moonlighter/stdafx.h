@@ -15,6 +15,12 @@
 
 using namespace std;
 
-#pragma comment(lib, "Mukbe.lib")
 #include "Mukbe.h"
+#ifdef _DEBUG
+#pragma comment(lib, "Mukbe.lib")
+#else
+#pragma comment(lib, "Release/Mukbe.lib")
+#endif // _DEBUG
+
+
 #include <d3dx10math.h>

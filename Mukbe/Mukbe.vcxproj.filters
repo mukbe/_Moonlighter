@@ -162,6 +162,12 @@
     <ClInclude Include="Render\ComputeShader\ComputeShader.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="System\Object\MapTool.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="System\Object\Tile.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Render\BufferManager.cpp">
@@ -279,6 +285,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Render\ComputeShader\ComputeShader.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Object\MapTool.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="System\Object\Tile.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

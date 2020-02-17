@@ -6,7 +6,8 @@
 *.lo
 *.o
 *.obj
-
+*.iobj
+*.ipdb
 # Precompiled Headers
 *.gch
 *.pch
@@ -45,6 +46,9 @@
 
 ./.vs/
 ./Moonlighter/Debug/
+./Moonlighter/Release/
+./Mukbe/Release/
+./Release/
 ./_Resources/
 /_Libraries/Mukbe.lib
 Debug/

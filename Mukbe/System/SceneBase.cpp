@@ -1,8 +1,11 @@
 #include "Mukbe.h"
 #include "SceneBase.h"
 
+bool SceneBase::DebugMode = false;
+
 SceneBase::SceneBase()
 	: messageManager(new MessageManager), objectManager(new ObjectManager), renderManager(new RenderManager)
+	, mapTool(new MapTool)
 {
 	
 }
@@ -13,6 +16,7 @@ SceneBase::~SceneBase()
 	SafeDelete(messageManager);
 	SafeDelete(objectManager);
 	SafeDelete(renderManager);
+	SafeDelete(mapTool);
 
 }
 
@@ -23,12 +27,14 @@ void SceneBase::Init()
 void SceneBase::Release()
 {
 	messageManager->RemoveAllMessage();
+	mapTool->Release();
 }
 
 void SceneBase::Update(float tick)
 {
 	messageManager->Update(tick);
 	objectManager->Update(tick);
+	mapTool->Update();
 }
 
 void SceneBase::ObjectRender()
@@ -49,6 +55,7 @@ void SceneBase::UIRender()
 void SceneBase::ImguiRender()
 {
 	renderManager->ImguiRender();
+	mapTool->ImguiRender();
 }
 
 

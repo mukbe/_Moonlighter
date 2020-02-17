@@ -11,6 +11,7 @@ Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	AddCallback("IsClick", [&](TagMessage msg) {
 		Log_PrintF("sibal Ssibal %d", 111);
 	});
+
 }
 
 
@@ -45,7 +46,7 @@ void Player::Update(float tick)
 
 void Player::Render()
 {
-	_ImageManager->FindTexture("Back")->Render(FloatRect(D3DXVECTOR2(0, 0), D3DXVECTOR2(WinSizeX, WinSizeY), Pivot::LEFT_TOP), nullptr);
+	//_ImageManager->FindTexture("Back")->Render(FloatRect(D3DXVECTOR2(0, 0), D3DXVECTOR2(WinSizeX, WinSizeY), Pivot::LEFT_TOP), nullptr);
 
 	Super::Render();
 }

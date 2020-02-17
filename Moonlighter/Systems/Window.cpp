@@ -204,7 +204,7 @@ LRESULT CALLBACK Window::WndProc(HWND handle, UINT message, WPARAM wParam, LPARA
 {
 
 	Mouse::Get()->InputProc(message, wParam, lParam);
-
+	
 	//imgui_win32 헤더에 주석처리 되어있는걸 풀어주어야 인식함
 	if (ImGui_ImplWin32_WndProcHandler(handle, message, wParam, lParam))
 		return true;

@@ -4,7 +4,6 @@
 class TestScene;
 class Program
 {
-
 public:
 	Program();
 	~Program();

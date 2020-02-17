@@ -44,7 +44,7 @@ void Unit::Render()
 {
 	Super::Render();
 
-	animator->Render(rc, &transform, alpha);
+	animator->Render(renderRect, &transform, alpha);
 
 }
 

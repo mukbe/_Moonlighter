@@ -13,7 +13,9 @@ GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 
 	bActive = true;
 	this->size = size;
-	rc = FloatRect(pos, size, Pivot::BOTTOM);
+	pivot = Pivot::BOTTOM;
+	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
+	renderRect = FloatRect(D3DXVECTOR2(0.f,0.f), size, pivot);
 }
 
 
@@ -42,12 +44,20 @@ void GameObject::Update(float tick)
 
 void GameObject::Render()
 {
-	
+	if (SceneBase::DebugMode)
+		p2DRenderer->FillRectangle(rc, &transform, DefaultBrush::white);
+
+
 }
 
 FloatRect GameObject::GetCollider()
 {
 	return FloatRect::MoveRect(rc, transform.GetPos());
+}
+
+void GameObject::SetRenderSize( D3DXVECTOR2 size, Pivot p, D3DXVECTOR2 pos)
+{
+	renderRect = FloatRect(pos, size, p);
 }
 
 

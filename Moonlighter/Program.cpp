@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Program.h"
+
 #include "./Scene/SceneMapTool.h"
 #include "./Scene/AnimatorTool.h"
 
@@ -43,8 +44,8 @@ void Program::PreUpdate()
 	if (Keyboard::Get()->Down(VK_F1))
 		bGrid = !bGrid;
 	if (Keyboard::Get()->Down(VK_F2))
-		CAMERA->Shake();
-
+		SceneBase::DebugMode = !SceneBase::DebugMode;
+	
 
 
 }
@@ -104,6 +105,7 @@ void Program::ImguiRender()
 		ImGui::Text("Tick : %f", Time::Delta());
 		ImGui::Text("PosX : %.2f, PosY : %.2f", CAMERA->GetPos().x, CAMERA->GetPos().y);
 		ImGui::Checkbox("Grid View", &bGrid);
+		ImGui::Checkbox("DebugMode", &SceneBase::DebugMode);
 		ImGui::Text("Time : %d : %d", Time::Get()->GetHour(), Time::Get()->GetMinute());
 	
 		ImGui::Text("%.2f , %.2f", KeyCode->GetData().x, KeyCode->GetData().y);
@@ -140,7 +142,7 @@ void Program::MakeGrid()
 	vector<float> arrayX, arrayY;
 
 	FloatRect rc = CAMERA->GetRenderRect();
-	D3DXVECTOR2 tilesize = { 72.f, 72.f };
+	D3DXVECTOR2 tilesize = MapTool::tileSize;
 	int starty = (int)(rc.top / tilesize.y);
 	int endy = (int)(rc.bottom / tilesize.y);
 
