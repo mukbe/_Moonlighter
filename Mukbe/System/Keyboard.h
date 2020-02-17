@@ -24,6 +24,7 @@ public:
 
 	void SetVertical(DWORD upKey, DWORD downKey);
 	void SetHorizon(DWORD leftKey, DWORD rightKey);
+	void SetAxisAmount(float amount) { delta = amount; }
 	D3DXVECTOR2 GetData() { return absValue; }
 private:
 	void UpdateAxisData();

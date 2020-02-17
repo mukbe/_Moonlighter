@@ -42,6 +42,7 @@ inline string GetStringDirection(UnitDirection dir)
 	case UnitDirection::Right: return "Right";
 	case UnitDirection::Down: return "Down";
 	}
+	return "???";
 }
 //inline D3DXVECTOR2 GetVector2Direction(UnitDirection dir)
 //{

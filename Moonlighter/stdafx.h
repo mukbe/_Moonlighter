@@ -17,3 +17,4 @@ using namespace std;
 
 #pragma comment(lib, "Mukbe.lib")
 #include "Mukbe.h"
+#include <d3dx10math.h>

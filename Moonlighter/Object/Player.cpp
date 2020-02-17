@@ -8,7 +8,9 @@ Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Idle", new StateIdle(this)));
 	unitState.insert(make_pair("Move", new StateMove(this)));
 
-
+	AddCallback("IsClick", [&](TagMessage msg) {
+		Log_PrintF("sibal Ssibal %d", 111);
+	});
 }
 
 

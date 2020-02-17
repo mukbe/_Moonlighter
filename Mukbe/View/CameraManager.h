@@ -20,6 +20,8 @@ public:
 	void ImguiRender();
 
 	FloatRect GetRenderRect(); 
+	FloatRect ScreentToWorldFloatRect(FloatRect screenRect);
+	FloatRect WorldToScreenFloatRect(FloatRect worldRect);
 
 	D3DXVECTOR2 GetPos() { return pos; }
 	//void SetPos(D3DXVECTOR2 p)
@@ -39,9 +41,10 @@ public:
 	Matrix2D GetView() { return view; }
 
 	void Shake();
-	void ModeTargetPlayer();
+	void ModeTargetPlayer(GameObject* obj);
 	void ModeFreeCamera();
 
+	void DebugRender();
 	//cbuffer bind
 	void CameraDataBind();
 private:
@@ -52,6 +55,7 @@ private:
 	Matrix2D view;
 	D3DXVECTOR2 pos;
 	RECT renderRect;
+	FloatRect boundRect;
 	float zoom;
 	
 	D3DXVECTOR2 pick;
@@ -68,6 +72,8 @@ private:
 	D3DXVECTOR2 oldPos;
 	bool bShake;
 
+	GameObject* target;
+	float speed;
 private:
 
 	class CameraBuffer : public ShaderBuffer

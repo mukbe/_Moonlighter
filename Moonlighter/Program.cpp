@@ -11,6 +11,7 @@ Program::Program()
 
 
 
+	KeyCode->SetAxisAmount(0.08);
 
 	Shaders->CreateShader("Color", L"Color.hlsl");
 

@@ -39,7 +39,8 @@ Keyboard::Keyboard()
 	ZeroMemory(keyState, sizeof(keyState));
 	ZeroMemory(keyOldState, sizeof(keyOldState));
 	ZeroMemory(keyMap, sizeof(keyMap));
-	ZeroMemory(&value, sizeof(value));
+	ZeroMemory(&absValue, sizeof(absValue));
+
 
 	vertical[0] = VK_UP;
 	vertical[1] = VK_DOWN;
@@ -52,9 +53,21 @@ Keyboard::~Keyboard()
 
 }
 
+void Keyboard::SetVertical(DWORD upKey, DWORD downKey)
+{
+	vertical[0] = upKey;
+	vertical[1] = downKey;
+}
+
+void Keyboard::SetHorizon(DWORD leftKey, DWORD rightKey)
+{
+	horizon[0] = leftKey;
+	horizon[1] = rightKey;
+}
+
 void Keyboard::UpdateAxisData()
 {
-	delta = 0.01f;
+	delta = 0.05f;
 
 	float sign = 1.f;
 	float valueSign = 1.f;
@@ -84,8 +97,37 @@ void Keyboard::UpdateAxisData()
 		absValue.y -= delta;
 		absValue.y < 0.f ? absValue.y = 0.f : absValue.y;
 		absValue.y *= valueSign;
-
 	}
 
+	sign = 1.f;
+	valueSign = 1.f;
+
+	if (keyMap[horizon[0]] == KEY_INPUT_STATUS_PRESS)
+	{
+		sign = -1.f;
+		absValue.x > 0 ? valueSign : valueSign = -1.f;
+		absValue.x = Math::Abs(absValue.x);
+		valueSign * sign < 0.f ? absValue.x -= delta : absValue.x += delta;
+		absValue.x *= valueSign;
+		absValue.x < -1.f ? absValue.x = -1.f : absValue.x;
+	}
+	else if (keyMap[horizon[1]] == KEY_INPUT_STATUS_PRESS)
+	{
+		sign = 1.f;
+		absValue.x > 0 ? valueSign : valueSign = -1.f;
+		absValue.x = Math::Abs(absValue.x);
+		valueSign * sign < 0.f ? absValue.x -= delta : absValue.x += delta;
+		absValue.x *= valueSign;
+		absValue.x > 1.f ? absValue.x = 1.f : absValue.x;
+	}
+	else if (keyMap[horizon[0]] == KEY_INPUT_STATUS_NONE &&
+		keyMap[horizon[1]] == KEY_INPUT_STATUS_NONE)
+	{
+		absValue.x > 0 ? valueSign : valueSign = -1.f;
+		absValue.x = Math::Abs(absValue.x);
+		absValue.x -= delta;
+		absValue.x < 0.f ? absValue.x = 0.f : absValue.x;
+		absValue.x *= valueSign;
+	}
 
 }

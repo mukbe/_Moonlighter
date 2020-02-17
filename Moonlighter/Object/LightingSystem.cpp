@@ -94,8 +94,8 @@ void LightingSystem::SunLightCalculate()
 {
 	float intencity;
 	float ratio;
-	float hour = Time::Get()->GetHour();
-	float minute = Time::Get()->GetMinute();
+	float hour = (float)Time::Get()->GetHour();
+	float minute = (float)Time::Get()->GetMinute();
 	int area = (int)(hour / 6.f) ;
 	float r = 1.f, b = 1.f;
 

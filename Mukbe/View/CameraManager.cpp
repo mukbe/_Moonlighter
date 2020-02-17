@@ -6,6 +6,7 @@
 SingletonCpp(CameraManager)
 
 CameraManager::CameraManager()
+	:target(nullptr)
 {
 
 	pos = D3DXVECTOR2(0.f,0.f);
@@ -20,6 +21,8 @@ CameraManager::CameraManager()
 	targetPos = pos;
 
 	saveTime = 0.f;
+	boundRect = FloatRect(D3DXVECTOR2(WinSizeX*0.5f, WinSizeY*0.5f), D3DXVECTOR2(WinSizeX*0.3f, WinSizeY*0.3f), Pivot::CENTER);
+	speed = 150.f;
 }
 
 
@@ -64,21 +67,18 @@ void CameraManager::Update()
 		break;
 		case CameraManager::Mode::Mode_Target:
 		{
-			//POINT index = _GameData->GetIndex();
-			//if (oldIndex.x != index.x || oldIndex.y != index.y)
-			//{
-			//	oldIndex = index;
-			//	targetPos = IndexToPos(index, TileManager::tileSize, TileManager::pivotPos) * zoom - D3DXVECTOR2(WinSizeX*0.5f, WinSizeY*0.5f);
+			FloatRect targetCollider = WorldToScreenFloatRect(target->GetCollider());
+			if (!Math::IsAABBInAABB(boundRect, targetCollider))
+			{
+				D3DXVECTOR2 center = { WinSizeX * 0.5f, WinSizeY * 0.5f };
+				D3DXVECTOR2 targetPos = { (targetCollider.left + targetCollider.right)*0.5f, (targetCollider.top + targetCollider.bottom)*0.5f };
+				D3DXVECTOR2 delta = targetPos - center;
+				Math::D3DXVector2Normalize(delta);
+				pos +=  delta * TickTime * speed;
+			}
+			UpdateMatrix();
 
-			//	saveTime = 0.f;
-
-			//}
-			//float factor = saveTime * 2.f;
-			//saveTime += Time::Tick();
-			//factor > 1.0f ? factor = 1.f : factor;
-			//pos = Math::LerpSmoothArrival(pos, targetPos, factor, 3);
-
-			//UpdateMatrix();
+			
 		}
 		break;
 	}
@@ -102,6 +102,8 @@ void CameraManager::Update()
 
 		ShakeUpdateMatrix();
 	}
+
+	//boundRect = FloatRect(pos + D3DXVECTOR2(WinSizeX*0.5f, WinSizeY*0.5f), D3DXVECTOR2(WinSizeX*0.4f, WinSizeY*0.4f), Pivot::CENTER);
 }
 
 void CameraManager::ImguiRender()
@@ -116,6 +118,42 @@ FloatRect CameraManager::GetRenderRect()
 	rc.bottom = WinSizeY;
 	D3DXVECTOR2 start = ScreenToWorld(D3DXVECTOR2(rc.left, rc.top));
 	D3DXVECTOR2 end = ScreenToWorld(D3DXVECTOR2(rc.right, rc.bottom));
+
+	rc.left = start.x;
+	rc.top = start.y;
+	rc.right = end.x;
+	rc.bottom = end.y;
+
+	return rc;
+}
+
+FloatRect CameraManager::ScreentToWorldFloatRect(FloatRect screenRect)
+{
+	FloatRect rc;
+	rc.left = screenRect.left;
+	rc.top = screenRect.top;
+	rc.right = screenRect.right;
+	rc.bottom = screenRect.bottom;
+	D3DXVECTOR2 start = ScreenToWorld(D3DXVECTOR2(rc.left, rc.top));
+	D3DXVECTOR2 end = ScreenToWorld(D3DXVECTOR2(rc.right, rc.bottom));
+
+	rc.left = start.x;
+	rc.top = start.y;
+	rc.right = end.x;
+	rc.bottom = end.y;
+
+	return rc;
+}
+
+FloatRect CameraManager::WorldToScreenFloatRect(FloatRect worldRect)
+{
+	FloatRect rc;
+	rc.left = worldRect.left;
+	rc.top = worldRect.top;
+	rc.right = worldRect.right;
+	rc.bottom = worldRect.bottom;
+	D3DXVECTOR2 start = WorldToScreen(D3DXVECTOR2(rc.left, rc.top));
+	D3DXVECTOR2 end = WorldToScreen(D3DXVECTOR2(rc.right, rc.bottom));
 
 	rc.left = start.x;
 	rc.top = start.y;
@@ -197,14 +235,21 @@ void CameraManager::Shake()
 	bShake = true;
 }
 
-void CameraManager::ModeTargetPlayer()
+void CameraManager::ModeTargetPlayer(GameObject* obj)
 {
 	cameraMode = Mode::Mode_Target;
+	target = obj;
 }
 
 void CameraManager::ModeFreeCamera()
 {
 	cameraMode = Mode::Mode_Free;
+}
+
+void CameraManager::DebugRender()
+{
+	p2DRenderer->SetCamera(true);
+	p2DRenderer->DrawRectangle(boundRect, nullptr);
 }
 
 void CameraManager::CameraDataBind()

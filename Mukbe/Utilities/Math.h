@@ -59,7 +59,11 @@ public:
 		return a >= b * k_biasRelative + a * k_biasAbsolute;
 	}
 
-
+	static void D3DXVector2Normalize(D3DXVECTOR2& vec)
+	{
+		float len = D3DXVec2Length(&vec);
+		vec /= len;
+	}
 
 	template<typename T>
 	static T Min(const T& a, const T& b)
@@ -85,14 +89,14 @@ public:
 		int temp = amount;
 		float ratio = 1 - t;
 		temp = Clamp(amount, 3, 7);
-		return a + (b - a) * (1 - powf(ratio, temp));
+		return a + (b - a) * (1 - powf(ratio, (float)temp));
 	}
 	template<typename T>
 	static T LerpSmoothStart(const T& a, const T& b, const float& t, int amount)
 	{
 		int temp = amount;
 		temp = Clamp(amount, 3, 7);
-		return a + (b - a) * powf(t, temp);
+		return a + (b - a) * powf(t, (float)temp);
 	}
 
 	template<typename T>

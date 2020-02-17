@@ -3,6 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Moonlighter", "Moonlighter\Moonlighter.vcxproj", "{784638C9-E45F-43F1-A9DE-0AEC413C6D48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{353D3ECB-37E8-4F10-8556-492F6A27619F} = {353D3ECB-37E8-4F10-8556-492F6A27619F}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Mukbe", "Mukbe\Mukbe.vcxproj", "{353D3ECB-37E8-4F10-8556-492F6A27619F}"
 EndProject

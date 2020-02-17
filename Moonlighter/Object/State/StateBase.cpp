@@ -45,6 +45,12 @@ void StateMove::Enter()
 
 void StateMove::Excute()
 {
+	float speed = 200;
+	D3DXVECTOR2 axis = KeyCode->GetData();
+	Math::D3DXVector2Normalize(axis);
+	unit->Transform().SetPos(unit->Transform().GetPos() + axis * speed * TickTime);
+
+
 
 	if (KeyCode->Up(VK_LEFT))
 	{
