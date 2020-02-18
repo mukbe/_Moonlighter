@@ -34,3 +34,34 @@ public:
 	virtual void Exit() {}
 
 };
+
+class StateSword : public StateBase
+{
+public:
+	StateSword(Unit* unit) :StateBase(unit) {}
+	~StateSword() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual void Exit() {}
+
+};
+class StateBow : public StateBase
+{
+public:
+	StateBow(Unit* unit) :StateBase(unit) {}
+	~StateBow() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual void Exit() {}
+
+};
+class StateRoll : public StateBase
+{
+public:
+	StateRoll(Unit* unit) :StateBase(unit) {}
+	~StateRoll() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual void Exit() {}
+
+};

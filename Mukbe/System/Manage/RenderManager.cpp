@@ -127,39 +127,39 @@ void RenderManager::ObjectRender()
 
 	FloatRect render = CAMERA->GetRenderRect();
 
-	D3DXVECTOR2 startPos = { render.left,render.top };
-	D3DXVECTOR2 endPos = { render.right,render.bottom };
+	//D3DXVECTOR2 startPos = { render.left,render.top };
+	//D3DXVECTOR2 endPos = { render.right,render.bottom };
 
-	D3DXVECTOR2 lt =  MapTool::PositionToIndex(startPos - D3DXVECTOR2(-2,-2));
-	D3DXVECTOR2 rb = MapTool::PositionToIndex(endPos + D3DXVECTOR2(2,2));
+	//D3DXVECTOR2 lt =  MapTool::PositionToIndex(startPos - D3DXVECTOR2(-2,-2));
+	//D3DXVECTOR2 rb = MapTool::PositionToIndex(endPos + D3DXVECTOR2(2,2));
 
-	POINT startIndex, endIndex;
-	startIndex.x = Math::Clamp((int)lt.x, 0, (int)MapTool::tileMaxIndex.x);
-	startIndex.y = Math::Clamp((int)lt.y, 0, (int)MapTool::tileMaxIndex.y);
-	endIndex.x = Math::Clamp((int)rb.x, 0, (int)MapTool::tileMaxIndex.x-1);
-	endIndex.y = Math::Clamp((int)rb.y, 0, (int)MapTool::tileMaxIndex.y-1);
+	//POINT startIndex, endIndex;
+	//startIndex.x = Math::Clamp((int)lt.x, 0, (int)MapTool::tileMaxIndex.x);
+	//startIndex.y = Math::Clamp((int)lt.y, 0, (int)MapTool::tileMaxIndex.y);
+	//endIndex.x = Math::Clamp((int)rb.x, 0, (int)MapTool::tileMaxIndex.x-1);
+	//endIndex.y = Math::Clamp((int)rb.y, 0, (int)MapTool::tileMaxIndex.y-1);
 
-	vector<Tile*> tiles = _TileMap->GetTiles();
-	if (tiles.empty() == false)
-	{
-		for (long y = startIndex.y; y <= endIndex.y; y++)
-		{
-			for (long x = startIndex.x; x <= endIndex.x; x++)
-			{
-				tiles[x + y * MapTool::tileMaxIndex.x]->Render();
-			}
-		}
+	//vector<Tile*> tiles = _TileMap->GetTiles();
+	//if (tiles.empty() == false)
+	//{
+	//	for (long y = startIndex.y; y <= endIndex.y; y++)
+	//	{
+	//		for (long x = startIndex.x; x <= endIndex.x; x++)
+	//		{
+	//			tiles[x + y * MapTool::tileMaxIndex.x]->Render();
+	//		}
+	//	}
 
-	}
+	//}
 
-	 //arr = renderList[RenderLayer::Layer_Terrain];
-	 //Iter = arr.begin();
-	 //for (; Iter != arr.end(); ++Iter)
-	 //{
-		// GameObject* obj = *Iter;
-		// if (obj->IsActive())
-		//	 obj->Render();
-	 //}
+	 arr = renderList[RenderLayer::Layer_Terrain];
+	 Iter = arr.begin();
+	 for (; Iter != arr.end(); ++Iter)
+	 {
+		 GameObject* obj = *Iter;
+		 if (obj->IsActive())
+			 obj->Render();
+	 }
 
 
 

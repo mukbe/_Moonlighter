@@ -33,6 +33,18 @@ void StateIdle::Excute()
 		unit->ChangeState("Move");
 	}
 
+	if (KeyCode->Down('C'))
+	{
+
+	}
+	else if (KeyCode->Down('X'))
+	{
+
+	}
+	else if (KeyCode->Down('Z'))
+	{
+
+	}
 }
 
 void StateMove::Enter()
@@ -75,4 +87,28 @@ void StateMove::Excute()
 
 	}
 
+}
+
+void StateSword::Enter()
+{
+}
+
+void StateSword::Excute()
+{
+}
+
+void StateBow::Enter()
+{
+}
+
+void StateBow::Excute()
+{
+}
+
+void StateRoll::Enter()
+{
+}
+
+void StateRoll::Excute()
+{
 }

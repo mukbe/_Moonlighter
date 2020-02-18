@@ -24,13 +24,11 @@ public:
 	class MessageManager* GetMessagePool() { return messageManager; }
 	class ObjectManager* GetObjectPool() { return objectManager; }
 	class RenderManager* GetRenderPool() { return renderManager; }
-	class MapTool* GetTileManager() { return mapTool; }
 public:
 	static bool DebugMode;
 protected:
 	class MessageManager* messageManager;
 	class ObjectManager* objectManager;
 	class RenderManager* renderManager;
-	class MapTool* mapTool;
 };
 

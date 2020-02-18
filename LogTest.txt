@@ -8712,3 +8712,41 @@ Code: can't find object
  2020.2.17	19:50:24	 'Moonlighter' Start Succeeded
 			 End
 ===================================================
+===================================================
+ 2020.2.18	09:11:54	 'Moonlighter' Start Succeeded
+09:13:59	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+===================================================
+ 2020.2.18	09:14:43	 'Moonlighter' Start Succeeded
+09:15:16	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+09:16:13	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+09:16:34	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+09:17:04	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+			 End
+===================================================
+===================================================
+ 2020.2.18	09:43:14	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.18	09:43:27	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.18	09:43:42	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.18	12:21:10	 'Moonlighter' Start Succeeded
+			 End
+===================================================

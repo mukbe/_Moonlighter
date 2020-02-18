@@ -8,6 +8,7 @@ Unit::Unit(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 {
 	direction = UnitDirection::Down;
 	currentState = nullptr;
+	shadowTex = _ImageManager->FindTexture("Shadow");
 }
 
 
@@ -43,7 +44,8 @@ void Unit::Update(float tick)
 void Unit::Render()
 {
 	Super::Render();
-
+	
+	shadowTex->Render(rc, &transform, 0.3f);
 	animator->Render(renderRect, &transform, alpha);
 
 }

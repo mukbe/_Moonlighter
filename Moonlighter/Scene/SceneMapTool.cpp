@@ -22,6 +22,7 @@ void SceneMapTool::Init()
 
 
 	_ImageManager->AddTexture("Back", ResourcePath + L"Map/map.png");
+	_ImageManager->AddTexture("Shadow", ResourcePath + L"Shadow.png");
 
 	 player = _ObjectPool->CreateObject<Player>("Player", D3DXVECTOR2(100, 100), D3DXVECTOR2(15, 15));
 	 player->SetRenderSize(D3DXVECTOR2(50, 50),Pivot::BOTTOM, D3DXVECTOR2(0,10));
@@ -36,7 +37,6 @@ void SceneMapTool::Init()
 
 	CAMERA->ModeTargetPlayer(player);
 	
-	mapTool->Init();
 }
 
 void SceneMapTool::ImguiRender()
