@@ -13,10 +13,11 @@ enum RenderLayer : int
 	Layer_Terrain		= Bit<2>::value,
 	Layer_GameText		= Bit<3>::value,
 	Layer_Object 		= Bit<4>::value,
-	Layer_Light 		= Bit<5>::value,
-	Layer_UI	 		= Bit<6>::value,
-	Layer_UIText 		= Bit<7>::value,
-	Layer_Imgui 		= Bit<8>::value,
+	Layer_Particle		= Bit<5>::value,
+	Layer_Light 		= Bit<6>::value,
+	Layer_UI	 		= Bit<7>::value,
+	Layer_UIText 		= Bit<8>::value,
+	Layer_Imgui 		= Bit<9>::value,
 };
 
 enum Pivot

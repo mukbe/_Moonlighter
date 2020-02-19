@@ -53,7 +53,7 @@ protected:
 
 	bool bActive;
 	float alpha;
-	float lifeTiem;
+	float lifeTime;
 
 protected:
 	string shaderKey;

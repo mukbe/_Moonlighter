@@ -38,7 +38,7 @@ void GameObject::Release()
 
 void GameObject::Update(float tick)
 {
-	lifeTiem += tick;
+	lifeTime += tick;
 }
 
 
