@@ -98,7 +98,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);_UNICODE;UNICODE;</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>./;../_Libraries/</AdditionalIncludeDirectories>
-      <AdditionalOptions>/await /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/await /std:c++latest /D _HAS_STD_BYTE=0 %(AdditionalOptions)</AdditionalOptions>
       <PrecompiledHeaderFile>Mukbe.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>

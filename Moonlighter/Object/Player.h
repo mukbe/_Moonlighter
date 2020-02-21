@@ -5,6 +5,7 @@ class Player : public Unit
 {
 	ClassInherited(Unit)
 	RequestRender(Layer_Object | Layer_Imgui)
+	RequestCollision(CollisionType_Dynamic)
 public:
 	Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
 	virtual ~Player();
@@ -23,6 +24,11 @@ public:
 
 	virtual void LoadAnimator();
 
+	void SetTest(int b) { test = b; }
+	virtual void OnCollisionEnter(GameObject* other);
+	virtual void OnCollisionStay(GameObject* other);
+	virtual void OnCollisionExit(GameObject* other);
 private:
+	int test;
 };
 

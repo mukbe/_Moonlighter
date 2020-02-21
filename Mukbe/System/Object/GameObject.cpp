@@ -6,7 +6,7 @@
 
 GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	: name(name), bActive(true), worldBuffer(nullptr), shaderKey("None")
-	, alpha(1.f), lifeTiem(0.f)
+	, alpha(1.f), lifeTime(0.f)
 {
 	worldBuffer = Buffers->FindShaderBuffer<WorldBuffer>();
 	transform = Matrix2D(pos);
@@ -16,6 +16,17 @@ GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	pivot = Pivot::BOTTOM;
 	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 	renderRect = FloatRect(D3DXVECTOR2(0.f,0.f), size, pivot);
+
+	AddCallback("OnCollisionEnter", [&](TagMessage msg) {
+		OnCollisionEnter(msg.Data->GetValue<GameObject*>());
+	});
+	AddCallback("OnCollisionStay", [&](TagMessage msg) {
+		OnCollisionStay(msg.Data->GetValue<GameObject*>());
+	});
+	AddCallback("OnCollisionExit", [&](TagMessage msg) {
+		OnCollisionExit(msg.Data->GetValue<GameObject*>());
+	});
+
 }
 
 

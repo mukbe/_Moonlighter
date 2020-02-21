@@ -63,5 +63,7 @@ public:
 	virtual void Enter();
 	virtual void Excute();
 	virtual void Exit() {}
-
+private:
+	float startSpeed;
+	float endSpeed;
 };

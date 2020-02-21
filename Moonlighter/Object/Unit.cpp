@@ -34,6 +34,7 @@ void Unit::Update(float tick)
 {
 	Super::Update(tick);
 
+
 	if (currentState)
 		currentState->Excute();
 

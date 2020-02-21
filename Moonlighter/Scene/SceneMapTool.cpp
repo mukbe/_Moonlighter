@@ -25,7 +25,11 @@ void SceneMapTool::Init()
 	_ImageManager->AddTexture("Shadow", ResourcePath + L"Shadow.png");
 
 	 player = _ObjectPool->CreateObject<Player>("Player", D3DXVECTOR2(100, 100), D3DXVECTOR2(15, 15));
-	 player->SetRenderSize(D3DXVECTOR2(50, 50),Pivot::BOTTOM, D3DXVECTOR2(0,10));
+	 player->SetRenderSize(D3DXVECTOR2(50, 50),Pivot::BOTTOM, D3DXVECTOR2(0,15));
+
+	 player = _ObjectPool->CreateObject<Player>("Player", D3DXVECTOR2(300, 300), D3DXVECTOR2(15, 15));
+	 player->SetRenderSize(D3DXVECTOR2(50, 50), Pivot::BOTTOM, D3DXVECTOR2(0,15));
+	 player->SetTest(1);
 	//LightingSystem* light = _ObjectPool->CreateObject<LightingSystem>("LightingSystem", D3DXVECTOR2(0, 0), D3DXVECTOR2(0, 0));
 	//for (int i = 0; i < 30; i++)
 	//{	
@@ -35,7 +39,7 @@ void SceneMapTool::Init()
 
 	//}
 
-	CAMERA->ModeTargetPlayer(player);
+	//CAMERA->ModeTargetPlayer(player);
 	
 }
 
@@ -50,14 +54,14 @@ void SceneMapTool::Update(float tick)
 {
 	SceneBase::Update(tick);
 
-	FloatRect rc = player->GetCollider();
-	D3DXVECTOR2 mouse = CAMERA->GetMousePos();
-	if (Mouse::Get()->Down(0))
-	{
-		if (Math::IsPointInAABB(rc, mouse))
-		{
-			_MessagePool->ReserveMessage(player, "IsClick");
-		}
-	}
+	//FloatRect rc = player->GetCollider();
+	//D3DXVECTOR2 mouse = CAMERA->GetMousePos();
+	//if (Mouse::Get()->Down(0))
+	//{
+	//	if (Math::IsPointInAABB(rc, mouse))
+	//	{
+	//		_MessagePool->ReserveMessage(player, "IsClick");
+	//	}
+	//}
 
 }

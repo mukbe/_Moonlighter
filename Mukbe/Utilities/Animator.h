@@ -34,6 +34,7 @@ public:
 	void Play();
 	void Stop();
 	void Pause();
+	bool IsPlay();
 
 	AnimationClip* GetCurrentAnim() { return currentAnim; }
 	AnimationClip* FindAnimation(const string& key);

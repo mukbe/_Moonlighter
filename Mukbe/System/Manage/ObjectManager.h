@@ -1,5 +1,41 @@
 #pragma once
 
+struct Manifold
+{
+	enum Type
+	{
+		Manifold_On,
+		Manifold_Stay,
+		Manifold_Exit,
+		Manifold_None
+	};
+	GameObject* a;
+	GameObject* b;
+	Type type;
+	bool bOnce;
+	Manifold(GameObject* aa, GameObject* bb, Type t) : a(aa), b(bb),type(t)
+	{
+		bOnce = true;
+	}
+	const bool& operator==(Manifold other)
+	{
+		if (a == other.a)
+			if (b == other.b)
+				return true;
+
+		return false;
+	}
+	const bool& operator!=(Manifold other)
+	{
+		if (a == other.a)
+			if (b == other.b)
+				return false;
+
+		return true;
+	}
+
+};
+
 class TileNode;
 class ObjectManager
 {
@@ -22,7 +58,7 @@ private:
 	vector<class GameObject*> objects;
 	vector<class GameObject*> deleteList;
 
-
+	vector<struct Manifold> manifold;
 	ObjectManager();
 	~ObjectManager();
 

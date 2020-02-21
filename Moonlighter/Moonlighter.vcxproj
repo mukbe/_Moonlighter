@@ -101,7 +101,7 @@
       <MultiProcessorCompilation>
       </MultiProcessorCompilation>
       <AdditionalIncludeDirectories>./;../_Libraries/;../Mukbe;</AdditionalIncludeDirectories>
-      <AdditionalOptions>/await /std:c++latest %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/await /std:c++latest /D _HAS_STD_BYTE=0 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -171,7 +171,6 @@
     <ClInclude Include="Object\LightingSystem.h" />
     <ClInclude Include="Object\Light.h" />
     <ClInclude Include="Object\Particle\ParticleEmitter.h" />
-    <ClInclude Include="Scene\ParticleTool.h" />
     <ClInclude Include="Scene\AnimatorTool.h" />
     <ClInclude Include="Object\imgui_internal.h" />
     <ClInclude Include="Object\Player.h" />
@@ -187,7 +186,6 @@
     <ClCompile Include="Object\LightingSystem.cpp" />
     <ClCompile Include="Object\Light.cpp" />
     <ClCompile Include="Object\Particle\ParticleEmitter.cpp" />
-    <ClCompile Include="Scene\ParticleTool.cpp" />
     <ClCompile Include="Scene\AnimatorTool.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Object\Player.cpp" />

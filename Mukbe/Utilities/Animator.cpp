@@ -147,6 +147,11 @@ void Animator::Pause()
 	currentAnim->Pause();
 }
 
+bool Animator::IsPlay()
+{
+	return currentAnim->IsPlay();
+}
+
 AnimationClip * Animator::FindAnimation(const string & key)
 {
 	VecIter Iter = animations.begin();

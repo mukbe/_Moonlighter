@@ -22,7 +22,7 @@ enum RenderLayer : int
 
 enum Pivot
 {
-	LEFT_TOP, CENTER, BOTTOM, TOP
+	LEFT_TOP = 0, CENTER, BOTTOM, TOP
 };
 enum RigidType : short
 {
@@ -45,6 +45,14 @@ inline string GetStringDirection(UnitDirection dir)
 	}
 	return "???";
 }
+
+enum CollisionType :short
+{
+	CollisionType_Dynamic,
+	CollisionType_Static,
+	CollisionType_None
+
+};
 //inline D3DXVECTOR2 GetVector2Direction(UnitDirection dir)
 //{
 //	D3DXVECTOR2 normal;

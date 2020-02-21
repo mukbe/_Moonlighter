@@ -199,11 +199,11 @@ bool Math::IsAABBInCircle(FloatRect rc, D3DXVECTOR2 origin, float radius)
 	return false;
 }
 
-bool Math::IsAABBInAABBReaction(FloatRect * me, FloatRect other, D3DXVECTOR2* dir)
+bool Math::IsAABBInAABBReaction(FloatRect * move, FloatRect hold, D3DXVECTOR2* dir)
 {
 	FloatRect rcInter;
 
-	if (IsAABBInAABB(*me, other, &rcInter) == false)
+	if (IsAABBInAABB(*move, hold, &rcInter) == false)
 		return false;
 
 	float interW = rcInter.right - rcInter.left;
@@ -211,50 +211,50 @@ bool Math::IsAABBInAABBReaction(FloatRect * me, FloatRect other, D3DXVECTOR2* di
 
 	if (Math::FloatEqual(interW, interH))
 	{
-		if (Math::FloatEqual(rcInter.left, other.left))
+		if (Math::FloatEqual(rcInter.left, hold.left))
 		{
-			me->left -= interW;
-			me->right -= interW;
+			move->left -= interW;
+			move->right -= interW;
 			if (dir)
 				*dir = D3DXVECTOR2(1.f, 0.f);
 		}
-		else if (Math::FloatEqual(rcInter.right, other.right))
+		else if (Math::FloatEqual(rcInter.right, hold.right))
 		{
-			me->left += interW;
-			me->right += interW;
+			move->left += interW;
+			move->right += interW;
 			if (dir)
 				*dir = D3DXVECTOR2(-1.f, 0.f);
 		}
 		//위
-		if (Math::FloatEqual(rcInter.top, other.top))
+		if (Math::FloatEqual(rcInter.top, hold.top))
 		{
-			me->top -= interH;
-			me->bottom -= interH;
+			move->top -= interH;
+			move->bottom -= interH;
 			if (dir)
 				*dir = D3DXVECTOR2(0.f, -1.f);
 		}
 		//아래
-		else if (Math::FloatEqual(rcInter.bottom, other.bottom))
+		else if (Math::FloatEqual(rcInter.bottom, hold.bottom))
 		{
-			me->top += interH;
-			me->bottom += interH;
+			move->top += interH;
+			move->bottom += interH;
 			if (dir)
 				*dir = D3DXVECTOR2(0.f, 1.f);
 		}
 	}
 	else if (interW < interH)
 	{
-		if (Math::FloatEqual(rcInter.left, other.left))
+		if (Math::FloatEqual(rcInter.left, hold.left))
 		{
-			me->left -= interW;
-			me->right -= interW;
+			move->left -= interW;
+			move->right -= interW;
 			if (dir)
 				*dir = D3DXVECTOR2(1.f, 0.f);
 		}
-		else if (Math::FloatEqual(rcInter.right, other.right))
+		else if (Math::FloatEqual(rcInter.right, hold.right))
 		{
-			me->left += interW;
-			me->right += interW;
+			move->left += interW;
+			move->right += interW;
 			if (dir)
 				*dir = D3DXVECTOR2(-1.f, 0.f);
 		}
@@ -262,18 +262,18 @@ bool Math::IsAABBInAABBReaction(FloatRect * me, FloatRect other, D3DXVECTOR2* di
 	else
 	{
 		//위
-		if (Math::FloatEqual(rcInter.top, other.top))
+		if (Math::FloatEqual(rcInter.top, hold.top))
 		{
-			me->top -= interH;
-			me->bottom -= interH;
+			move->top -= interH;
+			move->bottom -= interH;
 			if (dir)
 				*dir = D3DXVECTOR2(0.f, 1.f);
 		}
 		//아래
-		else if (Math::FloatEqual(rcInter.bottom, other.bottom))
+		else if (Math::FloatEqual(rcInter.bottom, hold.bottom))
 		{
-			me->top += interH;
-			me->bottom += interH;
+			move->top += interH;
+			move->bottom += interH;
 			if (dir)
 				*dir = D3DXVECTOR2(0.f, -1.f);
 		}
@@ -282,6 +282,61 @@ bool Math::IsAABBInAABBReaction(FloatRect * me, FloatRect other, D3DXVECTOR2* di
 	return true;
 	
 }
+bool Math::IsAABBInAABBReaction(FloatRect& move, FloatRect& hold)
+{
+	FloatRect rcHold;
+	rcHold.left = hold.left;
+	rcHold.top = hold.top;
+	rcHold.right = hold.right;
+	rcHold.bottom = hold.bottom;
+
+	FloatRect rcMove;
+	rcMove.left = move.left;
+	rcMove.top = move.top;
+	rcMove.right = move.right;
+	rcMove.bottom = move.bottom;
+
+	FloatRect rcInter;
+
+	if (!Math::IsAABBInAABB(rcInter, rcHold, &rcMove)) return false;
+
+	float interW = rcInter.right - rcInter.left;
+	float interH = rcInter.bottom - rcInter.top;
+
+	//수직충돌이니?
+	//if (interW > interH)
+	//{
+	//	//위
+	//	if (rcInter.top == rcHold.top)
+	//	{
+	//		OffsetRect(&rcMove, 0, -interH);
+	//	}
+	//	else if (rcInter.bottom == rcHold.bottom)
+	//	{
+	//		OffsetRect(&rcMove, 0, interH);
+	//	}
+	//}
+	//else
+	//{
+	//	if (rcInter.left == rcHold.left)
+	//	{
+	//		OffsetRect(&rcMove, -interW, 0);
+	//	}
+	//	else if (rcInter.right == rcHold.right)
+	//	{
+	//		OffsetRect(&rcMove, interW, 0);
+	//	}
+	//}
+
+	//mrcMove.left = static_cast<float>(rcMove.left);
+	//mrcMove.top = static_cast<float>(rcMove.top);
+	//mrcMove.right = static_cast<float>(rcMove.right);
+	//mrcMove.bottom = static_cast<float>(rcMove.bottom);
+
+	return true;
+
+}
+
 
 //직선충돌
 bool Math::IsLineInLine(Line l1, Line l2, D3DXVECTOR2 * point)

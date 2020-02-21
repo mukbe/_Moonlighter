@@ -62,7 +62,11 @@ public:
 	static void D3DXVector2Normalize(D3DXVECTOR2& vec)
 	{
 		float len = D3DXVec2Length(&vec);
-		vec /= len;
+		
+		if (Math::FloatEqual(len, 0.f))
+			vec = { 0.f,0.f };
+		else
+			vec /= len;
 	}
 
 	template<typename T>
@@ -127,7 +131,8 @@ public:
 
 	static bool IsAABBInAABB(FloatRect rc0, FloatRect rc1, FloatRect * temp = nullptr);
 	static bool IsAABBInCircle(FloatRect rc, D3DXVECTOR2 origin, float radius);
-	static bool IsAABBInAABBReaction(FloatRect* me, FloatRect other, D3DXVECTOR2* dir = nullptr );
+	static bool IsAABBInAABBReaction(FloatRect* move, FloatRect hold, D3DXVECTOR2* dir = nullptr );
+	static bool IsAABBInAABBReaction(FloatRect& move, FloatRect& hold);
 
 	static bool IsLineInLine(Line l1, Line l2, D3DXVECTOR2* point = nullptr);
 

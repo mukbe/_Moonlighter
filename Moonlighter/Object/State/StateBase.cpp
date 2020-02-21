@@ -35,15 +35,15 @@ void StateIdle::Excute()
 
 	if (KeyCode->Down('C'))
 	{
-
+		unit->ChangeState("Roll");
 	}
 	else if (KeyCode->Down('X'))
 	{
-
+		unit->ChangeState("Bow");
 	}
 	else if (KeyCode->Down('Z'))
 	{
-
+		unit->ChangeState("Sword");
 	}
 }
 
@@ -87,28 +87,71 @@ void StateMove::Excute()
 
 	}
 
+	if (KeyCode->Down('C'))
+	{
+		unit->ChangeState("Roll");
+	}
+	else if (KeyCode->Down('X'))
+	{
+		unit->ChangeState("Bow");
+	}
+	else if (KeyCode->Down('Z'))
+	{
+		unit->ChangeState("Sword");
+	}
+
 }
 
 void StateSword::Enter()
 {
+	string key = "Sword_";
+	key += unit->GetStringUnitDirection();
+	unit->GetAnimator()->ChangeAnimation(key);
+
 }
 
 void StateSword::Excute()
 {
+	if (unit->GetAnimator()->IsPlay() == false)
+	{
+		unit->ChangeState("Idle");
+	}
+
 }
 
 void StateBow::Enter()
 {
+	string key = "Bow_";
+	key += unit->GetStringUnitDirection();
+	unit->GetAnimator()->ChangeAnimation(key);
 }
 
 void StateBow::Excute()
 {
+	if (unit->GetAnimator()->IsPlay() == false)
+	{
+		unit->ChangeState("Idle");
+	}
 }
 
 void StateRoll::Enter()
 {
+	string key = "Roll_";
+	key += unit->GetStringUnitDirection();
+	unit->GetAnimator()->ChangeAnimation(key);
+	startSpeed = 300.f;
+	endSpeed = 50.f;
 }
 
 void StateRoll::Excute()
 {
+	D3DXVECTOR2 axis = KeyCode->GetData();
+	Math::D3DXVector2Normalize(axis);
+	unit->Transform().SetPos(unit->Transform().GetPos() + axis * startSpeed * TickTime);
+
+	if (unit->GetAnimator()->IsPlay() == false)
+	{
+		unit->ChangeState("Idle");
+	}
+
 }
