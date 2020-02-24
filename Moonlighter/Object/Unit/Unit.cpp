@@ -58,8 +58,6 @@ void Unit::ImguiRender()
 
 void Unit::ChangeState(string stateName)
 {
-	if(currentState)
-		currentState->Exit();
 
 	currentState = unitState[stateName];
 	currentState->Enter();

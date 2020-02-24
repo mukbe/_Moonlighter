@@ -27130,3 +27130,458 @@ Code: Already Init this key
  2020.2.21	14:21:12	1 is collision Exit 0
 			 End
 ===================================================
+===================================================
+ 2020.2.24	09:12:47	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	09:18:21	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:12:11	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:12:51	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	10:13:53	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	10:16:15	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	10:17:37	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	10:18:45	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:19:17	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:20:19	 'Moonlighter' Start Succeeded
+ 2020.2.24	10:20:27	0 is collision Enter 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:27	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:28	0 is collision Stay 123103254
+ 2020.2.24	10:20:29	0 is collision Stay 123103254
+ 2020.2.24	10:20:29	0 is collision Stay 123103254
+ 2020.2.24	10:20:29	0 is collision Stay 123103254
+ 2020.2.24	10:20:29	0 is collision Exit 123103254
+ 2020.2.24	10:20:30	0 is collision Enter 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Exit 123103254
+ 2020.2.24	10:20:30	0 is collision Enter 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:30	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Exit 123103254
+ 2020.2.24	10:20:31	0 is collision Enter 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Stay 123103254
+ 2020.2.24	10:20:31	0 is collision Exit 123103254
+ 2020.2.24	10:20:32	0 is collision Enter 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Stay 123103254
+ 2020.2.24	10:20:32	0 is collision Exit 123103254
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:23:28	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:34:57	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	10:35:44	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:39:53	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:41:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:41:56	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:48:12	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:51:13	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:51:30	 'Moonlighter' Start Succeeded
+10:51:51	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:52:17	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	10:52:59	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:53:22	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:54:36	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:55:01	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:55:18	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:55:34	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:56:06	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:56:36	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:56:49	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:58:08	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	10:59:11	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	11:00:06	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	11:01:12	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	11:01:41	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	12:41:29	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	12:45:11	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	14:48:09	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	14:49:34	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	14:51:12	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	15:00:00	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	15:26:03	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	15:26:56	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	15:29:17	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	16:09:56	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	16:12:23	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	16:18:05	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	16:19:34	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	16:34:08	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	16:56:18	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:01:20	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:03:20	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	17:06:33	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	17:16:42	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:33:07	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:33:36	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:33:52	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:34:49	 'Moonlighter' Start Succeeded
+17:35:22	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:35:23	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:35:25	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:35:26	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:35:26	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:35:26	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.24	17:36:09	 'Moonlighter' Start Succeeded
+17:36:30	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:36:31	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:36:31	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:36:32	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:36:33	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+17:36:33	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+			 End
+===================================================
+===================================================
+ 2020.2.24	17:38:20	 'Moonlighter' Start Succeeded
+17:39:12	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 108
+Code: shared_ptr<Testure> use count != 1
+===================================================
+ 2020.2.24	17:40:40	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:41:31	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:41:51	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.24	17:43:34	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.24	17:43:51	 'Moonlighter' Start Succeeded
+			 End
+===================================================

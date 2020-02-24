@@ -162,6 +162,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Utilities\ProgressBar.h" />
     <ClInclude Include="Render\ComputeShader\ComputeResource.h" />
     <ClInclude Include="Render\ComputeShader\ComputeShader.h" />
     <ClInclude Include="System\Object\MapTool.h" />
@@ -215,6 +216,7 @@
     <ClInclude Include="View\CameraManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Utilities\ProgressBar.cpp" />
     <ClCompile Include="Render\ComputeShader\ComputeResource.cpp" />
     <ClCompile Include="Render\ComputeShader\ComputeShader.cpp" />
     <ClCompile Include="System\Object\MapTool.cpp" />

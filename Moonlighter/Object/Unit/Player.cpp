@@ -10,11 +10,17 @@ Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Sword", new StateSword(this)));
 	unitState.insert(make_pair("Bow", new StateBow(this)));
 	unitState.insert(make_pair("Roll", new StateRoll(this)));
+	unitState.insert(make_pair("Hit", new StateHit(this)));
 
-	AddCallback("IsClick", [&](TagMessage msg) {
-		Log_PrintF("sibal Ssibal %d", 111);
+	iff = IFFEnum_Player;
+
+	AddCallback("Hit", [&](TagMessage msg) {
+		if (currentState->Name() == "StateRoll")
+			return;
+		D3DXVECTOR2 dir = msg.Data->GetValue<D3DXVECTOR2>();
+		ChangeState("Hit");
+		((StateHit*)currentState)->SetDir(dir);
 	});
-	test = 0;
 }
 
 
@@ -40,11 +46,8 @@ void Player::Release()
 
 void Player::Update(float tick)
 {
-	if (test == 0)
-		Super::Update(tick);
+	Super::Update(tick);
 
-	//if (test == 1)
-	//	transform.SetPos(CAMERA->GetMousePos());
 }
 
 
@@ -70,28 +73,27 @@ void Player::LoadAnimator()
 
 void Player::OnCollisionEnter(GameObject * other)
 {
-	int temp = static_cast<Player*>(other)->test;
-	Log_Print("%d is collision Enter %d", test, temp);
+
 }
 
 void Player::OnCollisionStay(GameObject * other)
 {
-	int temp = static_cast<Player*>(other)->test;
-	Log_Print("%d is collision Stay %d", test, temp);
-	if (test == 0)
+	FloatRect origin = other->GetCollider();
+	FloatRect otherRc = other->GetCollider();
+	if (Math::IsAABBInAABBReaction(&otherRc, GetCollider()) && other->GetCollisionType() == CollisionType_Dynamic 
+		&& currentState->Name() != "StateRoll")
 	{
-		FloatRect origin = other->GetCollider();
-		FloatRect otherRc = other->GetCollider();
-		if (Math::IsAABBInAABBReaction(&otherRc, GetCollider()))
-		{
-			other->Transform().SetPos(other->Transform().GetPos() + D3DXVECTOR2(otherRc.left - origin.left, otherRc.top - origin.top));
-		}
+		other->Transform().SetPos(other->Transform().GetPos() + D3DXVECTOR2(otherRc.left - origin.left, otherRc.top - origin.top));
 	}
+	
+	if (KeyCode->Down('F'))
+	{
+		other->PlayerInteractions();
+	}
+
 }
 
 void Player::OnCollisionExit(GameObject * other)
 {
-	int temp = static_cast<Player*>(other)->test;
-	Log_Print("%d is collision Exit %d", test, temp);
 
 }

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "StateBase.h"
 #include "./Utilities/Animator.h"
-#include "./Object/Unit.h"
+#include "./Object/Unit/Unit.h"
 
 void StateIdle::Enter()
 {
@@ -106,12 +106,17 @@ void StateSword::Enter()
 {
 	string key = "Sword_";
 	key += unit->GetStringUnitDirection();
-	unit->GetAnimator()->ChangeAnimation(key);
+	unit->GetAnimator()->ChangeAnimation(key, true);
 
 }
 
 void StateSword::Excute()
 {
+	if (KeyCode->Down('C'))
+	{
+		unit->ChangeState("Roll");
+	}
+
 	if (unit->GetAnimator()->IsPlay() == false)
 	{
 		unit->ChangeState("Idle");
@@ -123,11 +128,16 @@ void StateBow::Enter()
 {
 	string key = "Bow_";
 	key += unit->GetStringUnitDirection();
-	unit->GetAnimator()->ChangeAnimation(key);
+	unit->GetAnimator()->ChangeAnimation(key, true);
 }
 
 void StateBow::Excute()
 {
+	if (KeyCode->Down('C'))
+	{
+		unit->ChangeState("Roll");
+	}
+
 	if (unit->GetAnimator()->IsPlay() == false)
 	{
 		unit->ChangeState("Idle");
@@ -154,4 +164,22 @@ void StateRoll::Excute()
 		unit->ChangeState("Idle");
 	}
 
+}
+
+void StateHit::Enter()
+{
+	time = 0.2f;
+	amount = 80.f;
+	CAMERA->Shake();
+}
+
+void StateHit::Excute()
+{
+	time -= TickTime;
+	if (time <= 0)
+	{
+		unit->ChangeState("Idle");
+	}
+
+	unit->Transform().SetPos(unit->Transform().GetPos() + dir * amount * TickTime);
 }

@@ -29,6 +29,13 @@ enum RigidType : short
 	Dynamic = 0, Static, RigidType_End
 };
 
+enum IFFEnum
+{
+	IFFEnum_Player = 0,
+	IFFEnum_Monster,
+	IFFEnum_None,
+};
+
 enum class UnitDirection
 {
 	Left, Up, Right, Down
@@ -53,6 +60,8 @@ enum CollisionType :short
 	CollisionType_None
 
 };
+
+
 //inline D3DXVECTOR2 GetVector2Direction(UnitDirection dir)
 //{
 //	D3DXVECTOR2 normal;

@@ -26,6 +26,4 @@ private:
 #define _MessagePool SceneManager::Get()->GetNowScene()->GetMessagePool()
 #define _ObjectPool SceneManager::Get()->GetNowScene()->GetObjectPool()
 #define _RenderPool SceneManager::Get()->GetNowScene()->GetRenderPool()
-#define _BeatManager SceneManager::Get()->GetNowScene()->GetBeatManager()
 #define _TileMap SceneManager::Get()->GetNowScene()->GetTileManager()
-#define _GameData SceneManager::Get()->GetNowScene()->GetGameData()

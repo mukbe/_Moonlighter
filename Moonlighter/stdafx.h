@@ -22,5 +22,9 @@ using namespace std;
 #pragma comment(lib, "Release/Mukbe.lib")
 #endif // _DEBUG
 
-
 #include <d3dx10math.h>
+#include "./Object/LightingSystem.h"
+#include "./Object/GameData.h"
+#include "./Object/BulletSystem.h"
+
+#include "./Systems/SubSystemManager.h"

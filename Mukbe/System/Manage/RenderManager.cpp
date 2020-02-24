@@ -172,19 +172,19 @@ void RenderManager::ObjectRender()
 	{
 		if (obj->IsActive())
 		{
-			//if (Math::IsAABBInAABB(render, obj->GetRect()))
-			//{
-			//	sorted.insert(make_pair(obj->GetRect().bottom, obj));
-			//}
+			if (Math::IsAABBInAABB(render, obj->GetCollider()))
+			{
+				sorted.insert(make_pair(obj->GetCollider().bottom, obj));
+			}
 			obj->Render();
 		}
 	}
 
-	//sortedIter = sorted.begin();
-	//for (; sortedIter != sorted.end(); ++sortedIter)
-	//{
-	//	sortedIter->second->Render();
-	//}
+	sortedIter = sorted.begin();
+	for (; sortedIter != sorted.end(); ++sortedIter)
+	{
+		sortedIter->second->Render();
+	}
 
 }
 

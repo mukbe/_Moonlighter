@@ -10,12 +10,14 @@ GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 {
 	worldBuffer = Buffers->FindShaderBuffer<WorldBuffer>();
 	transform = Matrix2D(pos);
-
+	
 	bActive = true;
 	this->size = size;
 	pivot = Pivot::BOTTOM;
 	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 	renderRect = FloatRect(D3DXVECTOR2(0.f,0.f), size, pivot);
+
+	iff = IFFEnum_None;
 
 	AddCallback("OnCollisionEnter", [&](TagMessage msg) {
 		OnCollisionEnter(msg.Data->GetValue<GameObject*>());

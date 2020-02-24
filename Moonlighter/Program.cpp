@@ -9,7 +9,7 @@ Program::Program()
 	//게임정보저장 json or sql
 	//jsonRoot = new Json::Value();
 	//JsonHelper::ReadData(L"LevelEditor.json", jsonRoot);
-
+	SubSystemManager::Create();
 
 
 	KeyCode->SetAxisAmount(0.08);
@@ -37,6 +37,7 @@ Program::Program()
 
 Program::~Program()
 {
+	SubSystemManager::Delete();
 }
 
 void Program::PreUpdate()

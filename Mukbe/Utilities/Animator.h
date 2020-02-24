@@ -29,7 +29,8 @@ public:
 
 	void AddAnimation(const string& key, AnimationClip* anim);
 	void DeleteAnimation(const string& key);
-	void ChangeAnimation(const string& key);
+	void ChangeAnimation(const string& key, bool bInit = false);
+
 
 	void Play();
 	void Stop();

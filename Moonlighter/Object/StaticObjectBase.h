@@ -1,40 +1,29 @@
 #pragma once
-
-
-class Light : public GameObject
+class StaticObjectBase : public GameObject
 {
 	ClassInherited(GameObject)
 	RequestCollision(CollisionType_Static)
 	RequestRender(Layer_Object)
-	friend class LightingSystem;
+
 public:
-	Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
-	virtual~Light();
+	StaticObjectBase(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
+	~StaticObjectBase();
 
-	//초기화
 	virtual void Init();
-	//메모리 해제
 	virtual void Release();
-	//메인 루틴
 	virtual void Update(float tick);
+	virtual void Render();
 
+	virtual void PlayerInteractions();
+
+	virtual void LoadAnimator(wstring file);
 	virtual void OnCollisionEnter(GameObject* other);
 	virtual void OnCollisionStay(GameObject* other);
 	virtual void OnCollisionExit(GameObject* other);
 
-	
+	void SetInteractionAniCallBack(function<void(void)> func);
 
 private:
-	float range;
-	float rangeOffset;
-	float oldRange;
-	D3DXCOLOR color;
-	D3DXCOLOR oldColor;
-	int id_Light;
-	D3DXVECTOR2 velocity;
-
-	LightSystemBuffer* lightSystemBuffer;
-
-	bool bPlayerEnter;
+	Animator* animator;
 };
 

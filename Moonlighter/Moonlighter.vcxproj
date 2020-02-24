@@ -168,32 +168,44 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\Bullet.h" />
+    <ClInclude Include="Object\BulletSystem.h" />
+    <ClInclude Include="Object\GameData.h" />
     <ClInclude Include="Object\LightingSystem.h" />
     <ClInclude Include="Object\Light.h" />
-    <ClInclude Include="Object\Particle\ParticleEmitter.h" />
     <ClInclude Include="Scene\AnimatorTool.h" />
     <ClInclude Include="Object\imgui_internal.h" />
-    <ClInclude Include="Object\Player.h" />
+    <ClInclude Include="Object\Unit\Player.h" />
     <ClInclude Include="Program.h" />
     <ClInclude Include="Scene\SceneMapTool.h" />
     <ClInclude Include="Scenes\SceneNode.h" />
     <ClInclude Include="Object\State\StateBase.h" />
+    <ClInclude Include="Object\StaticObjectBase.h" />
+    <ClInclude Include="Object\Unit\Slime.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Systems\SubSystemManager.h" />
     <ClInclude Include="Systems\Window.h" />
-    <ClInclude Include="Object\Unit.h" />
+    <ClInclude Include="Object\Unit\Unit.h" />
+    <ClInclude Include="Object\UI\UIBase.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\Bullet.cpp" />
+    <ClCompile Include="Object\BulletSystem.cpp" />
+    <ClCompile Include="Object\GameData.cpp" />
     <ClCompile Include="Object\LightingSystem.cpp" />
     <ClCompile Include="Object\Light.cpp" />
-    <ClCompile Include="Object\Particle\ParticleEmitter.cpp" />
     <ClCompile Include="Scene\AnimatorTool.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Object\Player.cpp" />
+    <ClCompile Include="Object\Unit\Player.cpp" />
     <ClCompile Include="Program.cpp" />
     <ClCompile Include="Scene\SceneMapTool.cpp" />
     <ClCompile Include="Object\State\StateBase.cpp" />
+    <ClCompile Include="Object\StaticObjectBase.cpp" />
+    <ClCompile Include="Object\Unit\Slime.cpp" />
+    <ClCompile Include="Systems\SubSystemManager.cpp" />
     <ClCompile Include="Systems\Window.cpp" />
-    <ClCompile Include="Object\Unit.cpp" />
+    <ClCompile Include="Object\Unit\Unit.cpp" />
+    <ClCompile Include="Object\UI\UIBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,9 +8,10 @@ public:
 	~StateBase() {}
 	virtual void Enter() = 0;
 	virtual void Excute() = 0;
-	virtual void Exit() {}
+	virtual string Name() { return "StateBase"; }
 protected:
 	Unit* unit;
+
 };
 
 class StateIdle : public StateBase
@@ -20,7 +21,7 @@ public:
 	~StateIdle() {}
 	virtual void Enter();
 	virtual void Excute();
-	virtual void Exit() {}
+	virtual string Name() { return "StateIdle"; }
 
 };
 
@@ -31,7 +32,7 @@ public:
 	~StateMove() {}
 	virtual void Enter();
 	virtual void Excute();
-	virtual void Exit() {}
+	virtual string Name() { return "StateMove"; }
 
 };
 
@@ -42,7 +43,7 @@ public:
 	~StateSword() {}
 	virtual void Enter();
 	virtual void Excute();
-	virtual void Exit() {}
+	virtual string Name() { return "StateSword"; }
 
 };
 class StateBow : public StateBase
@@ -52,7 +53,7 @@ public:
 	~StateBow() {}
 	virtual void Enter();
 	virtual void Excute();
-	virtual void Exit() {}
+	virtual string Name() { return "StateBow"; }
 
 };
 class StateRoll : public StateBase
@@ -62,8 +63,23 @@ public:
 	~StateRoll() {}
 	virtual void Enter();
 	virtual void Excute();
-	virtual void Exit() {}
+	virtual string Name() { return "StateRoll"; }
 private:
 	float startSpeed;
 	float endSpeed;
+};
+
+class StateHit : public StateBase
+{
+public:
+	StateHit(Unit* unit) :StateBase(unit) {}
+	~StateHit() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name() { return "StateHit"; }
+	void SetDir(D3DXVECTOR2 val) { dir = val; }
+private:
+	D3DXVECTOR2 dir;
+	float time;
+	float amount;
 };

@@ -125,9 +125,12 @@ void Animator::DeleteAnimation(const string & key)
 	}
 }
 
-void Animator::ChangeAnimation(const string & key)
+void Animator::ChangeAnimation(const string & key, bool bInit)
 {
 	currentAnim = FindAnimation(key);
+	if (bInit)
+		currentAnim->Stop();
+
 	currentAnim->Play();
 	//Log_WarnAssert(currentAnim == nullptr);
 }

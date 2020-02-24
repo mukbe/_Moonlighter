@@ -137,11 +137,13 @@ int LightingSystem::RegisterLight(D3DXVECTOR2 pos, D3DXCOLOR color, float range,
 
 	light->bActive = true;
 	light->color = color;
+	light->oldColor = color;
 	light->range = range;
+	light->oldRange = range;
 	light->transform = Matrix2D(pos);
 
 	light->size = D3DXVECTOR2(range, range);
-	light->rc = FloatRect(pos, range, Pivot::BOTTOM);
+	light->rc = FloatRect(D3DXVECTOR2(0,0), range, Pivot::CENTER);
 
 	activeList.push_back(freeList.front());
 	freeList.pop_front();

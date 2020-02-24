@@ -6,8 +6,9 @@ Light::Light(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 {
 	id_Light = -1;
 	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
-	velocity.x = 150.f * Math::RandF() *2.f - 1.f;
-	velocity.y = 150.f * Math::RandF() *2.f - 1.f;
+	velocity = { 0.f,0.f };
+	bPlayerEnter = false;
+	rangeOffset = 15.f;
 }
 
 Light::~Light()
@@ -31,31 +32,20 @@ void Light::Update(float tick)
 
 	D3DXVECTOR2 pos = transform.GetPos();
 
-	if (pos.x < range )
-	{
-		velocity.x *= -1.f;
-		pos.x = range;
-	}
-	if (pos.x > WinSizeX-range)
-	{
-		velocity.x *= -1.f;
-		pos.x = WinSizeX-range;
-
-	}
-	if (pos.y < range )
-	{
-		velocity.y *= -1.f;
-		pos.y = range;
-
-	}
-	if (pos.y > WinSizeY-range)
-	{
-		velocity.y *= -1.f;
-		pos.y = WinSizeY-range;
-
-	}
-
 	transform.SetPos(pos + velocity * tick);
+
+
+	if (bPlayerEnter)
+	{
+		color.a += 0.02f;
+	}
+	else
+	{
+		color.a -= 0.02f;
+	}
+	color.a = Math::Clamp(color.a, 0.f, oldColor.a);
+
+	range = oldRange + sinf(lifeTime) * rangeOffset;
 
 
 
@@ -68,4 +58,20 @@ void Light::Update(float tick)
 	memcpy_s(&desc.Transform, sizeof(float) * 4, &t, sizeof(float) * 4);
 	desc.Range = range;
 	lightSystemBuffer->SetLight(id_Light, desc);
+}
+
+void Light::OnCollisionEnter(GameObject * other)
+{
+	if(other->Name() == "Player")
+		bPlayerEnter = true;
+}
+
+void Light::OnCollisionStay(GameObject * other)
+{
+}
+
+void Light::OnCollisionExit(GameObject * other)
+{
+	if (other->Name() == "Player")
+		bPlayerEnter = false;
 }

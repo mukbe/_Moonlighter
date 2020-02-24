@@ -24,11 +24,10 @@ public:
 
 	virtual void LoadAnimator();
 
-	void SetTest(int b) { test = b; }
 	virtual void OnCollisionEnter(GameObject* other);
 	virtual void OnCollisionStay(GameObject* other);
 	virtual void OnCollisionExit(GameObject* other);
 private:
-	int test;
+
 };
 

@@ -19,8 +19,12 @@ public:
 	virtual void Render();
 	//imgui debugUI render
 	virtual void ImguiRender() {}
-	
 
+	virtual void OnCollisionEnter(GameObject* other) { }
+	virtual void OnCollisionStay(GameObject* other) { }
+	virtual void OnCollisionExit(GameObject* other) { }
+
+	virtual void PlayerInteractions() {}
 
 
 	const string& Name() { return name; }
@@ -43,9 +47,6 @@ public:
 
 	virtual int GetLayer() { return RenderLayer::Layer_None; }
 	virtual CollisionType GetCollisionType() { return CollisionType::CollisionType_None; }
-	virtual void OnCollisionEnter(GameObject* other) { }
-	virtual void OnCollisionStay(GameObject* other) { }
-	virtual void OnCollisionExit(GameObject* other) { }
 protected:
 	string name;
 	Matrix2D transform;
@@ -59,6 +60,7 @@ protected:
 	float alpha;
 	float lifeTime;
 
+	IFFEnum iff;
 protected:
 	string shaderKey;
 	WorldBuffer* worldBuffer;

@@ -33,5 +33,6 @@ protected:
 	unordered_map<string, StateBase*> unitState;
 	StateBase* currentState;
 	shared_ptr<Texture> shadowTex;
+
 };
 
