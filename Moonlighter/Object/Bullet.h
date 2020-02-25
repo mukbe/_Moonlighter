@@ -19,7 +19,9 @@ public:
 
 private:
 	string effectKey;
-	
-
+	float damge;
+	D3DXVECTOR2 velocity;
+	Animator* animator;
+	float duration;
 };
 

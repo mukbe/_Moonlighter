@@ -169,7 +169,7 @@ void StateRoll::Excute()
 void StateHit::Enter()
 {
 	time = 0.2f;
-	amount = 80.f;
+	amount = 130.f;
 	CAMERA->Shake();
 }
 

@@ -9,6 +9,15 @@ Unit::Unit(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	direction = UnitDirection::Down;
 	currentState = nullptr;
 	shadowTex = _ImageManager->FindTexture("Shadow");
+
+	AddCallback("Knockback", [&](TagMessage msg) {
+		Knockback(msg.Data->GetValue <D3DXVECTOR2>());
+	});
+
+	AddCallback("Damge", [&](TagMessage msg) {
+		Damge(msg.Data->GetValue<float>());
+	});
+
 }
 
 
@@ -49,6 +58,11 @@ void Unit::Render()
 	shadowTex->Render(rc, &transform, 0.3f);
 	animator->Render(renderRect, &transform, alpha);
 
+	if (SceneBase::DebugMode)
+	{
+		p2DRenderer->DrawEllipse(FloatRect(D3DXVECTOR2(0, 0), detectRange*2.f, Pivot::CENTER), &transform, DefaultBrush::yello);
+		p2DRenderer->DrawEllipse(FloatRect(D3DXVECTOR2(0, 0), attackRange*2.f, Pivot::CENTER), &transform, DefaultBrush::yello);
+	}
 }
 
 void Unit::ImguiRender()

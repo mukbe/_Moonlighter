@@ -107,6 +107,19 @@ float Math::Angle(D3DXVECTOR3 v1, D3DXVECTOR3 v2)
 	return angle;
 }
 
+float Math::Angle(D3DXVECTOR2 v1, D3DXVECTOR2 v2)
+{
+	float angle = 0;
+
+	float dot = D3DXVec2Dot(&v1, &v2);
+	float length1 = D3DXVec2Length(&v1);
+	float length2 = D3DXVec2Length(&v2);
+
+	angle = acosf(dot / (length1 * length2));
+
+	return angle;
+}
+
 
 bool Math::IsPointInAABB(D3DXVECTOR2 rectPos, D3DXVECTOR2 rectSize, D3DXVECTOR2 ptPos)
 {

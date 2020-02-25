@@ -124,6 +124,7 @@ public:
 
 
 	static float Angle(D3DXVECTOR3 v1, D3DXVECTOR3 v2);
+	static float Angle(D3DXVECTOR2 v1, D3DXVECTOR2 v2);
 
 	static bool IsPointInAABB(D3DXVECTOR2 rectPos, D3DXVECTOR2 rectSize, D3DXVECTOR2 ptPos);
 	static bool IsPointInAABB(FloatRect rc, D3DXVECTOR2 ptPos);

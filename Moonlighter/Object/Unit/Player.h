@@ -24,6 +24,10 @@ public:
 
 	virtual void LoadAnimator();
 
+	virtual void Knockback(D3DXVECTOR2 dir);
+	virtual void Damge(float dmg);
+
+
 	virtual void OnCollisionEnter(GameObject* other);
 	virtual void OnCollisionStay(GameObject* other);
 	virtual void OnCollisionExit(GameObject* other);

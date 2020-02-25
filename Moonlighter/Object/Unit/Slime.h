@@ -1,5 +1,6 @@
 #pragma once
 #include "Unit.h"
+#include "./Object/State/StateBase.h"
 
 class Slime : public Unit
 {
@@ -28,3 +29,40 @@ public:
 
 };
 
+class SlimeIdle : public StateBase
+{
+public:
+	SlimeIdle(Unit* unit) : StateBase(unit) { this->unit = unit; }
+	~SlimeIdle() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name() { return "SlimeIdle"; }
+protected:
+	Unit* unit;
+	class Player* player;
+};
+
+class SlimeWalk : public StateBase
+{
+public:
+	SlimeWalk(Unit* unit) : StateBase(unit) { this->unit = unit; }
+	~SlimeWalk() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name() { return "SlimeWalk"; }
+private:
+	class Player* player;
+	float speed;
+};
+
+class SlimeAttact : public StateBase
+{
+public:
+	SlimeAttact(Unit* unit) : StateBase(unit) { this->unit = unit; }
+	~SlimeAttact() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name() { return "SlimeAttact"; }
+private:
+	class Player* player;
+};

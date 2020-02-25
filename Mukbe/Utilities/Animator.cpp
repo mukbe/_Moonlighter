@@ -61,9 +61,9 @@ void Animator::Clone(void ** clone)
 	VecIter Iter = animations.begin();
 	while (Iter != animations.end())
 	{
-		AnimationClip* anim;
+		AnimationClip* anim = nullptr;
 		Iter->second->Clone((void**)&anim);
-		other->AddAnimation(Iter->first, Iter->second);
+		other->AddAnimation(Iter->first, anim);
 
 		Iter++;
 	}

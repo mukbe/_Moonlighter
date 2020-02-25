@@ -21,11 +21,17 @@ public:
 
 
 	virtual void LoadAnimator() {}
+	virtual void Knockback(D3DXVECTOR2 dir) {}
+	virtual void Damge(float dmg) {}
+
+
 
 	Animator* GetAnimator() { return animator; }
 	void ChangeState(string stateName);
 	string GetStringUnitDirection();
 	void SetDirection(UnitDirection dir);
+	float GetDetectRange() { return detectRange; }
+	float GetAttackRange() { return attackRange; }
 protected:
 	Animator* animator;
 	UnitDirection direction;
@@ -34,5 +40,8 @@ protected:
 	StateBase* currentState;
 	shared_ptr<Texture> shadowTex;
 
+
+	float detectRange;
+	float attackRange;
 };
 

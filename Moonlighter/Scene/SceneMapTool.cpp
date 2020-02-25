@@ -27,12 +27,21 @@ void SceneMapTool::Init()
 	_ObjectPool->CreateObject<BulletSystem>("BulletSystem", D3DXVECTOR2(), D3DXVECTOR2());
 	_ObjectPool->CreateObject<GameData>("GameData", D3DXVECTOR2(), D3DXVECTOR2());
 	_ObjectPool->CreateObject<LightingSystem>("LightingSystem", D3DXVECTOR2(0, 0), D3DXVECTOR2(0, 0));
+
+	_ImageManager->AddFrameTexture("fx_Arrow", ResourcePath + L"Fx/fx_hit_BowSecondary.png", 3, 1);
+	_ImageManager->AddFrameTexture("fx_Sword1", ResourcePath + L"Fx/fx_hit_shortsword.png", 3, 1);
+	_ImageManager->AddFrameTexture("fx_Sword2", ResourcePath + L"Fx/fx_hit_shortsword_2.png", 3, 1);
+	EFFECTS->AddEffect("Arrow", "fx_Arrow");
+	EFFECTS->AddEffect("Sword1", "fx_Sword1");
+	EFFECTS->AddEffect("Sword2", "fx_Sword2");
+
+
 	SubSystemManager::Get()->Init();
 
 	 player = _ObjectPool->CreateObject<Player>("Player", D3DXVECTOR2(100, 100), D3DXVECTOR2(15, 15));
 	 player->SetRenderSize(D3DXVECTOR2(50, 50),Pivot::BOTTOM, D3DXVECTOR2(0,15));
 	 Slime* slime =  _ObjectPool->CreateObject<Slime>("Slime", D3DXVECTOR2(200, 200), D3DXVECTOR2(15, 15));
-	 slime->SetRenderSize(D3DXVECTOR2(25, 25), Pivot::BOTTOM, D3DXVECTOR2(0, 15));
+	 slime->SetRenderSize(D3DXVECTOR2(25, 25), Pivot::BOTTOM);
 
 
 	_LightSystem->RegisterLight(D3DXVECTOR2(0, 500)

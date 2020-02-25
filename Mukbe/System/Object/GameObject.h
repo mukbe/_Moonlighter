@@ -47,6 +47,8 @@ public:
 
 	virtual int GetLayer() { return RenderLayer::Layer_None; }
 	virtual CollisionType GetCollisionType() { return CollisionType::CollisionType_None; }
+	IFFEnum GetIFF() { return iff; }
+
 protected:
 	string name;
 	Matrix2D transform;
