@@ -13,7 +13,7 @@ Golem::Golem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Attack", new GolemAttack(this)));
 
 	detectRange = 300.f;
-	attackRange = 50.f;
+	attackRange = 40.f;
 	iff = IFFEnum_Monster;
 
 	pivot = Pivot::CENTER;
