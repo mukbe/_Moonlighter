@@ -27914,3 +27914,315 @@ Code: shared_ptr<Testure> use count != 1
  2020.2.25	18:04:33	 'Moonlighter' Start Succeeded
 			 End
 ===================================================
+===================================================
+ 2020.2.26	09:18:20	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:18:44	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:25:47	 'Moonlighter' Start Succeeded
+ 2020.2.26	09:25:56	freeBullets is empty
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:27:30	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:30:18	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:31:06	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:31:25	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:33:07	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:36:30	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	09:36:43	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:41:51	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:43:05	 'Moonlighter' Start Succeeded
+ 2020.2.26	09:43:29	freeBullets is empty
+			 End
+===================================================
+===================================================
+ 2020.2.26	09:44:28	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	12:48:01	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	12:50:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	12:51:18	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	12:51:33	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	12:52:10	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	13:45:08	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	13:46:02	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	14:42:54	 'Moonlighter' Start Succeeded
+14:47:36	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+14:48:21	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+14:48:49	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+14:49:07	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+			 End
+===================================================
+===================================================
+ 2020.2.26	16:35:07	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	16:36:38	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	16:37:52	 'Moonlighter' Start Succeeded
+16:39:05	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:39:26	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:40:01	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:44:55	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:45:35	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:45:57	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:55:04	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:55:31	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+16:55:53	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:22:24	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:22:36	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	17:22:53	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	17:27:11	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:29:59	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:30:53	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:32:00	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:35:08	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:42:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:43:44	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:44:39	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	17:45:14	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	17:51:27	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:52:56	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:54:27	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	17:55:43	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	17:57:07	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:01:05	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	18:01:48	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	18:03:11	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:04:03	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:04:29	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:04:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:09:55	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:11:12	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:11:58	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:15:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:33:01	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:38:14	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:39:32	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	18:47:39	 'Moonlighter' Start Succeeded
+18:49:58	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+18:50:14	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+18:50:39	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+18:52:25	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+18:52:55	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+18:53:17	Assertion Failure!
+File: c:\users\kga-1\desktop\moonlighter_mukbe\mukbe\render\imagemanager.cpp
+Line: 22
+Code: Already Init this key
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:07:41	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:07:55	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	19:08:28	 'Moonlighter' Start Succeeded
+===================================================
+ 2020.2.26	19:09:24	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:09:50	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:12:41	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:14:19	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:15:06	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:15:37	 'Moonlighter' Start Succeeded
+			 End
+===================================================
+===================================================
+ 2020.2.26	19:16:19	 'Moonlighter' Start Succeeded
+			 End
+===================================================

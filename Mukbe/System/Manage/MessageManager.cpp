@@ -58,6 +58,7 @@ void MessageManager::RemoveAllMessage()
 
 void MessageManager::ReserveMessage(MessageComponent * gameObject, TagMessage msg)
 {
+	//reserveList.push_back(make_pair(gameObject, msg));
 	gameObject->SendCallbackMessage(msg);
 }
 

@@ -62,20 +62,21 @@ enum CollisionType :short
 };
 
 
-//inline D3DXVECTOR2 GetVector2Direction(UnitDirection dir)
-//{
-//	D3DXVECTOR2 normal;
-//	switch (dir)
-//	{
-//	case UnitDirection::Left: normal = { -1.f, 0.f };
-//		break;
-//	case UnitDirection::Up: normal = { 0.f, -1.f };
-//		break;
-//	case UnitDirection::Right: normal = { 1.f, 0.f };
-//		break;
-//	case UnitDirection::Down: normal = { 0.f, 1.f };
-//		break;
-//	default: normal = { 0.f, 0.f };
-//		break;
-//	}
-//}
+inline D3DXVECTOR2 GetVector2Direction(UnitDirection dir)
+{
+	D3DXVECTOR2 normal;
+	switch (dir)
+	{
+	case UnitDirection::Left: normal = { -1.f, 0.f };
+		break;
+	case UnitDirection::Up: normal = { 0.f, -1.f };
+		break;
+	case UnitDirection::Right: normal = { 1.f, 0.f };
+		break;
+	case UnitDirection::Down: normal = { 0.f, 1.f };
+		break;
+	default: normal = { 0.f, 0.f };
+		break;
+	}
+	return normal;
+}

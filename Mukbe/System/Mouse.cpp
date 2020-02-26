@@ -81,6 +81,7 @@ void Mouse::Update()
 	buttonStatus[1] = GetAsyncKeyState(VK_RBUTTON) & 0x8000 ? 1 : 0;
 	buttonStatus[2] = GetAsyncKeyState(VK_MBUTTON) & 0x8000 ? 1 : 0;
 
+
 	for (DWORD i = 0; i < MAX_INPUT_MOUSE; i++)
 	{
 		int tOldStatus = buttonOldStatus[i];

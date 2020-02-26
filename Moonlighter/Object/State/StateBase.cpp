@@ -116,6 +116,16 @@ void StateSword::Excute()
 	{
 		unit->ChangeState("Roll");
 	}
+	D3DXVECTOR2 axis = KeyCode->GetData();
+	D3DXVECTOR2 value = axis;
+	Math::D3DXVector2Normalize(axis);
+	D3DXVECTOR2 unitAxis = GetVector2Direction(unit->GetDirection());
+	if (Math::FloatEqual(axis.x, unitAxis.x) && Math::FloatEqual(axis.y, unitAxis.y))
+	{
+		unit->Transform().SetPos(unit->Transform().GetPos() + value * 50.f * TickTime);
+
+	}
+
 
 	if (unit->GetAnimator()->IsPlay() == false)
 	{
@@ -170,6 +180,7 @@ void StateHit::Enter()
 {
 	time = 0.2f;
 	amount = 130.f;
+	view = true;
 	CAMERA->Shake();
 }
 
@@ -178,8 +189,13 @@ void StateHit::Excute()
 	time -= TickTime;
 	if (time <= 0)
 	{
+		unit->SetAlpha(1.f);
 		unit->ChangeState("Idle");
+		return;
 	}
+
+	view = !view;
+	unit->SetAlpha(0.6f*(int)view);
 
 	unit->Transform().SetPos(unit->Transform().GetPos() + dir * amount * TickTime);
 }

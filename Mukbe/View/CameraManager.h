@@ -40,7 +40,7 @@ public:
 	BOOL IsCollision(D3DXVECTOR2 p);
 	Matrix2D GetView() { return view; }
 
-	void Shake();
+	void Shake(float amount = 2.f, float time = 0.3f);
 	void ModeTargetPlayer(GameObject* obj);
 	void ModeFreeCamera();
 

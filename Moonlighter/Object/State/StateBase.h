@@ -82,4 +82,17 @@ private:
 	D3DXVECTOR2 dir;
 	float time;
 	float amount;
+	bool view;
+};
+
+class MonsterBase : public StateBase
+{
+public:
+	MonsterBase(Unit* unit) : StateBase(unit) { this->unit = unit; }
+	~MonsterBase() {}
+	virtual void Enter() {}
+	virtual void Excute() {}
+	virtual string Name() { return "MonsterBase"; }
+protected:
+	class Player* player;
 };

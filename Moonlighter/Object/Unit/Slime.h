@@ -23,6 +23,10 @@ public:
 
 	virtual void LoadAnimator();
 
+	virtual void Knockback(D3DXVECTOR2 dir);
+	virtual void Damge(float dmg);
+
+
 	virtual void OnCollisionEnter(GameObject* other);
 	virtual void OnCollisionStay(GameObject* other);
 	virtual void OnCollisionExit(GameObject* other);
@@ -65,4 +69,21 @@ public:
 	virtual string Name() { return "SlimeAttact"; }
 private:
 	class Player* player;
+};
+
+class SlimeHit : public StateBase
+{
+public:
+	SlimeHit(Unit* unit) : StateBase(unit) { this->unit = unit; }
+	~SlimeHit() {}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name() { return "SlimeHit"; }
+	void SetDir(D3DXVECTOR2 dir) { this->dir = dir; }
+private:
+	class Player* player;
+	D3DXVECTOR2 dir;
+	float time;
+	float amount;
+	bool view;
 };

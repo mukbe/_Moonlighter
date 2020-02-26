@@ -29,6 +29,7 @@ public:
 	Animator* GetAnimator() { return animator; }
 	void ChangeState(string stateName);
 	string GetStringUnitDirection();
+	UnitDirection GetDirection() { return direction; }
 	void SetDirection(UnitDirection dir);
 	float GetDetectRange() { return detectRange; }
 	float GetAttackRange() { return attackRange; }

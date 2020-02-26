@@ -55,7 +55,6 @@ void Unit::Render()
 {
 	Super::Render();
 	
-	shadowTex->Render(rc, &transform, 0.3f);
 	animator->Render(renderRect, &transform, alpha);
 
 	if (SceneBase::DebugMode)

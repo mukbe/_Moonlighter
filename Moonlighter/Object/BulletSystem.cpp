@@ -19,7 +19,10 @@ void BulletSystem::Init()
 
 	LoadBulletAnimator();
 
-	CreateBullet();
+	for (int i = 0; i < 20; i++)
+	{
+		CreateBullet();
+	}
 }
 
 void BulletSystem::Release()
@@ -120,9 +123,11 @@ void BulletSystem::Fire(D3DXVECTOR2 start, D3DXVECTOR2 range, float duration, fl
 
 	Animator* anim = FindBulletAnimator(bulletName);
 	if (anim)
+	{
 		anim->Clone((void**)&bullet->animator);
 
-	bullet->animator->ChangeAnimation(GetStringDirection(dir));
+		bullet->animator->ChangeAnimation(GetStringDirection(dir));
+	}
 
 	bullet->iff = iff;
 	bullet->velocity = velocity;

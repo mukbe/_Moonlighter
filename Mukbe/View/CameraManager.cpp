@@ -37,19 +37,19 @@ void CameraManager::Update()
 	{
 		case CameraManager::Mode::Mode_Free:
 		{
-			if (Mouse::Get()->Down(0))
+			if (Mouse::Get()->Down(1))
 			{
 				memcpy(&picked, Mouse::Get()->GetPosition(), sizeof(D3DXVECTOR2));
 
 				while (ShowCursor(FALSE) >= 0);
 			}
-			if (Mouse::Get()->Up(0))
+			if (Mouse::Get()->Up(1))
 			{
 				while (ShowCursor(TRUE) <= 0);
 				ClipCursor(NULL);
 			}
 
-			if (Mouse::Get()->Press(0))
+			if (Mouse::Get()->Press(1))
 			{
 
 				ClipMouse();
@@ -230,10 +230,10 @@ BOOL CameraManager::IsCollision(D3DXVECTOR2 p)
 	return false;
 }
 
-void CameraManager::Shake()
+void CameraManager::Shake(float amount, float time)
 {
-	shakeAmount = 2.f;
-	shakeTime = 0.3f;
+	shakeAmount = amount;
+	shakeTime = time;
 	shakeDir = Math::RandVec2();
 	oldPos = pos;
 	bShake = true;

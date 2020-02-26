@@ -70,12 +70,16 @@ void Bullet::OnCollisionEnter(GameObject * other)
 	//float rad = Math::Angle(other->Transform().GetPos(), transform.GetPos());
 	float rad = atan2f(dir.y, dir.x);
 
+	_MessagePool->ReserveMessage(other, "Knockback", 0.f, dir);
+	_MessagePool->ReserveMessage(other, "Damge", 0.f, damge);
+
+
+	if (effectKey.empty()) return;
+
 	if(effectKey == "Arrow")
 		EFFECTS->Fire(effectKey, transform.GetPos(), size * 6.f, rad, 15.f);
 	else
-		EFFECTS->Fire(effectKey, transform.GetPos(), size * 3.5f, rad, 15.f);
+		EFFECTS->Fire(effectKey, transform.GetPos(), size * 2.5f, rad, 15.f);
+	
 
-
-	_MessagePool->ReserveMessage(other, "Hit", 0.f, dir);
-	_MessagePool->ReserveMessage(other, "Damge", 0.f, damge);
 }

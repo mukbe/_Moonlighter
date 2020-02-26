@@ -80,23 +80,17 @@ void Player::LoadAnimator()
 
 		}
 
-		_BulletSystem->Fire(startPos, range, 1.f, 10, "Bullet_Arrow", direction, IFFEnum::IFFEnum_Player, dir * 250.f, "Arrow");
+		_BulletSystem->Fire(startPos, range, 1.f, 10, "Bullet_Arrow", direction, IFFEnum::IFFEnum_Player, dir * 400.f, "Arrow");
 
 	};
 	function<void(D3DXVECTOR2,string)> sword = [&](D3DXVECTOR2 dir, string effect) {
 		D3DXVECTOR2 startPos = transform.GetPos() + dir * 15.f;
-		if (Math::Abs(dir.x) >= 1.f)
-		{
-			startPos.y -= size.y*0.5f;
-		}
-		if (dir.y < 0.f)
-		{
-			startPos.y -= 10.f;
-		}
+		startPos.y -= size.y *0.6f;
 
-		_BulletSystem->Fire(transform.GetPos() + dir * 25.f, 25, 0.1f, 20, "", direction, IFFEnum::IFFEnum_Player,D3DXVECTOR2(0.f,0.f), effect);
+
+
+		_BulletSystem->Fire(startPos, 25, 0.1f, 20, "", direction, IFFEnum::IFFEnum_Player,D3DXVECTOR2(0.f,0.f), effect);
 	};
-
 
 	animator->FindAnimation("Bow_Up")->RegisterCallBackTable("Arrow", bind(arrow, D3DXVECTOR2(0, -1)));
 	animator->FindAnimation("Bow_Right")->RegisterCallBackTable("Arrow", bind(arrow, D3DXVECTOR2(1, 0)));
@@ -144,7 +138,8 @@ void Player::OnCollisionStay(GameObject * other)
 	if (Math::IsAABBInAABBReaction(&otherRc, GetCollider()) 
 		&& other->GetCollisionType() == CollisionType_Dynamic 
 		&& currentState->Name() != "StateRoll"
-		&& other->Name() != "Bullet")
+		&& other->Name() != "Bullet"
+		&& other->GetIFF() != IFFEnum_Monster)
 	{
 		other->Transform().SetPos(other->Transform().GetPos() + D3DXVECTOR2(otherRc.left - origin.left, otherRc.top - origin.top));
 	}
