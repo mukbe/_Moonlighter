@@ -59,6 +59,8 @@ void MessageManager::RemoveAllMessage()
 void MessageManager::ReserveMessage(MessageComponent * gameObject, TagMessage msg)
 {
 	//reserveList.push_back(make_pair(gameObject, msg));
+
+	//아래로 할 경우 무한으로 순환하게됨 수정해야됨
 	gameObject->SendCallbackMessage(msg);
 }
 
