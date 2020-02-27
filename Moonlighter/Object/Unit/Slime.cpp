@@ -28,12 +28,12 @@ void Slime::Init()
 
 	ChangeState("Idle");
 	function<void(string)> attack = [&](string effect) {
-		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(direction)* 25.f;
-		startPos.y -= size.y *0.6f;
+		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection)* 25.f;
 
 
 
-		_BulletSystem->Fire(startPos, 25, 0.1f, 20, "", direction, IFFEnum::IFFEnum_Player, D3DXVECTOR2(0.f, 0.f), effect);
+
+		_BulletSystem->Fire(startPos, 25, 0.1f, 20, "", attackDirection, iff, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 	animator->FindAnimation("Attack_Up")->RegisterCallBackTable("Attack", bind(attack, ""));
@@ -118,14 +118,6 @@ void SlimeIdle::Excute()
 
 	D3DXVECTOR2 axis = player->Transform().GetPos() - unit->Transform().GetPos();
 	float len = D3DXVec2Length(&axis);
-	if (len<= unit->GetAttackRange())
-	{
-		unit->ChangeState("Attack");
-	}
-	else if (len <= unit->GetDetectRange())
-	{
-		unit->ChangeState("Walk");
-	}
 
 	Math::D3DXVector2Normalize(axis);
 	D3DXVECTOR2 absAxis = { Math::Abs(axis.x), Math::Abs(axis.y) };
@@ -152,6 +144,14 @@ void SlimeIdle::Excute()
 		}
 	}
 
+	if (len <= unit->GetAttackRange())
+	{
+		unit->ChangeState("Attack");
+	}
+	else if (len <= unit->GetDetectRange())
+	{
+		unit->ChangeState("Walk");
+	}
 
 }
 
@@ -206,6 +206,8 @@ void SlimeAttact::Enter()
 	string key = "Attack_";
 	key += unit->GetStringUnitDirection();
 	unit->GetAnimator()->ChangeAnimation(key,true);
+	unit->SetAttackDirection(unit->GetDirection());
+
 }
 
 void SlimeAttact::Excute()

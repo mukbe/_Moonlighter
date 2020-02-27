@@ -33,19 +33,19 @@ void MiniBoss::Init()
 	ChangeState("Idle");
 
 	function<void(string)> attack = [&](string effect) {
-		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(direction) * size.x*0.6f;
+		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection) * size.x*0.6f;
 
-		_BulletSystem->Fire(startPos, 30, 0.1f, 30, "", direction, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
+		_BulletSystem->Fire(startPos, 30, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 
 	function<void(string)> sword = [&](string effect) {
-		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(direction) * size.x*0.7f;
-		D3DXVECTOR2 offset = GetVector2Direction(direction) * size.x * 0.1f ;
+		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection) * size.x*0.7f;
+		D3DXVECTOR2 offset = GetVector2Direction(attackDirection) * size.x * 0.1f ;
 		offset.x = Math::Abs(offset.x);
 		offset.y = Math::Abs(offset.y);
 		D3DXVECTOR2 range = D3DXVECTOR2(45.f, 45.f) + offset;
-		_BulletSystem->Fire(startPos, range , 0.1f, 30, "", direction, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
+		_BulletSystem->Fire(startPos, range , 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 	animator->FindAnimation("Smash_Up")->RegisterCallBackTable("Smash", bind(attack, "Smash1"));
@@ -111,18 +111,6 @@ void MiniBossIdle::Excute()
 {
 	D3DXVECTOR2 axis = player->Transform().GetPos() - unit->Transform().GetPos();
 	float len = D3DXVec2Length(&axis);
-	if (len <= unit->GetAttackRange())
-	{
-		if(Math::RandF()*2.f > 1.f)
-			unit->ChangeState("Smash");
-		else
-			unit->ChangeState("Sword");
-
-	}
-	else if (len <= unit->GetDetectRange())
-	{
-		unit->ChangeState("Walk");
-	}
 
 	Math::D3DXVector2Normalize(axis);
 	D3DXVECTOR2 absAxis = { Math::Abs(axis.x), Math::Abs(axis.y) };
@@ -148,6 +136,18 @@ void MiniBossIdle::Excute()
 			unit->SetDirection(UnitDirection::Up);
 		}
 	}
+	if (len <= unit->GetAttackRange())
+	{
+		if (Math::RandF()*2.f > 1.f)
+			unit->ChangeState("Smash");
+		else
+			unit->ChangeState("Sword");
+
+	}
+	else if (len <= unit->GetDetectRange())
+	{
+		unit->ChangeState("Walk");
+	}
 
 
 }
@@ -165,10 +165,7 @@ void MiniBossWalk::Enter()
 void MiniBossWalk::Excute()
 {
 	D3DXVECTOR2 axis = player->Transform().GetPos() - unit->Transform().GetPos();
-
 	float len = D3DXVec2Length(&axis);
-	if (len <= unit->GetAttackRange())
-		unit->ChangeState("Idle");
 
 	Math::D3DXVector2Normalize(axis);
 	D3DXVECTOR2 absAxis = { Math::Abs(axis.x), Math::Abs(axis.y) };
@@ -199,6 +196,10 @@ void MiniBossWalk::Excute()
 	key += unit->GetStringUnitDirection();
 	unit->GetAnimator()->ChangeAnimation(key);
 
+	if (len <= unit->GetAttackRange())
+		unit->ChangeState("Idle");
+
+
 	unit->Transform().SetPos(unit->Transform().GetPos() + speed * axis * TickTime);
 
 }
@@ -209,7 +210,7 @@ void MiniBossSmash::Enter()
 	string key = "Smash_";
 	key += unit->GetStringUnitDirection();
 	unit->GetAnimator()->ChangeAnimation(key, true);
-
+	unit->SetAttackDirection(unit->GetDirection());
 }
 
 void MiniBossSmash::Excute()
@@ -226,6 +227,7 @@ void MiniBossSword::Enter()
 	string key = "Sword_";
 	key += unit->GetStringUnitDirection();
 	unit->GetAnimator()->ChangeAnimation(key, true);
+	unit->SetAttackDirection(unit->GetDirection());
 
 }
 

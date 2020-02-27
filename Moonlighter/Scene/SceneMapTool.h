@@ -8,8 +8,8 @@ public:
 	virtual~SceneMapTool();
 	
 	virtual void Init();
-	virtual void ImguiRender();
-	virtual void Update(float tick);
+	virtual void OnceInit();
+	void Load();
 private:
 	Player* player;
 };

@@ -1,3 +1,4 @@
+//#include "..\..\..\Moonlighter\Scene\MapTool.h"
 #include "Mukbe.h"
 #include "MapTool.h"
 #include "./System/Object/Tile.h"
@@ -39,6 +40,7 @@ void MapTool::Init()
 		}
 	}
 }
+
 
 void MapTool::Release()
 {

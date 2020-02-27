@@ -4,7 +4,7 @@
 bool SceneBase::DebugMode = false;
 
 SceneBase::SceneBase()
-	: messageManager(new MessageManager), objectManager(new ObjectManager), renderManager(new RenderManager)
+	: messageManager(new MessageManager), objectManager(new ObjectManager), renderManager(new RenderManager), bFirstInit(true)
 {
 	
 }
@@ -20,6 +20,11 @@ SceneBase::~SceneBase()
 
 void SceneBase::Init()
 {
+}
+
+void SceneBase::OnceInit()
+{
+	bFirstInit = false;
 }
 
 void SceneBase::Release()

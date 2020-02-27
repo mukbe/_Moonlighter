@@ -18,10 +18,6 @@ AnimatorTool::~AnimatorTool()
 
 void AnimatorTool::Init()
 {
-	animator.push_back(new Animator);
-	animator[0]->name = "Temp asfsad";
-	animator[0]->AddAnimation("Test clip1", new AnimationClip);
-	animator[0]->AddAnimation("Test clip2", new AnimationClip);
 
 }
 

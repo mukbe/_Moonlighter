@@ -186,6 +186,17 @@ void RenderManager::ObjectRender()
 		sortedIter->second->Render();
 	}
 
+	arr = renderList[RenderLayer::Layer_GameText];
+	Iter = arr.begin();
+	for (; Iter != arr.end(); ++Iter)
+	{
+		GameObject* obj = *Iter;
+		if (obj->IsActive())
+			obj->Render();
+	}
+
+
+
 }
 
 //라이팅패스

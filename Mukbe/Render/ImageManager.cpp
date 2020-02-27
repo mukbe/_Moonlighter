@@ -19,7 +19,9 @@ bool ImageManager::AddTexture(string key, wstring fileName)
 	shared_ptr<Texture> temp = FindTexture(key);
 	if (temp)
 	{
-		LOG->Warning(__FILE__, __LINE__, "Already Init this key");
+		//LOG->Print("File : %s \n Line : %d \n Already Init this key", __FILE__, __LINE__);
+
+		//LOG->Warning(__FILE__, __LINE__, "Already Init this key");
 		return false;
 	}
 
@@ -34,7 +36,7 @@ bool ImageManager::AddFrameTexture(string key, wstring fileName, UINT frameX, UI
 	shared_ptr<Texture> temp = FindTexture(key);
 	if (temp)
 	{
-		LOG->Warning(__FILE__, __LINE__, "Already Init this key");
+		//LOG->Warning(__FILE__, __LINE__, "Already Init this key");
 		return false;
 	}
 

@@ -3,6 +3,7 @@
 class SceneManager
 {
 	SingletonHeader(SceneManager)
+	friend class Program;
 public:
 	void Release();
 	void Update(float tick);

@@ -33,9 +33,9 @@ void Golem::Init()
 	ChangeState("Idle");
 
 	function<void(string)> attack = [&](string effect) {
-		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(direction) * size.x*0.7f;
+		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection) * size.x*0.7f;
 
-		_BulletSystem->Fire(startPos, 25, 0.1f, 30, "", direction, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
+		_BulletSystem->Fire(startPos, 25, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 
@@ -88,14 +88,6 @@ void GolemIdle::Excute()
 {
 	D3DXVECTOR2 axis = player->Transform().GetPos() - unit->Transform().GetPos();
 	float len = D3DXVec2Length(&axis);
-	if (len <= unit->GetAttackRange())
-	{
-		unit->ChangeState("Attack");
-	}
-	else if (len <= unit->GetDetectRange())
-	{
-		unit->ChangeState("Walk");
-	}
 
 	Math::D3DXVector2Normalize(axis);
 	D3DXVECTOR2 absAxis = { Math::Abs(axis.x), Math::Abs(axis.y) };
@@ -120,6 +112,14 @@ void GolemIdle::Excute()
 		{
 			unit->SetDirection(UnitDirection::Up);
 		}
+	}
+	if (len <= unit->GetAttackRange())
+	{
+		unit->ChangeState("Attack");
+	}
+	else if (len <= unit->GetDetectRange())
+	{
+		unit->ChangeState("Walk");
 	}
 
 }
@@ -182,6 +182,8 @@ void GolemAttack::Enter()
 	string key = "Attack_";
 	key += unit->GetStringUnitDirection();
 	unit->GetAnimator()->ChangeAnimation(key, true);
+	unit->SetAttackDirection(unit->GetDirection());
+
 }
 
 void GolemAttack::Excute()

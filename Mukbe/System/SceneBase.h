@@ -8,6 +8,7 @@ public:
 	virtual ~SceneBase();
 
 	virtual void Init();
+	virtual void OnceInit();
 	virtual void Release();
 	
 	virtual void Update(float tick);
@@ -30,5 +31,7 @@ protected:
 	class MessageManager* messageManager;
 	class ObjectManager* objectManager;
 	class RenderManager* renderManager;
+
+	bool bFirstInit;
 };
 

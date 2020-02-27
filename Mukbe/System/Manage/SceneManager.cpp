@@ -18,6 +18,8 @@ SceneManager::~SceneManager()
 		SafeDelete(node);
 
 		Iter = scenes.erase(Iter);
+		if(Iter != scenes.end())
+			nowScene = Iter->second;
 	}
 }
 
@@ -31,6 +33,8 @@ void SceneManager::Update(float tick)
 void SceneManager::AddScene(string name, SceneBase * node)
 {
 	scenes.insert(make_pair(name, node));
+	nowScene = node;
+	node->OnceInit();
 }
 
 void SceneManager::PopScene(string name)
@@ -50,8 +54,8 @@ void SceneManager::ChangeScene(string name)
 {
 	if (nowScene != nullptr)
 	{
-		nowScene->Release();
-		SafeDelete(nowScene);
+		//nowScene->Release();
+		//SafeDelete(nowScene);
 	}
 
 	SceneBase* scene = FindScene(name);

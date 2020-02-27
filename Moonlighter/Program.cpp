@@ -3,6 +3,7 @@
 
 #include "./Scene/SceneMapTool.h"
 #include "./Scene/AnimatorTool.h"
+#include "./Scene/MapEditor.h"
 
 Program::Program()
 {
@@ -19,11 +20,11 @@ Program::Program()
 	bGrid = true;
 	gridColor = ColorWhite;
 
-	
-	_SceneManager->AddScene("Map", new SceneMapTool);
 	_SceneManager->AddScene("Ani", new AnimatorTool);
+	_SceneManager->AddScene("Editor", new MapEditor);
+	_SceneManager->AddScene("Map", new SceneMapTool);
 
-	_SceneManager->ChangeScene("Map");
+	//_SceneManager->ChangeScene("Map");
 	//_SceneManager->ChangeScene("Ani");
 
 	{
@@ -128,8 +129,34 @@ void Program::ImguiRender()
 	}
 	ImGui::End();
 
+	static bool bScenes = true;
+	ImGui::Begin("Scenes", &bScenes);
+	
+	static int selectScene = -1;
+	vector<string> SceneNames;
+
+	SceneManager::MapIter Iter = _SceneManager->scenes.begin();
+	for (; Iter != _SceneManager->scenes.end(); ++Iter)
+	{
+		SceneNames.push_back(Iter->first);
+	}
+	for (int i = 0;i < (int)SceneNames.size(); i++)
+	{
+		bool selected = (selectScene == i);
+		ImGui::Selectable(SceneNames[i].c_str(), &selected);
+		if (ImGui::IsItemClicked(0))
+		{
+			_SceneManager->ChangeScene(SceneNames[i].c_str());
+		}
+		if (ImGui::IsItemClicked(1))
+		{
+		}
+	}
 
 
+
+	ImGui::End();
+	
 }
 
 void Program::ResizeScreen()

@@ -72,7 +72,7 @@ void Player::LoadAnimator()
 		if (Math::Abs(dir.x) >= 1.f)
 		{
 			range.y = 3.f;
-			startPos.y -= size.y*0.5f;
+			//startPos.y -= size.y*0.5f;
 		}
 		if (Math::Abs(dir.y) >= 1.f)
 		{
@@ -85,7 +85,7 @@ void Player::LoadAnimator()
 	};
 	function<void(D3DXVECTOR2,string)> sword = [&](D3DXVECTOR2 dir, string effect) {
 		D3DXVECTOR2 startPos = transform.GetPos() + dir * 15.f;
-		startPos.y -= size.y *0.6f;
+		//startPos.y -= size.y *0.6f;
 
 
 

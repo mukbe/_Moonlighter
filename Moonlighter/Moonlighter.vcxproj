@@ -168,6 +168,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\MouseObject.h" />
+    <ClInclude Include="Scene\MapEditor.h" />
+    <ClInclude Include="Object\BackGround.h" />
     <ClInclude Include="Object\Unit\Golem.h" />
     <ClInclude Include="Object\Unit\MiniBoss.h" />
     <ClInclude Include="Object\Bullet.h" />
@@ -191,6 +194,9 @@
     <ClInclude Include="Object\UI\UIBase.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\MouseObject.cpp" />
+    <ClCompile Include="Scene\MapEditor.cpp" />
+    <ClCompile Include="Object\BackGround.cpp" />
     <ClCompile Include="Object\Unit\Golem.cpp" />
     <ClCompile Include="Object\Unit\MiniBoss.cpp" />
     <ClCompile Include="Object\Bullet.cpp" />

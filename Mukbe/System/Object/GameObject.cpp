@@ -13,7 +13,7 @@ GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	
 	bActive = true;
 	this->size = size;
-	pivot = Pivot::BOTTOM;
+	pivot = Pivot::CENTER;
 	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 	renderRect = FloatRect(D3DXVECTOR2(0.f,0.f), size, pivot);
 
@@ -73,6 +73,10 @@ void GameObject::SetRenderSize( D3DXVECTOR2 size, Pivot p, D3DXVECTOR2 pos)
 	renderRect = FloatRect(pos, size, p);
 }
 
+void GameObject::SetCollisionSize(D3DXVECTOR2 size)
+{
+	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
+}
 
 //void GameObject::PostRender()
 //{

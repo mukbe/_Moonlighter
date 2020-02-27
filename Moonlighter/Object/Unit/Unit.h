@@ -33,9 +33,11 @@ public:
 	void SetDirection(UnitDirection dir);
 	float GetDetectRange() { return detectRange; }
 	float GetAttackRange() { return attackRange; }
+	void SetAttackDirection(UnitDirection dir);
 protected:
 	Animator* animator;
 	UnitDirection direction;
+	UnitDirection attackDirection;
 
 	unordered_map<string, StateBase*> unitState;
 	StateBase* currentState;

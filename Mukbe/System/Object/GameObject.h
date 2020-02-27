@@ -44,6 +44,8 @@ public:
 	FloatRect GetCollider();
 	FloatRect GetRenderArea() { return renderRect; }
 	void SetRenderSize( D3DXVECTOR2 size, Pivot p, D3DXVECTOR2 pos = D3DXVECTOR2(0.f,0.f) );
+	void SetCollisionSize(D3DXVECTOR2 size);
+
 
 	virtual int GetLayer() { return RenderLayer::Layer_None; }
 	virtual CollisionType GetCollisionType() { return CollisionType::CollisionType_None; }

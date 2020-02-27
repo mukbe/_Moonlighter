@@ -64,6 +64,8 @@ void StaticObjectBase::OnCollisionStay(GameObject * other)
 {
 	FloatRect origin = other->GetCollider();
 	FloatRect otherRc = other->GetCollider();
+	if (other->Name() == "Mouse") return;
+
 	if (Math::IsAABBInAABBReaction(&otherRc, GetCollider()) && other->GetCollisionType() == CollisionType_Dynamic)
 	{
 		other->Transform().SetPos(other->Transform().GetPos() + D3DXVECTOR2(otherRc.left - origin.left, otherRc.top - origin.top));

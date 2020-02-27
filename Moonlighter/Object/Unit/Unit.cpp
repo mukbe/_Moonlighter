@@ -85,3 +85,8 @@ void Unit::SetDirection(UnitDirection dir)
 {
 	direction = dir;
 }
+
+void Unit::SetAttackDirection(UnitDirection dir)
+{
+	attackDirection = dir;
+}
