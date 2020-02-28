@@ -6,6 +6,9 @@
 BackGround::BackGround(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:GameObject(name, pos, size)
 {
+	pivot = Pivot::LEFT_TOP;
+	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
+	renderRect = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 
 }
 
@@ -26,10 +29,19 @@ void BackGround::Release()
 
 void BackGround::Render()
 {
-	Super::Render();
+	//Super::Render();
 
-	if (background)
-		background->Render(rc, &transform);
+	if (animator)
+		animator->Render(renderRect, &transform, alpha);
+}
+
+void BackGround::LoadAnimator(wstring file)
+{
+	Animator::Load(&animator, file);
+
+	animator->ChangeAnimation("Idle");
+	pivot = Pivot::LEFT_TOP;
+
 }
 
 void BackGround::SetTexture(string imgKey)

@@ -15,8 +15,6 @@ Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	iff = IFFEnum_Player;
 
 
-
-
 }
 
 
@@ -24,20 +22,16 @@ Player::~Player()
 {
 }
 
-
 void Player::Init()
 {
 	Super::Init();
-
-	ChangeState("Idle");
-
+	shadow = _ImageManager->FindTexture("Shadow");
 }
 
 void Player::Release()
 {
 	Super::Release();
 
-	
 }
 
 void Player::Update(float tick)
@@ -49,9 +43,13 @@ void Player::Update(float tick)
 
 void Player::Render()
 {
-	//_ImageManager->FindTexture("Back")->Render(FloatRect(D3DXVECTOR2(0, 0), D3DXVECTOR2(WinSizeX, WinSizeY), Pivot::LEFT_TOP), nullptr);
+	FloatRect temp = renderRect;
+
+	FloatRect shadowRect = FloatRect(transform.GetPos() + D3DXVECTOR2(0.f, size.y * 0.6f), D3DXVECTOR2(30, 30*0.8f), Pivot::CENTER);
+	shadow->Render(shadowRect, nullptr, 0.1f);
 
 	Super::Render();
+
 }
 
 void Player::ImguiRender()
@@ -61,9 +59,14 @@ void Player::ImguiRender()
 	//ImGui::End();
 }
 
-void Player::LoadAnimator()
+void Player::LoadAnimator(wstring file)
 {
-	Animator::Load(&animator, ResourcePath + L"Animator/Player.anim");
+	if (file == L"")
+		Animator::Load(&animator, ResourcePath + L"Animator/Player.anim");
+	else
+		Animator::Load(&animator, file);
+
+	
 	animator->ChangeAnimation("Idle_Down");
 
 	function<void(D3DXVECTOR2)> arrow = [&](D3DXVECTOR2 dir) {
@@ -107,6 +110,8 @@ void Player::LoadAnimator()
 	animator->FindAnimation("Sword_Down")->RegisterCallBackTable("Sword2", bind(sword, D3DXVECTOR2(0, 1), "Sword2"));
 	animator->FindAnimation("Sword_Left")->RegisterCallBackTable("Sword2", bind(sword, D3DXVECTOR2(-1, 0), "Sword2"));
 
+
+	ChangeState("Idle");
 
 }
 

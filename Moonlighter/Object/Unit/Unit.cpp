@@ -28,14 +28,12 @@ Unit::~Unit()
 void Unit::Init()
 {
 	Super::Init();
-	LoadAnimator();
 }
 
 void Unit::Release()
 {
 	Super::Release();
 
-	SafeDelete(animator);
 
 }
 

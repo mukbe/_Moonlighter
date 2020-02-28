@@ -63,8 +63,25 @@ void Bullet::OnCollisionEnter(GameObject * other)
 {
 	//피아식별
 	if (other->GetIFF() == iff) return;
-	if (other->GetIFF() == IFFEnum::IFFEnum_None) return;
+	if (other->Name() == "Light")return;
+	if (other->GetIFF() == IFFEnum::IFFEnum_None)
+	{
+		D3DXVECTOR2 dir = other->Transform().GetPos() - transform.GetPos();
+		Math::D3DXVector2Normalize(dir);
+		float rad = atan2f(dir.y, dir.x);
 
+		if (effectKey.empty() == false) 
+			EFFECTS->Fire(effectKey, transform.GetPos(), size * 6.f, rad, 15.f);
+
+		if (effectKey == "Arrow" &&
+			other->GetCollisionType() == CollisionType_Static)
+		{
+			bActive = false;
+			_BulletSystem->CollrectBullet(this);
+		}
+
+		return;
+	}
 	D3DXVECTOR2 dir = other->Transform().GetPos() - transform.GetPos();
 	Math::D3DXVector2Normalize(dir);
 	//float rad = Math::Angle(other->Transform().GetPos(), transform.GetPos());

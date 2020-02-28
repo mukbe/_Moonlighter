@@ -2,11 +2,6 @@
 
 class MapEditor : public SceneBase
 {
-	enum ObjectKind
-	{
-		Object_None,
-		Object_StaticObjectBase,
-	};
 
 public:
 	MapEditor();
@@ -17,12 +12,13 @@ public:
 	virtual void Update(float tick);
 	virtual void ImguiRender();
 
-	void CreateObject(ObjectKind val);
+
 private:
 	class MouseObject* mouse;
-
-	ObjectKind current;
+	class BackGround* backGround;
+	int current_item;
 	D3DXVECTOR2 oldPickPos;
-	
+	vector<string> items;
+	string animator;
 };
 

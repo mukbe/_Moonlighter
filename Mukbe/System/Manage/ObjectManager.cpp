@@ -5,6 +5,7 @@ ObjectManager::ObjectManager()
 {
 	deleteList.clear();
 	objects.clear();
+	bUpdate = true;
 }
 
 
@@ -114,10 +115,12 @@ void ObjectManager::Update(float tick)
 		}
 	}
 
-
-	for (int i= 0; i < (int)objects.size(); i++)
+	if (bUpdate)
 	{
-		objects[i]->Update(tick);
+		for (int i = 0; i < (int)objects.size(); i++)
+		{
+			objects[i]->Update(tick);
+		}
 	}
 
 

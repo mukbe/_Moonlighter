@@ -9,6 +9,8 @@ LightingSystem::LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	lightShader = Shaders->FindComputeShader("Lighting");
 	drawShader = Shaders->FindShader("DrawToMainRTV");
 	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
+
+	intencity = 0.3f;
 }
 
 
@@ -66,6 +68,17 @@ void LightingSystem::Render()
 
 }
 
+void LightingSystem::ImguiRender()
+{
+	static bool bOpen = true;
+	ImGui::Begin("TEST", &bOpen);
+	//float val = _LightSystem->GetIntencity();
+	float val = intencity;
+	ImGui::Text("%.2f", val);
+	ImGui::End();
+
+}
+
 void LightingSystem::RenderLightMap()
 {
 	//스왑체인에 엮여있는 RTV를 해제해서 버퍼에 그려지게 한다
@@ -92,7 +105,6 @@ void LightingSystem::RenderLightMap()
 
 void LightingSystem::SunLightCalculate()
 {
-	float intencity;
 	float ratio;
 	float hour = (float)Time::Get()->GetHour();
 	float minute = (float)Time::Get()->GetMinute();

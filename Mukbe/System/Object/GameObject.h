@@ -25,7 +25,8 @@ public:
 	virtual void OnCollisionExit(GameObject* other) { }
 
 	virtual void PlayerInteractions() {}
-
+	virtual void LoadAnimator(wstring file) {}
+	Animator* GetAnimator() { return animator; }
 
 	const string& Name() { return name; }
 	Matrix2D& Transform() { return transform; }
@@ -42,10 +43,10 @@ public:
 
 	//위치까지 받아옴
 	FloatRect GetCollider();
+	FloatRect GetColliderArea() { return rc; }
 	FloatRect GetRenderArea() { return renderRect; }
 	void SetRenderSize( D3DXVECTOR2 size, Pivot p, D3DXVECTOR2 pos = D3DXVECTOR2(0.f,0.f) );
 	void SetCollisionSize(D3DXVECTOR2 size);
-
 
 	virtual int GetLayer() { return RenderLayer::Layer_None; }
 	virtual CollisionType GetCollisionType() { return CollisionType::CollisionType_None; }
@@ -65,6 +66,8 @@ protected:
 	float lifeTime;
 
 	IFFEnum iff;
+	Animator* animator;
+
 protected:
 	string shaderKey;
 	WorldBuffer* worldBuffer;

@@ -6,7 +6,7 @@
 
 GameObject::GameObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	: name(name), bActive(true), worldBuffer(nullptr), shaderKey("None")
-	, alpha(1.f), lifeTime(0.f)
+	, alpha(1.f), lifeTime(0.f),animator(nullptr)
 {
 	worldBuffer = Buffers->FindShaderBuffer<WorldBuffer>();
 	transform = Matrix2D(pos);
@@ -45,6 +45,8 @@ void GameObject::Init()
 void GameObject::Release()
 {
 	_RenderPool->Remove(this, GetLayer());
+	SafeDelete(animator);
+
 }
 
 
@@ -77,6 +79,7 @@ void GameObject::SetCollisionSize(D3DXVECTOR2 size)
 {
 	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 }
+
 
 //void GameObject::PostRender()
 //{

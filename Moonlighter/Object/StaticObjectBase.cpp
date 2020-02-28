@@ -22,7 +22,6 @@ void StaticObjectBase::Init()
 void StaticObjectBase::Release()
 {
 	Super::Release();
-	SafeDelete(animator);
 }
 
 void StaticObjectBase::Update(float tick)
@@ -41,13 +40,17 @@ void StaticObjectBase::Render()
 
 void StaticObjectBase::PlayerInteractions()
 {
-	animator->ChangeAnimation("Interactions");
+	if (animator)
+		animator->ChangeAnimation("Interactions");
 }
 
 void StaticObjectBase::LoadAnimator(wstring file)
-{
-	Animator::Load(&animator, file);
-	animator->ChangeAnimation("Idle");
+{	
+	if (file != L"")
+	{
+		Animator::Load(&animator, file);
+		animator->ChangeAnimation("Idle");
+	}
 }
 
 void StaticObjectBase::OnCollisionEnter(GameObject * other)

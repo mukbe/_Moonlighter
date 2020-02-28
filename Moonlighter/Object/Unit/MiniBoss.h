@@ -13,7 +13,7 @@ public:
 
 	virtual void Init();
 
-	virtual void LoadAnimator();
+	virtual void LoadAnimator(wstring file);
 
 	virtual void Knockback(D3DXVECTOR2 dir);
 	virtual void Damge(float dmg);

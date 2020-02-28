@@ -20,6 +20,7 @@ public:
 
 	void ResizeScreen();
 
+	void LoadTexture();
 	//void TestFunc();
 private:
 	bool bGrid;

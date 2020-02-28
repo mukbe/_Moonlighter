@@ -40,7 +40,6 @@ class TileNode;
 class ObjectManager
 {
 	friend class SceneBase;		//씬에서 생성함
-	friend class BeatManager;	//모든 오브젝트가 필요함 ( UI는 빼고 필요한데.. 일단 전부)
 public:
 	void DeletaObject(class GameObject* object);
 	
@@ -53,12 +52,16 @@ public:
 	//커스텀으로 상속성검사 <베이스,받아올 포인터형> UI의 포인터를 가져올때 UI의 베이스를 두는지 검사 가능
 	IS_INHERITED_THAN_RETURN_VECTOR_ARRAY_WITH_CUSTOM FindObjectInheritedMid(string name);
 
+	void SetUpdate(bool b) { bUpdate = b; }
+	vector<class GameObject*> GetArray() { return objects; }
 private:
 	using VecIter = vector<class GameObject*>::iterator;
 	vector<class GameObject*> objects;
 	vector<class GameObject*> deleteList;
 
 	vector<struct Manifold> manifold;
+	bool bUpdate;
+
 	ObjectManager();
 	~ObjectManager();
 

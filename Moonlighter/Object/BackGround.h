@@ -13,6 +13,7 @@ public:
 
 	virtual void Render();
 
+	virtual void LoadAnimator(wstring file);
 	void SetTexture(string imgKey);
 private:
 	string imageKey;

@@ -22,7 +22,7 @@ public:
 	virtual void ImguiRender();
 
 
-	virtual void LoadAnimator();
+	virtual void LoadAnimator(wstring file);
 
 	virtual void Knockback(D3DXVECTOR2 dir);
 	virtual void Damge(float dmg);
@@ -32,6 +32,6 @@ public:
 	virtual void OnCollisionStay(GameObject* other);
 	virtual void OnCollisionExit(GameObject* other);
 private:
-
+	shared_ptr<Texture> shadow;
 };
 

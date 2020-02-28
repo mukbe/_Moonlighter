@@ -20,7 +20,6 @@ public:
 	virtual void ImguiRender();
 
 
-	virtual void LoadAnimator() {}
 	virtual void Knockback(D3DXVECTOR2 dir) {}
 	virtual void Damge(float dmg) {}
 
@@ -35,7 +34,6 @@ public:
 	float GetAttackRange() { return attackRange; }
 	void SetAttackDirection(UnitDirection dir);
 protected:
-	Animator* animator;
 	UnitDirection direction;
 	UnitDirection attackDirection;
 

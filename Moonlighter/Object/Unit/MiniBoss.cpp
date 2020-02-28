@@ -13,7 +13,7 @@ MiniBoss::MiniBoss(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Hit", new MiniBossHit(this)));
 
 	detectRange = 500.f;
-	attackRange = 50.f;
+	attackRange = 100.f;
 	iff = IFFEnum_Monster;
 
 	pivot = Pivot::CENTER;
@@ -30,6 +30,16 @@ MiniBoss::~MiniBoss()
 void MiniBoss::Init()
 {
 	Super::Init();
+
+}
+
+void MiniBoss::LoadAnimator(wstring file)
+{
+	if (file == L"")
+		Animator::Load(&animator, ResourcePath + L"Animator/MiniBoss.anim");
+	else
+		Animator::Load(&animator, file);
+
 	ChangeState("Idle");
 
 	function<void(string)> attack = [&](string effect) {
@@ -41,11 +51,11 @@ void MiniBoss::Init()
 
 	function<void(string)> sword = [&](string effect) {
 		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection) * size.x*0.7f;
-		D3DXVECTOR2 offset = GetVector2Direction(attackDirection) * size.x * 0.1f ;
+		D3DXVECTOR2 offset = GetVector2Direction(attackDirection) * size.x * 0.1f;
 		offset.x = Math::Abs(offset.x);
 		offset.y = Math::Abs(offset.y);
 		D3DXVECTOR2 range = D3DXVECTOR2(45.f, 45.f) + offset;
-		_BulletSystem->Fire(startPos, range , 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
+		_BulletSystem->Fire(startPos, range, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 	animator->FindAnimation("Smash_Up")->RegisterCallBackTable("Smash", bind(attack, "Smash1"));
@@ -58,11 +68,6 @@ void MiniBoss::Init()
 	animator->FindAnimation("Sword_Down")->RegisterCallBackTable("Sword", bind(sword, ""));
 	animator->FindAnimation("Sword_Left")->RegisterCallBackTable("Sword", bind(sword, ""));
 
-}
-
-void MiniBoss::LoadAnimator()
-{
-	Animator::Load(&animator, ResourcePath + L"Animator/MiniBoss.anim");
 
 }
 
@@ -70,6 +75,7 @@ void MiniBoss::Knockback(D3DXVECTOR2 dir)
 {
 	ChangeState("Hit");
 	((MiniBossHit*)currentState)->SetDir(dir);
+
 
 }
 

@@ -30,6 +30,16 @@ Golem::~Golem()
 void Golem::Init()
 {
 	Super::Init();
+
+}
+
+void Golem::LoadAnimator(wstring file)
+{
+	if (file == L"")
+		Animator::Load(&animator, ResourcePath + L"Animator/Golem.anim");
+	else
+		Animator::Load(&animator, file);
+
 	ChangeState("Idle");
 
 	function<void(string)> attack = [&](string effect) {
@@ -46,11 +56,6 @@ void Golem::Init()
 	animator->FindAnimation("Attack_Left")->RegisterCallBackTable("Attack", bind(attack, ""));
 
 
-}
-
-void Golem::LoadAnimator()
-{
-	Animator::Load(&animator, ResourcePath + L"Animator/Golem.anim");
 }
 
 void Golem::Knockback(D3DXVECTOR2 dir)

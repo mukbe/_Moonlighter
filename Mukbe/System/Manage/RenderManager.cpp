@@ -13,11 +13,11 @@ void RenderManager::Request(GameObject * const obj, const Layer & mask)
 {
 	Layer val = mask;
 
-	for (int i = 1; i <= 8; i++)
+	for (int i = 1; i <= 13; i++)
 	{
 		int check = 1 << i;
-
-		if(val & check)
+		bool layer = val & check;
+		if(layer)
 			renderList[(RenderLayer)check].push_back(obj);
 	}
 }

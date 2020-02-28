@@ -34,14 +34,14 @@ void Light::Update(float tick)
 
 	transform.SetPos(pos + velocity * tick);
 
-
-	if (bPlayerEnter)
+	float intencity = _LightSystem->GetIntencity();
+	if (intencity < 0.5f)
 	{
-		color.a += 0.02f;
+		color.a += 0.01f;
 	}
 	else
 	{
-		color.a -= 0.02f;
+		color.a -= 0.01f;
 	}
 	color.a = Math::Clamp(color.a, 0.f, oldColor.a);
 

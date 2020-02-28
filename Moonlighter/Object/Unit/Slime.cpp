@@ -26,20 +26,6 @@ void Slime::Init()
 {
 	Super::Init();
 
-	ChangeState("Idle");
-	function<void(string)> attack = [&](string effect) {
-		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection)* 25.f;
-
-
-
-
-		_BulletSystem->Fire(startPos, 25, 0.1f, 20, "", attackDirection, iff, D3DXVECTOR2(0.f, 0.f), effect);
-	};
-
-	animator->FindAnimation("Attack_Up")->RegisterCallBackTable("Attack", bind(attack, ""));
-	animator->FindAnimation("Attack_Right")->RegisterCallBackTable("Attack", bind(attack, ""));
-	animator->FindAnimation("Attack_Down")->RegisterCallBackTable("Attack", bind(attack, ""));
-	animator->FindAnimation("Attack_Left")->RegisterCallBackTable("Attack", bind(attack, ""));
 
 }
 
@@ -67,10 +53,30 @@ void Slime::ImguiRender()
 {
 }
 
-void Slime::LoadAnimator()
+void Slime::LoadAnimator(wstring file)
 {
-	Animator::Load(&animator, ResourcePath + L"Animator/Slime.anim");
+	if (file == L"")
+		Animator::Load(&animator, ResourcePath + L"Animator/Slime.anim");
+	else
+		Animator::Load(&animator, file);
+
 	animator->ChangeAnimation("Idle");
+	ChangeState("Idle");
+	function<void(string)> attack = [&](string effect) {
+		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection)* 25.f;
+
+
+
+
+		_BulletSystem->Fire(startPos, 25, 0.1f, 20, "", attackDirection, iff, D3DXVECTOR2(0.f, 0.f), effect);
+	};
+
+	animator->FindAnimation("Attack_Up")->RegisterCallBackTable("Attack", bind(attack, ""));
+	animator->FindAnimation("Attack_Right")->RegisterCallBackTable("Attack", bind(attack, ""));
+	animator->FindAnimation("Attack_Down")->RegisterCallBackTable("Attack", bind(attack, ""));
+	animator->FindAnimation("Attack_Left")->RegisterCallBackTable("Attack", bind(attack, ""));
+
+
 }
 
 void Slime::Knockback(D3DXVECTOR2 dir)

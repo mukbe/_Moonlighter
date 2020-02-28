@@ -4,6 +4,9 @@
 #include "./Scene/SceneMapTool.h"
 #include "./Scene/AnimatorTool.h"
 #include "./Scene/MapEditor.h"
+#include "./Scene/TestScene.h"
+
+
 
 Program::Program()
 {
@@ -20,9 +23,12 @@ Program::Program()
 	bGrid = true;
 	gridColor = ColorWhite;
 
+	LoadTexture();
+
 	_SceneManager->AddScene("Ani", new AnimatorTool);
-	_SceneManager->AddScene("Editor", new MapEditor);
 	_SceneManager->AddScene("Map", new SceneMapTool);
+	_SceneManager->AddScene("Test", new TestScene);
+	_SceneManager->AddScene("Editor", new MapEditor);
 
 	//_SceneManager->ChangeScene("Map");
 	//_SceneManager->ChangeScene("Ani");
@@ -41,6 +47,41 @@ Program::~Program()
 {
 	SubSystemManager::Delete();
 }
+
+void Program::LoadTexture()
+{
+	Buffers->AddShaderBuffer<LightSystemBuffer>(new LightSystemBuffer);
+	Shaders->CreateComputeShader("Lighting", L"Lighting.hlsl", "CSMain");
+	Shaders->CreateShader("DrawToMainRTV", L"DrawToMainRTV.hlsl");
+
+	_ImageManager->AddTexture("Town", ResourcePath + L"Map/map.png");
+	_ImageManager->AddTexture("Lobby", ResourcePath + L"Map/Dungeon_Lobby.png");
+
+	_ImageManager->AddTexture("Shadow", ResourcePath + L"Shadow.png");
+
+	_ImageManager->AddFrameTexture("fx_Arrow", ResourcePath + L"Fx/fx_hit_BowSecondary.png", 3, 1);
+	_ImageManager->AddFrameTexture("fx_Sword1", ResourcePath + L"Fx/fx_hit_shortsword.png", 3, 1);
+	_ImageManager->AddFrameTexture("fx_Sword2", ResourcePath + L"Fx/fx_hit_shortsword_2.png", 3, 1);
+
+	_ImageManager->AddFrameTexture("fx_smash1", ResourcePath + L"Fx/fx_hit_smash1.png", 6, 1);
+	_ImageManager->AddFrameTexture("fx_smash2", ResourcePath + L"Fx/fx_hit_smash2.png", 6, 1);
+	_ImageManager->AddFrameTexture("fx_smash3", ResourcePath + L"Fx/fx_hit_smash3.png", 6, 1);
+	_ImageManager->AddFrameTexture("fx_smash4", ResourcePath + L"Fx/fx_hit_smash4.png", 6, 1);
+
+
+
+	EFFECTS->AddEffect("Arrow", "fx_Arrow");
+	EFFECTS->AddEffect("Sword1", "fx_Sword1");
+	EFFECTS->AddEffect("Sword2", "fx_Sword2");
+
+	EFFECTS->AddEffect("Smash1", "fx_smash1");
+	EFFECTS->AddEffect("Smash2", "fx_smash2");
+	EFFECTS->AddEffect("Smash3", "fx_smash3");
+	EFFECTS->AddEffect("Smash4", "fx_smash4");
+
+}
+
+
 
 void Program::PreUpdate()
 {
@@ -164,6 +205,7 @@ void Program::ResizeScreen()
 	D3DDesc desc;
 	DxRenderer::GetDesc(&desc);
 }
+
 
 void Program::MakeGrid()
 {

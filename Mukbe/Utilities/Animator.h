@@ -40,6 +40,7 @@ public:
 	AnimationClip* GetCurrentAnim() { return currentAnim; }
 	AnimationClip* FindAnimation(const string& key);
 
+	string Name() { return name; }
 };
 
 

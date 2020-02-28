@@ -168,6 +168,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Scene\LobbyScene.h" />
+    <ClInclude Include="Scene\ObjectLoader.h" />
     <ClInclude Include="Object\MouseObject.h" />
     <ClInclude Include="Scene\MapEditor.h" />
     <ClInclude Include="Object\BackGround.h" />
@@ -187,13 +189,18 @@
     <ClInclude Include="Object\State\StateBase.h" />
     <ClInclude Include="Object\StaticObjectBase.h" />
     <ClInclude Include="Object\Unit\Slime.h" />
+    <ClInclude Include="Scene\Stage0.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Systems\SubSystemManager.h" />
     <ClInclude Include="Systems\Window.h" />
     <ClInclude Include="Object\Unit\Unit.h" />
     <ClInclude Include="Object\UI\UIBase.h" />
+    <ClInclude Include="Scene\TestScene.h" />
+    <ClInclude Include="Scene\TownScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Scene\LobbyScene.cpp" />
+    <ClCompile Include="Scene\ObjectLoader.cpp" />
     <ClCompile Include="Object\MouseObject.cpp" />
     <ClCompile Include="Scene\MapEditor.cpp" />
     <ClCompile Include="Object\BackGround.cpp" />
@@ -212,10 +219,13 @@
     <ClCompile Include="Object\State\StateBase.cpp" />
     <ClCompile Include="Object\StaticObjectBase.cpp" />
     <ClCompile Include="Object\Unit\Slime.cpp" />
+    <ClCompile Include="Scene\Stage0.cpp" />
     <ClCompile Include="Systems\SubSystemManager.cpp" />
     <ClCompile Include="Systems\Window.cpp" />
     <ClCompile Include="Object\Unit\Unit.cpp" />
     <ClCompile Include="Object\UI\UIBase.cpp" />
+    <ClCompile Include="Scene\TestScene.cpp" />
+    <ClCompile Include="Scene\TownScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
