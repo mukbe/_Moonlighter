@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "MouseObject.h"
-
-
+#include "JustRenderObject.h"
 
 MouseObject::MouseObject(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:GameObject(name,pos,size)
@@ -35,6 +34,21 @@ void MouseObject::Update(float tick)
 	if (KeyCode->Down(VK_ESCAPE))
 		picked = nullptr;
 
+
+	if (KeyCode->Press(VK_CONTROL) && Mouse::Get()->Down(0))
+	{
+		if (picked != nullptr) return;
+		vector<GameObject*> vec = _ObjectPool->GetObjectAsName("JustRenderObject");
+		for (int i = 0; i < (int)vec.size(); i++)
+		{
+			if (Math::IsAABBInAABB(vec[i]->GetCollider(), this->GetCollider()))
+			{
+				picked = vec[i];
+				break;
+			}
+		}
+
+	}
 }
 
 void MouseObject::Render()

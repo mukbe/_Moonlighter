@@ -83,5 +83,5 @@ void CSMain( uint3 DTid : SV_DispatchThreadID )
         }
 	}
 	
-    RWLgihtMap[index] = float4(color.rgb, 1.f) + gbuffer;
+    RWLgihtMap[index] = (float4(color.rgb, 1.f) + gbuffer) * Padding_Camera.x;
 }

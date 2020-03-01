@@ -22,6 +22,8 @@ SceneMapTool::~SceneMapTool()
 void SceneMapTool::Init()
 {
 	CAMERA->ModeTargetPlayer(player);
+	FloatRect area = _ObjectPool->FindObject<BackGround>("BackGround")->GetRenderArea();
+	CAMERA->SetLimitPos(D3DXVECTOR2(area.right, area.bottom));
 	SubSystemManager::Get()->Init();
 
 

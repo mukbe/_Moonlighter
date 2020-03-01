@@ -13,6 +13,12 @@ class CameraManager
 		Mode_Target,
 
 	};
+	enum Fade
+	{
+		Fade_None,
+		Fade_In,
+		Fade_Out
+	};
 
 public:
 
@@ -43,7 +49,13 @@ public:
 	void Shake(float amount = 2.f, float time = 0.3f);
 	void ModeTargetPlayer(GameObject* obj);
 	void ModeFreeCamera();
+	void SetLimitPos(D3DXVECTOR2 end);
 
+	void StartFadeOut();
+	bool IsFadeComplete()
+	{
+		return bFadeComplete;
+	}
 	void DebugRender();
 	//cbuffer bind
 	void CameraDataBind();
@@ -54,6 +66,7 @@ private:
 
 	Matrix2D view;
 	D3DXVECTOR2 pos;
+	D3DXVECTOR2 limitEndPos;
 	RECT renderRect;
 	FloatRect boundRect;
 	float zoom;
@@ -74,6 +87,13 @@ private:
 
 	GameObject* target;
 	float speed;
+
+	bool bFadeComplete;
+	float fadeValue;
+	Fade fade;
+
+
+
 private:
 
 	class CameraBuffer : public ShaderBuffer
@@ -97,6 +117,10 @@ private:
 		{
 			data.CameraPos = { mat._31,mat._32 };
 			memcpy(&data.Matrix, &mat, sizeof(FLOAT)*4);
+		}
+		void SetFadeValue(float val)
+		{
+			data.Padding.x = val;
 		}
 	};
 

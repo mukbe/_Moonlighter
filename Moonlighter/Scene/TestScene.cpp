@@ -17,11 +17,16 @@ TestScene::~TestScene()
 void TestScene::Init()
 {
 	SubSystemManager::Get()->Init();
+	CAMERA->ModeTargetPlayer(_ObjectPool->FindObject<Player>("Player"));
+	FloatRect area = _ObjectPool->FindObject<BackGround>("BackGround")->GetRenderArea();
+	CAMERA->SetLimitPos(D3DXVECTOR2(area.right, area.bottom));
+
 }
 
 void TestScene::OnceInit()
 {
 	Load();
+
 }
 
 void TestScene::Load()
@@ -30,15 +35,15 @@ void TestScene::Load()
 	_ObjectPool->CreateObject<BulletSystem>("BulletSystem", D3DXVECTOR2(), D3DXVECTOR2());
 	_ObjectPool->CreateObject<GameData>("GameData", D3DXVECTOR2(), D3DXVECTOR2());
 	_ObjectPool->CreateObject<LightingSystem>("LightingSystem", D3DXVECTOR2(0, 0), D3DXVECTOR2(0, 0));
-
-
-
 	SubSystemManager::Get()->Init();
+
+
+
 	_ObjectPool->CreateObject<Player>("Player", D3DXVECTOR2(100, 100), D3DXVECTOR2(15, 15));
 	_ObjectPool->CreateObject<BackGround>("BackGround", D3DXVECTOR2(100, 100), D3DXVECTOR2(15, 15));
 
 	ObjectLoader load;
-	//load.LoadMap(ResourcePath + L"Stage/LampBackUp");
+	//load.LoadMap(ResourcePath + L"Stage/LampTest");
 	load.LoadMap(ResourcePath + L"Stage/Lobby");
 
 

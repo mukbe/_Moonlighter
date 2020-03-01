@@ -4,8 +4,9 @@
 SingletonCpp(SceneManager)
 
 SceneManager::SceneManager()
-	:nowScene(nullptr)
+	:nowScene(nullptr), changeScene(nullptr)
 {
+
 }
 
 SceneManager::~SceneManager()
@@ -25,6 +26,16 @@ SceneManager::~SceneManager()
 
 void SceneManager::Update(float tick)
 {
+	if (CAMERA->IsFadeComplete())
+	{
+		if (changeScene != nullptr)
+		{
+			nowScene = changeScene;
+			changeScene->Init();
+			changeScene = nullptr;
+		}
+	}
+
 	if (nowScene != nullptr)
 		nowScene->Update(tick);
 
@@ -50,17 +61,19 @@ void SceneManager::PopScene(string name)
 	}
 }
 
-void SceneManager::ChangeScene(string name)
+void SceneManager::ChangeScene(string name, bool useFade)
 {
-	if (nowScene != nullptr)
+	if (useFade)
 	{
-		//nowScene->Release();
-		//SafeDelete(nowScene);
+		changeScene = FindScene(name);	
+		CAMERA->StartFadeOut();
 	}
-
-	SceneBase* scene = FindScene(name);
-	nowScene = scene;
-	scene->Init();
+	else
+	{
+		SceneBase* scene = FindScene(name);
+		nowScene = scene;
+		scene->Init();
+	}
 }
 
 SceneBase * SceneManager::GetNowScene()

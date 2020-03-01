@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Object\JustRenderObject.h" />
     <ClInclude Include="Scene\LobbyScene.h" />
     <ClInclude Include="Scene\ObjectLoader.h" />
     <ClInclude Include="Object\MouseObject.h" />
@@ -199,6 +200,7 @@
     <ClInclude Include="Scene\TownScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Object\JustRenderObject.cpp" />
     <ClCompile Include="Scene\LobbyScene.cpp" />
     <ClCompile Include="Scene\ObjectLoader.cpp" />
     <ClCompile Include="Object\MouseObject.cpp" />

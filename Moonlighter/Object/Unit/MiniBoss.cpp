@@ -45,7 +45,7 @@ void MiniBoss::LoadAnimator(wstring file)
 	function<void(string)> attack = [&](string effect) {
 		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection) * size.x*0.6f;
 
-		_BulletSystem->Fire(startPos, 30, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
+		_BulletSystem->Fire(startPos, 50, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 
@@ -54,7 +54,7 @@ void MiniBoss::LoadAnimator(wstring file)
 		D3DXVECTOR2 offset = GetVector2Direction(attackDirection) * size.x * 0.1f;
 		offset.x = Math::Abs(offset.x);
 		offset.y = Math::Abs(offset.y);
-		D3DXVECTOR2 range = D3DXVECTOR2(45.f, 45.f) + offset;
+		D3DXVECTOR2 range = D3DXVECTOR2(60.f, 60.f) + offset;
 		_BulletSystem->Fire(startPos, range, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 

@@ -98,7 +98,7 @@ void Program::Update(float tick)
 {
 	EFFECTS->Update(tick);
 
-	_SceneManager->GetNowScene()->Update(tick);
+	_SceneManager->Update(tick);
 
 }
 
@@ -187,7 +187,7 @@ void Program::ImguiRender()
 		ImGui::Selectable(SceneNames[i].c_str(), &selected);
 		if (ImGui::IsItemClicked(0))
 		{
-			_SceneManager->ChangeScene(SceneNames[i].c_str());
+			_SceneManager->ChangeScene(SceneNames[i].c_str(),true);
 		}
 		if (ImGui::IsItemClicked(1))
 		{

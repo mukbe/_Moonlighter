@@ -22,7 +22,11 @@ CameraManager::CameraManager()
 
 	saveTime = 0.f;
 	boundRect = FloatRect(D3DXVECTOR2(WinSizeX*0.5f, WinSizeY*0.5f), D3DXVECTOR2(WinSizeX*0.3f, WinSizeY*0.3f), Pivot::CENTER);
-	speed = 350.f;
+	speed = 250.f;
+	fade = Fade_None;
+	bFadeComplete = true;
+	fadeValue = 0.f;
+	limitEndPos = { Math::FloatMax,Math::FloatMax };
 }
 
 
@@ -77,12 +81,28 @@ void CameraManager::Update()
 					D3DXVECTOR2 targetPos = { (targetCollider.left + targetCollider.right)*0.5f, (targetCollider.top + targetCollider.bottom)*0.5f };
 					D3DXVECTOR2 delta = targetPos - center;
 					Math::D3DXVector2Normalize(delta);
-					pos += delta * TickTime * speed;
+					pos += delta * TickTime * speed * zoom;
 				}
 			}
-			UpdateMatrix();
 
 			
+			D3DXVECTOR2 end = ScreenToWorld(D3DXVECTOR2(WinSizeX, WinSizeY));
+			if (pos.x <= 0) pos.x = 0.f;
+			if (pos.y <= 0) pos.y = 0.f;
+			
+			if (end.x >= limitEndPos.x)
+			{
+				D3DXVECTOR2 offset = limitEndPos - (D3DXVECTOR2( WinSizeX, WinSizeY) / zoom);
+				pos.x = offset.x * zoom;
+			}
+			if (end.y >= limitEndPos.y)
+			{
+				D3DXVECTOR2 offset = limitEndPos - (D3DXVECTOR2(WinSizeX, WinSizeY) / zoom);
+				pos.y = offset.y * zoom;
+			}
+
+			UpdateMatrix();
+
 		}
 		break;
 	}
@@ -106,6 +126,46 @@ void CameraManager::Update()
 
 		ShakeUpdateMatrix();
 	}
+
+	switch (fade)
+	{
+	case CameraManager::Fade_None:
+	{
+
+	}
+	break;
+	case CameraManager::Fade_In:
+	{
+		bFadeComplete = false;
+
+		fadeValue += 0.01f;
+		fadeValue >= 1.f ? fadeValue = 1.f: fadeValue;
+		buffer->SetFadeValue(fadeValue);
+
+		if (fadeValue >= 1.f)
+		{
+			bFadeComplete = true;
+			fade = Fade_None;
+		}
+	}
+	break;
+	case CameraManager::Fade_Out:
+	{
+		bFadeComplete = false;
+
+		fadeValue -= 0.01f;
+		fadeValue <= 0 ? fadeValue = 0.f : fadeValue;
+		buffer->SetFadeValue(fadeValue);
+
+		if (fadeValue <= 0.f)
+		{
+			bFadeComplete = true;
+			fade = Fade_In;
+		}
+	}
+	break;
+	}
+
 
 	//boundRect = FloatRect(pos + D3DXVECTOR2(WinSizeX*0.5f, WinSizeY*0.5f), D3DXVECTOR2(WinSizeX*0.4f, WinSizeY*0.4f), Pivot::CENTER);
 }
@@ -248,6 +308,17 @@ void CameraManager::ModeTargetPlayer(GameObject* obj)
 void CameraManager::ModeFreeCamera()
 {
 	cameraMode = Mode::Mode_Free;
+}
+
+void CameraManager::SetLimitPos(D3DXVECTOR2 end)
+{
+	limitEndPos = end;
+}
+
+void CameraManager::StartFadeOut()
+{
+	fade = Fade_Out;
+	bFadeComplete = false;
 }
 
 void CameraManager::DebugRender()

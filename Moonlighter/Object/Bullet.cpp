@@ -70,9 +70,13 @@ void Bullet::OnCollisionEnter(GameObject * other)
 		Math::D3DXVector2Normalize(dir);
 		float rad = atan2f(dir.y, dir.x);
 
-		if (effectKey.empty() == false) 
-			EFFECTS->Fire(effectKey, transform.GetPos(), size * 6.f, rad, 15.f);
-
+		if (effectKey.empty() == false)
+		{
+			if (effectKey == "Arrow")
+				EFFECTS->Fire(effectKey, transform.GetPos(), size * 6.f, rad, 15.f);
+			else
+				EFFECTS->Fire(effectKey, transform.GetPos(), size * 2.5f, rad, 15.f);
+		}
 		if (effectKey == "Arrow" &&
 			other->GetCollisionType() == CollisionType_Static)
 		{

@@ -20,6 +20,8 @@ MapEditor::MapEditor()
 	items.push_back("Light");
 
 	items.push_back("StaticObjectBase");
+	items.push_back("JustRenderObject");
+
 	current_item = -1;
 	animator = "";
 }
@@ -106,11 +108,11 @@ void MapEditor::ImguiRender()
 			current_item = i;
 	}
 
-	static char buff[256] = "";
-	if (ImGui::InputText("Anim", buff, 256, input_flag))
-	{
-		animator = buff;
-	}
+	//static char buff[256] = "";
+	//if (ImGui::InputText("Anim", buff, 256, input_flag))
+	//{
+	//	animator = buff;
+	//}
 
 
 	GameObject* picked = mouse->GetPicked();
@@ -141,8 +143,6 @@ void MapEditor::ImguiRender()
 
 
 
-		if (picked->Name() == "StaticObjectBase")
-		{
 			if (ImGui::Button("Set Animator", ImVec2(100, 20)))
 			{
 				Path::OpenFileDialog(L"", Path::AnimationFilter, ResourcePath + L"Animator", [&](wstring file) {
@@ -150,7 +150,7 @@ void MapEditor::ImguiRender()
 				});
 			}
 
-		}
+		
 
 
 	}

@@ -8,7 +8,7 @@
 #include "./Object/Unit/MiniBoss.h"
 #include "./Object/Unit/Golem.h"
 #include "./Object/BackGround.h"
-
+#include "./Object/JustRenderObject.h"
 
 
 
@@ -140,6 +140,20 @@ void ObjectLoader::Setting()
 		return object;
 	}));
 
+	
+	load.insert(make_pair("JustRenderObject", [](D3DXVECTOR2 pos, D3DXVECTOR2 size, D3DXVECTOR2 render, wstring animator, D3DXVECTOR2 offset, bool bDefault)->GameObject* {
+		GameObject* object = _ObjectPool->CreateObject<JustRenderObject>("JustRenderObject", pos, D3DXVECTOR2(25, 25));
+
+		object->SetRenderSize(D3DXVECTOR2(70, 70), Pivot::CENTER, offset);
+		object->LoadAnimator(animator);
+		if (bDefault == false)
+		{
+			object->SetRenderSize(render, Pivot::CENTER, offset);
+			object->SetCollisionSize(size);
+		}
+
+		return object;
+	}));
 	load.insert(make_pair("Light", [](D3DXVECTOR2 pos, D3DXVECTOR2 size, D3DXVECTOR2 render, wstring animator, D3DXVECTOR2 offset, bool bDefault)->GameObject* {
 
 
