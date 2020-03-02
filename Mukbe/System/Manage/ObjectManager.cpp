@@ -46,12 +46,14 @@ void ObjectManager::Update(float tick)
 		GameObject* a = objects[i];
 		if (a->IsActive() == false) continue;
 		if (a->GetCollisionType() == CollisionType_None) continue;
+		if(!Math::IsAABBInAABB(a->GetCollider(),CAMERA->GetRenderRect())) continue;
 		// ..elas
 
 		for (int j = i + 1; j < (int)objects.size();j++)
 		{
 			GameObject* b = objects[j];
-			if (b->IsActive() && b->GetCollisionType() != CollisionType_None)
+			if (b->IsActive() && b->GetCollisionType() != CollisionType_None 
+				&& !(a->GetCollisionType() == CollisionType_Static && b->GetCollisionType() == CollisionType_Static))
 			{
 				//원래는 다양체로 등록한 다음 다양체들을 순회하면서 충돌검사를 해야한다
 				//지금은 편의를 위해 사각형 충돌만 사용

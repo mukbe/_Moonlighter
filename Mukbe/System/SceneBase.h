@@ -33,5 +33,6 @@ protected:
 	class RenderManager* renderManager;
 
 	bool bFirstInit;
+	D3DXVECTOR2 playerPosition;
 };
 
