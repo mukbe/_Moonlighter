@@ -162,7 +162,7 @@ LRESULT Mouse::InputProc(UINT message, WPARAM wParam, LPARAM lParam)
 
 		if (ImGui::GetIO().WantCaptureMouse == false)
 		{
-			CAMERA->AddZoom((float)tWheelValue * Time::Delta() * 0.1f);
+			CAMERA->AddZoom((float)tWheelValue * TickTime * 0.1f);
 		}
 	}
 

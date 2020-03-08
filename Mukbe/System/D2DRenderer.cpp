@@ -444,6 +444,43 @@ void D2DRenderer::FillEllipse(FloatRect rc, Matrix2D* transform, DefaultBrush::E
 	d2dRenderTarget->FillEllipse(&ellipse, dwDefaultBrush[defaultBrush]);
 }
 
+void D2DRenderer::FillRoundedRectangle(FloatRect rc, float round, Matrix2D * transform, D2D1::ColorF::Enum color, float alpha)
+{
+	ID2D1SolidColorBrush* brush;
+	d2dRenderTarget->CreateSolidColorBrush(D2D1::ColorF(color, alpha), &brush);
+
+	IASet(transform);
+
+	D2D1_ROUNDED_RECT roundRect = D2D1::RoundedRect(D2D1::RectF(rc.left, rc.top, rc.right, rc.bottom), round, round);
+	
+	d2dRenderTarget->FillRoundedRectangle(roundRect, brush);
+
+	brush->Release();
+
+}
+void D2DRenderer::FillRoundedRectangle(FloatRect rc, float round, Matrix2D * transform, D3DXCOLOR color)
+{
+	ID2D1SolidColorBrush* brush;
+	d2dRenderTarget->CreateSolidColorBrush(D2D1::ColorF(color.r, color.g, color.b, color.a), &brush);
+
+	IASet(transform);
+
+	D2D1_ROUNDED_RECT roundRect = D2D1::RoundedRect(D2D1::RectF(rc.left, rc.top, rc.right, rc.bottom), round, round);
+
+	d2dRenderTarget->FillRoundedRectangle(roundRect, brush);
+
+	brush->Release();
+
+}
+
+void D2DRenderer::FillRoundedRectangle(FloatRect rc, float round, Matrix2D * transform, DefaultBrush::Enum defaultBrush)
+{
+	IASet(transform);
+	D2D1_ROUNDED_RECT roundRect = D2D1::RoundedRect(D2D1::RectF(rc.left, rc.top, rc.right, rc.bottom), round, round);
+
+	d2dRenderTarget->FillRoundedRectangle(roundRect, dwDefaultBrush[defaultBrush]);
+}
+
 
 
 

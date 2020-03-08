@@ -1,4 +1,5 @@
 #pragma once
+
 class Stage0 : public SceneBase
 {
 public:

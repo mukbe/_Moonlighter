@@ -176,17 +176,7 @@ void ObjectLoader::Setting()
 
 void ObjectSave::Save(wstring file)
 {
-	//int count = r.Int();
-	//for (int i = 0;i < count; i++)
-	//{
-	//	string name = r.String();
-	//	D3DXVECTOR2 pos = r.Vector2();
-	//	D3DXVECTOR2 size = r.Vector2();
-	//	D3DXVECTOR2 render = r.Vector2();
-	//	string animator = r.String();
 
-	//	GameObject* object = LoadObject(name, pos, size, render, String::StringToWString(animator));
-	//}
 	BinaryWriter w;
 	w.Open(file);
 	{

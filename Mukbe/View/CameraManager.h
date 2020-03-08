@@ -56,6 +56,7 @@ public:
 	{
 		return bFadeComplete;
 	}
+	
 	void DebugRender();
 	//cbuffer bind
 	void CameraDataBind();

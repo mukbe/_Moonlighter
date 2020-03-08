@@ -2,6 +2,7 @@
 #include "Slime.h"
 #include "./Systems/SubSystemManager.h"
 #include "./Object/Unit/Player.h"
+#include "./Object/Item.h"
 
 
 Slime::Slime(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
@@ -11,6 +12,7 @@ Slime::Slime(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Walk", new SlimeWalk(this)));
 	unitState.insert(make_pair("Attack", new SlimeAttact(this)));
 	unitState.insert(make_pair("Hit", new SlimeHit(this)));
+	unitState.insert(make_pair("Dead", new SlimeDead(this)));
 	detectRange = 300.f;
 	attackRange = 20.f;
 	iff = IFFEnum_Monster;
@@ -26,7 +28,9 @@ void Slime::Init()
 {
 	Super::Init();
 
-
+	bar = new ProgressBar;
+	hp = hpMax= 100.f;
+	bar->Init(hp, FloatRect(D3DXVECTOR2(0, -20.f), 30, 4,Pivot::CENTER), 3, false);
 }
 
 void Slime::Release()
@@ -38,7 +42,7 @@ void Slime::Release()
 void Slime::Update(float tick)
 {
 	Super::Update(tick);
-
+	bar->Update();
 }
 
 
@@ -47,6 +51,7 @@ void Slime::Render()
 	shadowTex->Render(rc, &transform, 0.3f);
 
 	Super::Render();
+	bar->Render(&transform);
 }
 
 void Slime::ImguiRender()
@@ -76,6 +81,12 @@ void Slime::LoadAnimator(wstring file)
 	animator->FindAnimation("Attack_Down")->RegisterCallBackTable("Attack", bind(attack, ""));
 	animator->FindAnimation("Attack_Left")->RegisterCallBackTable("Attack", bind(attack, ""));
 
+	animator->FindAnimation("Dead")->RegisterCallBackTable("Item", [&]() {
+		for (int i = 0; i < 3; i++)
+			_ObjectPool->CreateObject<Item>("Item", transform.GetPos(), D3DXVECTOR2(15, 15));
+
+	});
+
 
 }
 
@@ -87,6 +98,12 @@ void Slime::Knockback(D3DXVECTOR2 dir)
 
 void Slime::Damge(float dmg)
 {
+	hp -= dmg;
+	hp <= 0.f ? hp = 0.f : hp;
+	bar->SetCurrentValue(hp);
+
+	if (hp <= 0)
+		ChangeState("Dead");
 
 }
 
@@ -165,7 +182,7 @@ void SlimeWalk::Enter()
 {
 	unit->GetAnimator()->ChangeAnimation("Walk");
 	player = _ObjectPool->FindObject<Player>("Player");
-	speed = 90.f;
+	speed = 80.f;
 }
 
 void SlimeWalk::Excute()
@@ -247,5 +264,41 @@ void SlimeHit::Excute()
 	unit->SetAlpha(0.6f*(int)view);
 
 	unit->Transform().SetPos(unit->Transform().GetPos() + dir * amount * TickTime);
+
+}
+
+void SlimeDead::Enter()
+{
+	view = true;
+	time = 0.3f;
+	unit->GetAnimator()->ChangeAnimation("Idle");
+	unit->GetAnimator()->Stop();
+	unit->SetActive(false);
+	_RenderPool->Remove(unit, unit->GetLayer());
+	_RenderPool->Request(unit, Layer_Terrain);
+	bOnce = true;
+}
+
+void SlimeDead::Excute()
+{
+	time -= TickTime;
+	if (time <= 0)
+	{
+
+		if (bOnce)
+		{
+			unit->SetRenderSize(D3DXVECTOR2(20, 20), Pivot::CENTER);
+			unit->GetAnimator()->ChangeAnimation("Dead");
+			unit->SetAlpha(1.f);
+
+			bOnce = false;
+		}
+
+		return;
+	}
+
+	view = !view;
+	unit->SetAlpha(0.6f*(int)view);
+
 
 }

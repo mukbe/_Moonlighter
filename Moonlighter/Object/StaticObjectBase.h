@@ -24,6 +24,6 @@ public:
 	void SetInteractionAniCallBack(function<void(void)> func);
 
 private:
-
+	bool bOnce;
 };
 

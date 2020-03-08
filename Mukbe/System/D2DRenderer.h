@@ -73,6 +73,10 @@ public:
 	void FillEllipse(FloatRect rc, Matrix2D* transform, D2D1::ColorF::Enum color, float alpha);
 	void FillEllipse(FloatRect rc, Matrix2D* transform, DefaultBrush::Enum defaultBrush = DefaultBrush::black);
 
+	void FillRoundedRectangle(FloatRect rc,float round, Matrix2D* transform, D2D1::ColorF::Enum color, float alpha);
+	void FillRoundedRectangle(FloatRect rc, float round, Matrix2D * transform, D3DXCOLOR color);
+	void FillRoundedRectangle(FloatRect rc,float round, Matrix2D* transform, DefaultBrush::Enum defaultBrush = DefaultBrush::black);
+
 
 	//==============================================================
 	void SetCamera(bool b) { bCamera = b; }

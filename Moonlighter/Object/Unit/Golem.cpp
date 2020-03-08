@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Golem.h"
 #include "./Object/Unit/Player.h"
-
+#include "./Object/Item.h"
 
 Golem::Golem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Unit(name, pos, size)
@@ -11,6 +11,7 @@ Golem::Golem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Walk", new GolemWalk(this)));
 	unitState.insert(make_pair("Hit", new GolemHit(this)));
 	unitState.insert(make_pair("Attack", new GolemAttack(this)));
+	unitState.insert(make_pair("Dead", new GolemDead(this)));
 
 	detectRange = 300.f;
 	attackRange = 40.f;
@@ -30,7 +31,21 @@ Golem::~Golem()
 void Golem::Init()
 {
 	Super::Init();
+	bar = new ProgressBar;
+	hp = hpMax= 200.f;
+	bar->Init(hp, FloatRect( D3DXVECTOR2(0, -30), 30, 4, Pivot::CENTER), 3.f,false);
+}
 
+void Golem::Update(float tick)
+{
+	Super::Update(tick);
+	bar->Update();
+}
+
+void Golem::Render()
+{
+	Super::Render();
+	bar->Render(&transform);
 }
 
 void Golem::LoadAnimator(wstring file)
@@ -55,7 +70,10 @@ void Golem::LoadAnimator(wstring file)
 	animator->FindAnimation("Attack_Down")->RegisterCallBackTable("Attack", bind(attack, ""));
 	animator->FindAnimation("Attack_Left")->RegisterCallBackTable("Attack", bind(attack, ""));
 
-
+	animator->FindAnimation("Dead")->RegisterCallBackTable("Item", [&]() {
+		for (int i = 0; i < 5; i++)
+			_ObjectPool->CreateObject<Item>("Item", transform.GetPos(), D3DXVECTOR2(15, 15));
+	});
 }
 
 void Golem::Knockback(D3DXVECTOR2 dir)
@@ -67,10 +85,20 @@ void Golem::Knockback(D3DXVECTOR2 dir)
 
 void Golem::Damge(float dmg)
 {
+	hp -= dmg;
+	hp <= 0.f ? hp = 0.f : hp;
+	bar->SetCurrentValue(hp);
+
+	if(hp<=0)
+		ChangeState("Dead");
+
 }
 
 void Golem::OnCollisionStay(GameObject * other)
 {
+	if (other->IsActive() == false ||
+		this->bActive == false)return;
+
 	FloatRect origin = other->GetCollider();
 	FloatRect otherRc = other->GetCollider();
 	if (Math::IsAABBInAABBReaction(&otherRc, GetCollider()) && other->GetCollisionType() == CollisionType_Dynamic)
@@ -136,7 +164,7 @@ void GolemWalk::Enter()
 	unit->GetAnimator()->ChangeAnimation(key, true);
 
 	player = _ObjectPool->FindObject<Player>("Player");
-	speed = 80.f;
+	speed = 60.f;
 
 }
 
@@ -222,5 +250,44 @@ void GolemHit::Excute()
 	unit->SetAlpha(0.6f*(int)view);
 
 	unit->Transform().SetPos(unit->Transform().GetPos() + dir * amount * TickTime);
+
+}
+
+void GolemDead::Enter()
+{
+	bOnce = true;
+	view = true;
+	time = 0.3f;
+	string key = "Move_";
+	key += unit->GetStringUnitDirection();
+	unit->GetAnimator()->ChangeAnimation(key, true);
+	unit->GetAnimator()->Stop();
+
+	unit->SetActive(false);
+	_RenderPool->Remove(unit, unit->GetLayer());
+	_RenderPool->Request(unit, Layer_Terrain);
+
+}
+
+void GolemDead::Excute()
+{
+	time -= TickTime;
+	if (time <= 0)
+	{
+		unit->SetRenderSize(D3DXVECTOR2(40, 40), Pivot::CENTER);
+
+		unit->SetAlpha(1.f);
+
+		if (bOnce)
+		{
+			unit->GetAnimator()->ChangeAnimation("Dead");
+			bOnce = false;
+		}
+
+		return;
+	}
+
+	view = !view;
+	unit->SetAlpha(0.6f*(int)view);
 
 }

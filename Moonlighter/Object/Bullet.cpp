@@ -64,6 +64,7 @@ void Bullet::OnCollisionEnter(GameObject * other)
 	//피아식별
 	if (other->GetIFF() == iff) return;
 	if (other->Name() == "Light")return;
+
 	if (other->GetIFF() == IFFEnum::IFFEnum_None)
 	{
 		D3DXVECTOR2 dir = other->Transform().GetPos() - transform.GetPos();

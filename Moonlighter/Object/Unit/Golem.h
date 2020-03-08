@@ -13,14 +13,18 @@ public:
 
 
 	virtual void Init();
-
+	virtual void Update(float tick);
+	virtual void Render();
 	virtual void LoadAnimator(wstring file);
 
 	virtual void Knockback(D3DXVECTOR2 dir);
 	virtual void Damge(float dmg);
 	virtual void OnCollisionStay(GameObject* other);
 
+	
 
+private:
+	ProgressBar* bar;
 };
 
 
@@ -75,5 +79,27 @@ private:
 	float amount;
 	bool view;
 
+};
+
+class GolemDead :public MonsterBase
+{
+public:
+	GolemDead(Unit* unit) : MonsterBase(unit)
+	{
+		this->unit = unit;
+	}
+	~GolemDead()
+	{
+	}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name()
+	{
+		return "GolemDead";
+	}
+private:
+	bool view;
+	float time;
+	bool bOnce;
 };
 

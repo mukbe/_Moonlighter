@@ -121,7 +121,7 @@ void RenderManager::ObjectRender()
 	for (; Iter != arr.end(); ++Iter)
 	{
 		GameObject* obj = *Iter;
-		if (obj->IsActive())
+		//if (obj->IsActive())
 			obj->Render();
 	}
 
@@ -157,7 +157,7 @@ void RenderManager::ObjectRender()
 	 for (; Iter != arr.end(); ++Iter)
 	 {
 		 GameObject* obj = *Iter;
-		 if (obj->IsActive())
+		// if (obj->IsActive())
 			 obj->Render();
 	 }
 
@@ -191,7 +191,7 @@ void RenderManager::ObjectRender()
 	for (; Iter != arr.end(); ++Iter)
 	{
 		GameObject* obj = *Iter;
-		if (obj->IsActive())
+		//if (obj->IsActive())
 			obj->Render();
 	}
 
@@ -207,7 +207,7 @@ void RenderManager::LightRender()
 	for (; Iter != arr.end(); ++Iter)
 	{
 		GameObject* obj = *Iter;
-		if (obj->IsActive())
+		//if (obj->IsActive())
 			obj->Render();
 	}
 
@@ -224,7 +224,7 @@ void RenderManager::UIRender()
 	for (; Iter != arr.end(); ++Iter)
 	{
 		GameObject* obj = *Iter;
-		if (obj->IsActive())
+		//if (obj->IsActive())
 			obj->Render();
 	}
 
@@ -244,7 +244,7 @@ void RenderManager::ImguiRender()
 	for (int i = 0; i < (int)arr.size(); ++i)
 	{
 		GameObject* obj = arr[i];
-		if (obj->IsActive())
+		//if (obj->IsActive())
 			obj->ImguiRender();
 	}
 }

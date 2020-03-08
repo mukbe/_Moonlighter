@@ -12,6 +12,8 @@ public:
 private:
 
 	unordered_map<string, function<GameObject*(D3DXVECTOR2,D3DXVECTOR2, D3DXVECTOR2, wstring, D3DXVECTOR2, bool)>>	load;
+
+	//임시로 객체의 위치를 저장할 무언가를 놓으면 될듯
 };
 
 

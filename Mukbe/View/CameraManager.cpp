@@ -22,7 +22,7 @@ CameraManager::CameraManager()
 
 	saveTime = 0.f;
 	boundRect = FloatRect(D3DXVECTOR2(WinSizeX*0.5f, WinSizeY*0.5f), D3DXVECTOR2(WinSizeX*0.3f, WinSizeY*0.3f), Pivot::CENTER);
-	speed = 250.f;
+	speed = 350.f;
 	fade = Fade_None;
 	bFadeComplete = true;
 	fadeValue = 0.f;
@@ -80,8 +80,11 @@ void CameraManager::Update()
 					D3DXVECTOR2 center = { WinSizeX * 0.5f, WinSizeY * 0.5f };
 					D3DXVECTOR2 targetPos = { (targetCollider.left + targetCollider.right)*0.5f, (targetCollider.top + targetCollider.bottom)*0.5f };
 					D3DXVECTOR2 delta = targetPos - center;
+					float amount = D3DXVec2Length(&delta);
+					amount *= 0.001f;
 					Math::D3DXVector2Normalize(delta);
-					pos += delta * TickTime * speed * zoom;
+					
+					pos += delta * TickTime * speed * zoom*amount;
 				}
 			}
 

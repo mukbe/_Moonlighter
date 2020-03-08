@@ -5,14 +5,21 @@
 #include "./Scene/AnimatorTool.h"
 #include "./Scene/MapEditor.h"
 #include "./Scene/TestScene.h"
-
-
+#include "./Scene/TownScene.h"
+#include "./Scene/Stage0.h"
+#include "./Scene/Stage1.h"
+#include "./Scene/Stage2.h"
+#include "./Scene/LobbyScene.h"
 
 Program::Program()
 {
 	//게임정보저장 json or sql
 	//jsonRoot = new Json::Value();
 	//JsonHelper::ReadData(L"LevelEditor.json", jsonRoot);
+
+	LoadTexture();
+
+	GameData::Create();
 	SubSystemManager::Create();
 
 
@@ -23,12 +30,18 @@ Program::Program()
 	bGrid = true;
 	gridColor = ColorWhite;
 
-	LoadTexture();
 
 	_SceneManager->AddScene("Ani", new AnimatorTool);
 	_SceneManager->AddScene("Map", new SceneMapTool);
 	_SceneManager->AddScene("Test", new TestScene);
 	_SceneManager->AddScene("Editor", new MapEditor);
+	_SceneManager->AddScene("Town", new TownScene);
+	_SceneManager->AddScene("Stage0", new Stage0);
+	_SceneManager->AddScene("Stage1", new Stage1);
+	_SceneManager->AddScene("Stage2", new Stage2);
+	_SceneManager->AddScene("Lobby", new LobbyScene);
+
+	CAMERA->AddZoom(2.f);
 
 	//_SceneManager->ChangeScene("Map");
 	//_SceneManager->ChangeScene("Ani");
@@ -46,6 +59,7 @@ Program::Program()
 Program::~Program()
 {
 	SubSystemManager::Delete();
+	GameData::Delete();
 }
 
 void Program::LoadTexture()
@@ -79,6 +93,7 @@ void Program::LoadTexture()
 	EFFECTS->AddEffect("Smash3", "fx_smash3");
 	EFFECTS->AddEffect("Smash4", "fx_smash4");
 
+	_ImageManager->AddFrameTexture("Items", ResourcePath + L"Items.png", 4, 3);
 }
 
 
@@ -99,7 +114,7 @@ void Program::Update(float tick)
 	EFFECTS->Update(tick);
 
 	_SceneManager->Update(tick);
-
+	GameData::Get()->Update();
 }
 
 void Program::PostUpdate()
@@ -265,12 +280,21 @@ void Program::GameUIRender()
 	//다만 순서는 D2D먼저 그려짐 이유는 Window.cpp에서 순서를 보면됨
 
 	//따라서 랜더링을 나눌 매니져급 객체가 필요
+	GameData::Get()->Render();
+
 	_SceneManager->GetNowScene()->UIRender();
 
-	wstring str;
-	str += L"pos.x : " + to_wstring(CAMERA->GetMousePos().x).substr(0, 6);
-	str += L" pos.y : " + to_wstring(CAMERA->GetMousePos().y).substr(0, 6);
-	p2DRenderer->SetCamera(false);
-	p2DRenderer->DrawText2D(D3DXVECTOR2((Mouse::Get()->GetPosition().x - 200.f), (Mouse::Get()->GetPosition().y - 20.f)), str, 20, gridColor);
+
+	if (bGrid)
+	{
+		wstring str;
+		str += L"pos.x : " + to_wstring(CAMERA->GetMousePos().x).substr(0, 6);
+		str += L" pos.y : " + to_wstring(CAMERA->GetMousePos().y).substr(0, 6);
+		p2DRenderer->SetCamera(false);
+		p2DRenderer->DrawText2D(D3DXVECTOR2((Mouse::Get()->GetPosition().x - 200.f), (Mouse::Get()->GetPosition().y - 20.f)), str, 20, gridColor);
+
+	}
+
+
 
 }

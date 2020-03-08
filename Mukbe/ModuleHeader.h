@@ -40,6 +40,7 @@
 #include "./Utilities/Buffer.h"
 #include "./Utilities/Animation.h"
 #include "./Utilities/Animator.h"
+#include "./Utilities/ProgressBar.h"
 
 #define KeyCode Keyboard::Get()
 #define GameMouse Mouse::Get()

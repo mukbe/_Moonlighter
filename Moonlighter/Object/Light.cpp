@@ -35,7 +35,7 @@ void Light::Update(float tick)
 	transform.SetPos(pos + velocity * tick);
 
 	float intencity = _LightSystem->GetIntencity();
-	if (intencity < 0.5f)
+	if (intencity < 0.65f)
 	{
 		color.a += 0.01f;
 	}

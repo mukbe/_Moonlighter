@@ -34,10 +34,12 @@ void SceneManager::Update(float tick)
 			changeScene->Init();
 			changeScene = nullptr;
 		}
+
+		if (nowScene != nullptr)
+			nowScene->Update(tick);
+
 	}
 
-	if (nowScene != nullptr)
-		nowScene->Update(tick);
 
 }
 

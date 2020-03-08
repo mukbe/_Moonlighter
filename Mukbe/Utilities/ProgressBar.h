@@ -6,16 +6,30 @@ public:
 	ProgressBar();
 	~ProgressBar();
 
-	//void Init(string back, string front, float max, FloatRect area);
+	void Init(float max, FloatRect area, float round, bool isPlayer);
+	void SetCurrentValue(float value);
 
-	//void Update(float current);
-	//void Render();
+	void Update();
+	void Render(Matrix2D* trans);
 private:
-	shared_ptr<Texture> back;
-	shared_ptr<Texture> front;
 
 	float valueMax;
-	float current;
+	float currentValue;
+	float backValue;
 	FloatRect rc;
+	FloatRect backRc;
+	FloatRect frontRc;
+	float round;
+
+	D3DXCOLOR color;
+	D3DXCOLOR normalColor = D3DXCOLOR(0.9f, 0.278f, 0.278f, 1.f);
+	float alpha;
+	float frameAlpha;
+	bool bChanged;
+	bool bPlayer;
+	float shownTime;
+	float show;
+	float deltaTime;
+	float lerp;
 };
 

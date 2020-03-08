@@ -10,7 +10,10 @@ LightingSystem::LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	drawShader = Shaders->FindShader("DrawToMainRTV");
 	lightSystemBuffer = Buffers->FindShaderBuffer<LightSystemBuffer>();
 
-	intencity = 0.3f;
+	intencity = 0.7f;
+	bStage = false;
+	lightSystemBuffer->SetSunLight(D3DXCOLOR(1.f , 1.f, 1.f , intencity));
+
 }
 
 
@@ -105,6 +108,15 @@ void LightingSystem::RenderLightMap()
 
 void LightingSystem::SunLightCalculate()
 {
+	if (bStage)
+	{
+		intencity = 0.55f;
+		float b = 1.5f;
+
+		lightSystemBuffer->SetSunLight(D3DXCOLOR(1.f , 1.f, 1.f * b, intencity));
+		return;
+	}
+
 	float ratio;
 	float hour = (float)Time::Get()->GetHour();
 	float minute = (float)Time::Get()->GetMinute();

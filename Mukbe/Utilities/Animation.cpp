@@ -107,7 +107,27 @@ void AnimationClip::Uptate()
 		if (updateTime >= invFps)
 		{
 			updateTime -= invFps;
+
+			if (currentFrame.callBacks.size() > 0)
+			{
+				string str;
+				for (int i = 0; i < (int)currentFrame.callBacks.size(); i++)
+				{
+					str.append(currentFrame.callBacks[i]);
+					str.append(", ");
+				}
+				LOG->Print(str.c_str());
+
+				for (int i = 0; i < (int)currentFrame.callBacks.size(); i++)
+				{
+					if (callBackFuncTable[currentFrame.callBacks[i]])
+					{
+						callBackFuncTable[currentFrame.callBacks[i]]();
+					}
+				}
+			}
 			currentIndex++;
+
 			if (currentIndex >= (int)frames.size())
 			{
 				currentIndex = 0;
@@ -119,16 +139,9 @@ void AnimationClip::Uptate()
 				}
 			}
 
+
 			currentFrame = frames[currentIndex];
 
-			if (currentFrame.callBacks.size() > 0)
-			{
-				for (int i = 0; i < (int)currentFrame.callBacks.size(); i++)
-				{
-					if(callBackFuncTable[currentFrame.callBacks[i]])
-						callBackFuncTable[currentFrame.callBacks[i]]();
-				}
-			}
 		}
 	}
 

@@ -33,6 +33,19 @@ public:
 	float GetDetectRange() { return detectRange; }
 	float GetAttackRange() { return attackRange; }
 	void SetAttackDirection(UnitDirection dir);
+
+	float GetHp()
+	{
+		return hp;
+	}
+	float GetHpMax()
+	{
+		return hpMax;
+	}
+	void SetHp(float hp)
+	{
+		this->hp = hp;
+	}
 protected:
 	UnitDirection direction;
 	UnitDirection attackDirection;
@@ -44,5 +57,8 @@ protected:
 
 	float detectRange;
 	float attackRange;
+
+	float hp;
+	float hpMax;
 };
 

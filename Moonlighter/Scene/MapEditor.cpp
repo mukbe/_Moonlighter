@@ -34,6 +34,7 @@ MapEditor::~MapEditor()
 void MapEditor::Init()
 {
 	SceneBase::Init();
+	CAMERA->ModeFreeCamera();
 }
 
 void MapEditor::OnceInit()
@@ -81,8 +82,13 @@ void MapEditor::Update(float tick)
 			picked->Transform().SetPos(picked->Transform().GetPos() + delta);
 			oldPickPos = CAMERA->GetMousePos();
 		}
-	}
 
+		if (KeyCode->Down(VK_DELETE))
+		{
+			_ObjectPool->DeletaObject(picked);
+		}
+
+	}
 
 
 	if (Mouse::Get()->Down(0) && -1 != current_item)

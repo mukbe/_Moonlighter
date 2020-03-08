@@ -24,14 +24,10 @@ BulletSystem * SubSystemManager::GetBulletSubSystem()
 	return bullet;
 }
 
-GameData * SubSystemManager::GetGameData()
-{
-	return gamedata;
-}
+
 
 void SubSystemManager::Init()
 {
 	light = _ObjectPool->FindObject<LightingSystem>("LightingSystem");
 	bullet = _ObjectPool->FindObject<BulletSystem>("BulletSystem");
-	gamedata = _ObjectPool->FindObject<GameData>("GameData");
 }

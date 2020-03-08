@@ -87,3 +87,27 @@ private:
 
 };
 
+
+class MiniBossDead :public MonsterBase
+{
+public:
+	MiniBossDead(Unit* unit) : MonsterBase(unit)
+	{
+		this->unit = unit;
+	}
+	~MiniBossDead()
+	{
+	}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name()
+	{
+		return "MiniBossDead";
+	}
+
+private:
+	float time;
+	bool view;
+	bool bOnce;
+};
+

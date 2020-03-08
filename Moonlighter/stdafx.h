@@ -23,8 +23,9 @@ using namespace std;
 #endif // _DEBUG
 
 #include <d3dx10math.h>
+#include "./Systems/GameData.h"
+
 #include "./Object/LightingSystem.h"
-#include "./Object/GameData.h"
 #include "./Object/BulletSystem.h"
 
 #include "./Systems/SubSystemManager.h"

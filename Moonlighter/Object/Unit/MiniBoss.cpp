@@ -1,7 +1,8 @@
 #include "stdafx.h"
 #include "MiniBoss.h"
 #include "./Object/Unit/Player.h"
-
+#include "./Object/Item.h"
+#include "./Object/Chest.h"
 
 MiniBoss::MiniBoss(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	:Unit(name, pos, size)
@@ -11,6 +12,7 @@ MiniBoss::MiniBoss(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Smash", new MiniBossSmash(this)));
 	unitState.insert(make_pair("Sword", new MiniBossSword(this)));
 	unitState.insert(make_pair("Hit", new MiniBossHit(this)));
+	unitState.insert(make_pair("Dead", new MiniBossDead(this)));
 
 	detectRange = 500.f;
 	attackRange = 100.f;
@@ -20,6 +22,7 @@ MiniBoss::MiniBoss(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	rc = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 	renderRect = FloatRect(D3DXVECTOR2(0.f, 0.f), size, pivot);
 
+	hp = hpMax = 500.f;
 }
 
 
@@ -45,7 +48,7 @@ void MiniBoss::LoadAnimator(wstring file)
 	function<void(string)> attack = [&](string effect) {
 		D3DXVECTOR2 startPos = transform.GetPos() + GetVector2Direction(attackDirection) * size.x*0.6f;
 
-		_BulletSystem->Fire(startPos, 50, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
+		_BulletSystem->Fire(startPos, 60, 0.1f, 30, "", attackDirection, IFFEnum::IFFEnum_Monster, D3DXVECTOR2(0.f, 0.f), effect);
 	};
 
 
@@ -68,6 +71,16 @@ void MiniBoss::LoadAnimator(wstring file)
 	animator->FindAnimation("Sword_Down")->RegisterCallBackTable("Sword", bind(sword, ""));
 	animator->FindAnimation("Sword_Left")->RegisterCallBackTable("Sword", bind(sword, ""));
 
+	animator->FindAnimation("Dead")->RegisterCallBackTable("Item", [&]() {
+		for (int i = 0; i < 20; i++)
+			_ObjectPool->CreateObject<Item>("Item", transform.GetPos(), D3DXVECTOR2(15, 15));
+
+	});
+	animator->FindAnimation("Dead")->RegisterCallBackTable("Chest", [&]() {
+
+		_ObjectPool->CreateObject<Item>("Item", transform.GetPos(), D3DXVECTOR2(15, 15));
+
+	});
 
 }
 
@@ -81,6 +94,14 @@ void MiniBoss::Knockback(D3DXVECTOR2 dir)
 
 void MiniBoss::Damge(float dmg)
 {
+	hp -= dmg;
+	hp <= 0.f ? hp = 0.f : hp;
+
+	GameData::Get()->SetBossHp(hp);
+
+	if (hp <= 0)
+		ChangeState("Dead");
+
 }
 
 void MiniBoss::OnCollisionEnter(GameObject * other)
@@ -165,7 +186,7 @@ void MiniBossWalk::Enter()
 	unit->GetAnimator()->ChangeAnimation(key, true);
 
 	player = _ObjectPool->FindObject<Player>("Player");
-	speed = 70.f;
+	speed = 50.f;
 }
 
 void MiniBossWalk::Excute()
@@ -268,5 +289,41 @@ void MiniBossHit::Excute()
 	unit->SetAlpha(0.6f*(int)view);
 
 	unit->Transform().SetPos(unit->Transform().GetPos() + dir * amount * TickTime);
+
+}
+
+void MiniBossDead::Enter()
+{
+	view = true;
+	time = 1.f;
+	string key = "Idle_";
+	key += unit->GetStringUnitDirection();
+	unit->GetAnimator()->ChangeAnimation(key, true);
+	unit->GetAnimator()->Stop();
+	unit->SetActive(false);
+	_RenderPool->Remove(unit, unit->GetLayer());
+	_RenderPool->Request(unit, Layer_Terrain);
+	bOnce = true;
+}
+
+void MiniBossDead::Excute()
+{
+	time -= TickTime;
+	if (time <= 0)
+	{
+		unit->SetRenderSize(D3DXVECTOR2(40, 40), Pivot::CENTER);
+		unit->SetAlpha(1.f);
+		if (bOnce)
+		{
+			unit->GetAnimator()->ChangeAnimation("Dead");
+			Chest* chest = _ObjectPool->CreateObject<Chest>("Item", unit->Transform().GetPos(), D3DXVECTOR2(30, 20));
+			chest->SetRenderSize(D3DXVECTOR2(70.f, 70.f), Pivot::CENTER, D3DXVECTOR2(0.f, 2.f));
+			bOnce = false;
+		}
+		return;
+	}
+
+	view = !view;
+	unit->SetAlpha(0.7f*(int)view);
 
 }

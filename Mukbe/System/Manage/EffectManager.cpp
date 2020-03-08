@@ -21,13 +21,18 @@ void EffectManager::Update(float tick)
 	{
 		EffectDesc& effect = *Iter;
 		effect.UpdateTime += tick;
+		if (effect.RoopCount <= 0)
+		{
+			effect.Delay -= tick;
+			continue;
+		}
 		if (effect.UpdateTime >= effect.InvFps)
 		{
 			effect.UpdateTime -= effect.InvFps;
 			effect.Frame++;
 			if (effect.Frame >= effect.MaxFrame)
 			{
-				effect.RoopCount--;
+				effect.RoopCount--;	
 				effect.Frame = 0;
 			}
 		}
@@ -35,7 +40,7 @@ void EffectManager::Update(float tick)
 
 	for (Iter = playList.begin(); Iter != playList.end();)
 	{
-		if ((*Iter).RoopCount <= 0)
+		if ((*Iter).RoopCount <= 0 && (*Iter).Delay <= 0.f)
 		{
 			Iter = playList.erase(Iter);
 		}
@@ -55,7 +60,7 @@ void EffectManager::Render()
 	}
 }
 
-void EffectManager::Fire(string key, D3DXVECTOR2 pos, D3DXVECTOR2 size, float radian, float fps)
+void EffectManager::Fire(string key, D3DXVECTOR2 pos, D3DXVECTOR2 size, float radian, float fps, float removeDelay)
 {
 	EffectDesc effect = Find(key);
 	effect.Transform = Matrix2D(pos);
@@ -63,6 +68,7 @@ void EffectManager::Fire(string key, D3DXVECTOR2 pos, D3DXVECTOR2 size, float ra
 	effect.Rect = FloatRect(D3DXVECTOR2(0, 0), size, Pivot::CENTER);
 	effect.InvFps = 1.f / fps;
 	effect.RoopCount = 1;
+	effect.Delay = removeDelay;
 	if (effect.Image->GetMaxFrame().x < 1.5f)
 		effect.RoopCount++;
 	playList.push_back(effect);

@@ -6,7 +6,7 @@ bool SceneBase::DebugMode = false;
 SceneBase::SceneBase()
 	: messageManager(new MessageManager), objectManager(new ObjectManager), renderManager(new RenderManager), bFirstInit(true)
 {
-	
+	playerLastPosition = { -100,-100 };
 }
 
 SceneBase::~SceneBase()

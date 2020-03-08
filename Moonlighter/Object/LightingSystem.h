@@ -15,6 +15,10 @@ public:
 	GameObject* FindLightAsId(int id_light);
 
 	float GetIntencity() { return intencity; }
+	void SetStageLight(bool stage)
+	{
+		bStage = stage;
+	}
 
 private:
 	LightingSystem(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size);
@@ -43,5 +47,6 @@ private:
 	LightSystemBuffer* lightSystemBuffer;
 	float intencity;
 
+	bool bStage;
 };
 

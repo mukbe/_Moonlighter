@@ -31,7 +31,7 @@ Time::~Time(void)
 
 void Time::UpdateWorldTime()
 {
-	worldTime += Delta() * 400.0f;
+	worldTime += Delta() * 200.0f;
 
 
 	float time24HClock = (float)Math::Lerp(0.f, 24.f, worldTime * dayTimeRatio / (Math::PI * 0.5f));

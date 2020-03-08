@@ -30,7 +30,8 @@ public:
 	virtual void OnCollisionEnter(GameObject* other);
 	virtual void OnCollisionStay(GameObject* other);
 	virtual void OnCollisionExit(GameObject* other);
-
+private:
+	ProgressBar* bar;
 };
 
 class SlimeIdle : public StateBase
@@ -86,4 +87,26 @@ private:
 	float time;
 	float amount;
 	bool view;
+};
+
+class SlimeDead : public StateBase
+{
+public:
+	SlimeDead(Unit* unit) : StateBase(unit)
+	{
+		this->unit = unit;
+	}
+	~SlimeDead()
+	{
+	}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name()
+	{
+		return "SlimeDead";
+	}
+private:
+	float time;
+	bool view;
+	bool bOnce;
 };

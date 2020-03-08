@@ -14,7 +14,7 @@ Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 
 	iff = IFFEnum_Player;
 
-
+	hp = hpMax = 200.f;
 }
 
 
@@ -31,12 +31,13 @@ void Player::Init()
 void Player::Release()
 {
 	Super::Release();
-
 }
 
 void Player::Update(float tick)
 {
 	Super::Update(tick);
+	if (KeyCode->Down('E'))
+		GameData::Get()->Potion();
 
 }
 
@@ -83,7 +84,7 @@ void Player::LoadAnimator(wstring file)
 
 		}
 
-		_BulletSystem->Fire(startPos, range, 1.f, 10, "Bullet_Arrow", direction, IFFEnum::IFFEnum_Player, dir * 400.f, "Arrow");
+		_BulletSystem->Fire(startPos, range, 1.f, 990, "Bullet_Arrow", direction, IFFEnum::IFFEnum_Player, dir * 400.f, "Arrow");
 
 	};
 	function<void(D3DXVECTOR2,string)> sword = [&](D3DXVECTOR2 dir, string effect) {
@@ -127,8 +128,10 @@ void Player::Damge(float dmg)
 {
 	if (currentState->Name() == "StateRoll")
 		return;
-	//데미지 처리
+	hp -= dmg;
+	hp <= 0.f ? hp = 0.f : hp;
 
+	GameData::Get()->SetHp(hp);
 }
 
 void Player::OnCollisionEnter(GameObject * other)
@@ -138,6 +141,8 @@ void Player::OnCollisionEnter(GameObject * other)
 
 void Player::OnCollisionStay(GameObject * other)
 {
+	if (other->IsActive() == false)return;
+
 	FloatRect origin = other->GetCollider();
 	FloatRect otherRc = other->GetCollider();
 	if (Math::IsAABBInAABBReaction(&otherRc, GetCollider()) 

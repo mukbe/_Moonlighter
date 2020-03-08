@@ -11,7 +11,7 @@ Unit::Unit(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	shadowTex = _ImageManager->FindTexture("Shadow");
 
 	AddCallback("Knockback", [&](TagMessage msg) {
-		Knockback(msg.Data->GetValue <D3DXVECTOR2>());
+		Knockback(msg.Data->GetValue<D3DXVECTOR2>());
 	});
 
 	AddCallback("Damge", [&](TagMessage msg) {

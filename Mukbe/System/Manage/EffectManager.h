@@ -9,8 +9,9 @@ struct EffectDesc
 	float InvFps;
 	float UpdateTime;
 	int RoopCount;
+	float Delay;
 	shared_ptr<Texture> Image;
-	EffectDesc() : Frame(0), RoopCount(0), InvFps(1 / 60.f), UpdateTime(0.f) {}
+	EffectDesc() : Frame(0), RoopCount(0), InvFps(1 / 60.f), UpdateTime(0.f),Delay(0.f) {}
 };
 class EffectManager
 {
@@ -20,7 +21,7 @@ public:
 	void Update(float tick);
 	void Render();
 
-	void Fire(string key, D3DXVECTOR2 pos, D3DXVECTOR2 size, float radian = 0.f , float fps = 60.f);
+	void Fire(string key, D3DXVECTOR2 pos, D3DXVECTOR2 size, float radian = 0.f , float fps = 60.f, float removeDelay = 0.f);
 	void AddEffect(string key, string imageKey);
 private:
 	using MapIter = unordered_map < string, EffectDesc>::iterator;

@@ -46,7 +46,7 @@ void ObjectManager::Update(float tick)
 		GameObject* a = objects[i];
 		if (a->IsActive() == false) continue;
 		if (a->GetCollisionType() == CollisionType_None) continue;
-		if(!Math::IsAABBInAABB(a->GetCollider(),CAMERA->GetRenderRect())) continue;
+		//if(!Math::IsAABBInAABB(a->GetCollider(),CAMERA->GetRenderRect())) continue;
 		// ..elas
 
 		for (int j = i + 1; j < (int)objects.size();j++)
@@ -57,6 +57,7 @@ void ObjectManager::Update(float tick)
 			{
 				//원래는 다양체로 등록한 다음 다양체들을 순회하면서 충돌검사를 해야한다
 				//지금은 편의를 위해 사각형 충돌만 사용
+				
 				if (Math::IsAABBInAABB(a->GetCollider(), b->GetCollider()))
 				{
 					manifold.push_back(Manifold(a, b, Manifold::Type::Manifold_On));
