@@ -85,6 +85,25 @@ private:
 	bool view;
 };
 
+class StateDead : public StateBase
+{
+public:
+	StateDead(Unit* unit) :StateBase(unit)
+	{
+	}
+	~StateDead()
+	{
+	}
+	virtual void Enter();
+	virtual void Excute();
+	virtual string Name()
+	{
+		return "StateDead";
+	}
+private: 
+	bool bOnce;
+};
+
 class MonsterBase : public StateBase
 {
 public:

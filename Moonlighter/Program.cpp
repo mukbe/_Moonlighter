@@ -42,7 +42,10 @@ Program::Program()
 	_SceneManager->AddScene("Lobby", new LobbyScene);
 
 	CAMERA->AddZoom(2.f);
+	_SceneManager->ChangeScene("Town", true);
 
+	bGrid = false;
+	
 	//_SceneManager->ChangeScene("Map");
 	//_SceneManager->ChangeScene("Ani");
 

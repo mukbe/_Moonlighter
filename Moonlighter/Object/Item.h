@@ -14,7 +14,7 @@ public:
 	virtual void Update(float tick);
 	virtual void Render();
 
-
+	void SetIndex(POINT index);
 	virtual void OnCollisionEnter(GameObject* other);
 
 private:

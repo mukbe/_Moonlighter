@@ -36,7 +36,7 @@ void JustRenderObject::Update(float tick)
 		if (String::Contain(animName,"Lamp"))
 		{
 			float intencity = _LightSystem->GetIntencity();
-			if (intencity < 0.5f)
+			if (intencity < 0.65f)
 			{
 				alpha += 0.01f;
 			}

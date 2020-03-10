@@ -9,6 +9,8 @@
 #include "./Object/Item.h"
 #include "./Object/Chest.h"
 
+#include "./Object/Unit/NPC.h"
+
 TownScene::TownScene()
 {
 }
@@ -76,6 +78,12 @@ void TownScene::Load()
 	load.LoadMap(ResourcePath + L"Stage/Town");
 
 
+	NPC* npc = _ObjectPool->CreateObject<NPC>("NPC01", D3DXVECTOR2(500, 500), D3DXVECTOR2(15, 15));
+	npc->LoadAnimator(ResourcePath + L"Animator/NPC01.anim");
+	npc = _ObjectPool->CreateObject<NPC>("NPC02", D3DXVECTOR2(1000, 800), D3DXVECTOR2(15, 15));
+	npc->LoadAnimator(ResourcePath + L"Animator/NPC02.anim");
+	npc = _ObjectPool->CreateObject<NPC>("NPC03", D3DXVECTOR2(500,800 ), D3DXVECTOR2(15, 15));
+	npc->LoadAnimator(ResourcePath + L"Animator/NPC03.anim");
 
 	//라이트 넣어라
 	_LightSystem->RegisterLight(D3DXVECTOR2(460.f, 196.f)

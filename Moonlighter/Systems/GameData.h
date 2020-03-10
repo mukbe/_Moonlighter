@@ -26,7 +26,10 @@ public:
 	bool bBossBarRender;
 
 	void AddItem(POINT index);
-
+	vector<pair<POINT, int>> GetItems()
+	{
+		return items;
+	}
 private:
 	float playerHp;
 	vector<pair<POINT, int>> items;

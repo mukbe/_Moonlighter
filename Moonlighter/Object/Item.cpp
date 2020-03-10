@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Item.h"
-
+#include "./Object/Unit/Player.h"
 
 
 Item::Item(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
@@ -103,10 +103,17 @@ void Item::Render()
 
 }
 
+void Item::SetIndex(POINT index)
+{
+	this->index = index;
+}
+
 void Item::OnCollisionEnter(GameObject * other)
 {
 	if (other->Name() == "Player")
 	{
+		Player* player = static_cast<Player*>(other);
+		if (player->GetHp() <= 0.f) return;
 		//¾ÆÀÌÅÛ È¹µæ
 		GameData::Get()->AddItem(index);
 		startPos = CAMERA->WorldToScreen(transform.GetPos());

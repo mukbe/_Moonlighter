@@ -2,6 +2,8 @@
 #include "StateBase.h"
 #include "./Utilities/Animator.h"
 #include "./Object/Unit/Unit.h"
+#include "./Object/Item.h"
+
 
 void StateIdle::Enter()
 {
@@ -12,6 +14,10 @@ void StateIdle::Enter()
 
 void StateIdle::Excute()
 {
+	if (unit->GetHp() <= 0.f)
+	{
+		unit->ChangeState("Dead");
+	}
 	if (KeyCode->Press(VK_LEFT))
 	{
 		unit->SetDirection(UnitDirection::Left);
@@ -198,4 +204,29 @@ void StateHit::Excute()
 	unit->SetAlpha(0.6f*(int)view);
 
 	unit->Transform().SetPos(unit->Transform().GetPos() + dir * amount * TickTime);
+}
+
+void StateDead::Enter()
+{
+	unit->GetAnimator()->ChangeAnimation("Dead");
+	bOnce = true;
+}
+
+void StateDead::Excute()
+{
+	if (bOnce)
+	{
+		if (unit->GetAnimator()->IsPlay() == false)
+		{
+			vector<pair<POINT, int>> items = GameData::Get()->GetItems();
+
+			for (int i = 0; i < (int)items.size(); i++)
+			{
+				Item* item = _ObjectPool->CreateObject<Item>("Item", unit->Transform().GetPos(), D3DXVECTOR2(15, 15));
+				item->SetIndex(items[i].first);
+			}
+			bOnce = false;
+
+		}
+	}
 }

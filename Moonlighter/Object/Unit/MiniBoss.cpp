@@ -136,6 +136,8 @@ void MiniBossIdle::Enter()
 
 void MiniBossIdle::Excute()
 {
+	if (player->GetHp() <= 0.f) return;
+
 	D3DXVECTOR2 axis = player->Transform().GetPos() - unit->Transform().GetPos();
 	float len = D3DXVec2Length(&axis);
 

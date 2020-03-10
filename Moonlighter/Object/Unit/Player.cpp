@@ -11,6 +11,7 @@ Player::Player(string name, D3DXVECTOR2 pos, D3DXVECTOR2 size)
 	unitState.insert(make_pair("Bow", new StateBow(this)));
 	unitState.insert(make_pair("Roll", new StateRoll(this)));
 	unitState.insert(make_pair("Hit", new StateHit(this)));
+	unitState.insert(make_pair("Dead", new StateDead(this)));
 
 	iff = IFFEnum_Player;
 
@@ -38,6 +39,9 @@ void Player::Update(float tick)
 	Super::Update(tick);
 	if (KeyCode->Down('E'))
 		GameData::Get()->Potion();
+	//if (KeyCode->Down('Q'))
+	//	hp = 0.f;
+
 
 }
 
@@ -84,7 +88,7 @@ void Player::LoadAnimator(wstring file)
 
 		}
 
-		_BulletSystem->Fire(startPos, range, 1.f, 990, "Bullet_Arrow", direction, IFFEnum::IFFEnum_Player, dir * 400.f, "Arrow");
+		_BulletSystem->Fire(startPos, range, 1.f, 10, "Bullet_Arrow", direction, IFFEnum::IFFEnum_Player, dir * 400.f, "Arrow");
 
 	};
 	function<void(D3DXVECTOR2,string)> sword = [&](D3DXVECTOR2 dir, string effect) {

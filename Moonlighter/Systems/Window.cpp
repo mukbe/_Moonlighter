@@ -11,6 +11,7 @@ WPARAM Window::Run()
 
 	//=========Init Manager=================================
 	CreateManagers();
+	Window::bUseImguiUI = false;
 	//=====================================================
 
 	program = new Program();
